@@ -1,0 +1,7 @@
+<div ng-controller="NavbarController" class="text-center">
+  <h2>Please <a href ui-sref="register">Register</a> or
+    <a href ui-sref="login" ng-if="!isSignIn">Log In</a>
+    <div ng-click="logout()" ng-if="isSignIn">Logout</div>
+  </h2>
+  <h3  ng-if="isSignIn" >Wellcome: {{user.username}}</h3>
+</div>
