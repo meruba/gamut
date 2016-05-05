@@ -1,7 +1,9 @@
 <div ng-controller="NavbarController" class="text-center">
   <h2>Please <a href ui-sref="register">Register</a> or
-    <a href ui-sref="login" ng-if="!isSignIn">Log In</a>
-    <div ng-click="logout()" ng-if="isSignIn">Logout</div>
+    <a href ui-sref="login" ng-if="!user.signedIn">Log In</a>
+    <!-- <a href="javascript:void()"ng-click="logout()" ng-if="user.signedIn">Logout</a> -->
+    <a href="" ng-click="logout()" ng-if="user.signedIn">Logout</a>
   </h2>
-  <h3  ng-if="isSignIn" >Wellcome: {{user.username}}</h3>
+  <h3 >SingIn: {{user.signedIn}}</h3>
+  <h3 >Wellcome: {{user.username}}</h3>
 </div>

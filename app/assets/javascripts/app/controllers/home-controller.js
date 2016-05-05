@@ -7,7 +7,7 @@
 
   function HomeController($scope) {
     var vmHome = this;
-    vmHome.test = 'Angular Loaded! :)';
+    vmHome.test = 'Angular Loaded! :)';    
   }
 
 })();

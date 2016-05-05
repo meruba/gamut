@@ -1,18 +1,15 @@
-<div class="container">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-      <h2>Log In</h2>
-        <form ng-submit="login()">
-          <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
-          </div>
-          <button type="submit" class="btn btn-primary">Log In</button>  
-        </form>
-      </div>
-    </div>
+<form class="sign-in-up-form ng-valid-email ng-dirty ng-valid-parse ng-valid ng-valid-required" ng-init="loginForm = {}" ng-submit="submitLogin(loginForm)" role="form" autocomplete="off" style="">
+  <div class="form-group">
+    <label for="email">Email</label><input class="form-control email-input ng-untouched ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required" id="email" name="email" ng-model="loginForm.email" required="required" type="email">
   </div>
-</div>
+  <div class="form-group">
+    <label for="password" translate="">Password</label><input class="form-control input-password ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" id="password" name="password" ng-model="loginForm.password" required="required" type="password" style="">
+  </div>
+  <button class="btn btn-primary btn-sm" translate="" type="submit">Sign in</button>
+</form>
+<div class="link-to-forms">
+  <button class="btn btn-primary btn-sm" ng-click="authenticate('facebook')" translate="">Sign in with Facebook</button>
+  <div class="link-sign-in-up">
+    <a translate="" ui-sref="register" href="#/register">Register</a>
+  </div>
+</div></div>

@@ -6,25 +6,17 @@
     'app.directives',
     'app.services',
     'ui.router',
-    'Devise',
-    'templates'
+    'templates',
+    'ng-token-auth',
+    'toastr'
   ])
 
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $authProvider) {
     $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'auth/login.html',
-        controller: 'AuthController',
-        onEnter: function ($state, Auth) {
-          Auth.currentUser().then(function (user){
-            if (user) {
-              $state.go('home.users');
-            }else{
-              $state.go('home');
-            }
-          });
-        }
+        controller: 'SessionController'
       })
       .state('logout', {
         url: '/logut',
@@ -33,7 +25,7 @@
       .state('register', {
         url: '/register',
         templateUrl: 'auth/register.html',
-        controller: 'AuthController'
+        controller: 'RegistrationController'
       })
       .state('home', {
         url: '/',
@@ -43,9 +35,26 @@
       .state('home.users', {
         url: 'users',
         templateUrl: 'users/users-list.html',
-        controller: 'UsersController as vmUsers'
+        controller: 'UsersController as vmUsers',
+        resolve: {
+            auth: ['$auth', '$state', function($auth, $state) {
+              return $auth.validateUser()
+                .catch(function(response) {
+                  $state.go('login');
+                })
+            }]
+          }
       });
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/login');
   });
+
+  angular.module('app').run(['$auth','$state', function($auth, $state) {
+    $auth.validateUser()
+        .then(function(user) {
+          if (!user.id) {
+            $state.go('home');
+          }
+        });
+  }]);
 
 })();

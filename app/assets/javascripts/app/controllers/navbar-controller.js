@@ -5,28 +5,15 @@
     .module('app.controllers')
     .controller('NavbarController', NavbarController);
 
-  function NavbarController($scope, $state, Auth) {
+  function NavbarController($scope, $state, $auth, toastr) {
 
-    $scope.isSignIn = Auth.isAuthenticated();
-    $scope.logout = Auth.logout;
-
-    Auth.currentUser()
-      .then(function (user){
-        $scope.user = user;
-      });
-
-    $scope.$on('devise:new-registration', function (e, user){
-      $scope.user = user;
-    });
-
-    $scope.$on('devise:login', function (e, user){
-      $scope.user = user;
-    });
-
-    $scope.$on('devise:logout', function (e, user){
-      $scope.user = {};
-      $state.go('home');
-    });
+    $scope.logout = function() {
+      $auth.signOut()
+        .then(function(resp) {
+          $state.go('login');
+          toastr.success('Signed out successfully!');
+        });
+    };
 
   }
 

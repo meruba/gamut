@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require angular
-//= require angular-devise
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-resource
+//= require angular-cookie
+//= require ng-token-auth
+//= require angular-toastr
 //= require_tree .
