@@ -8,7 +8,7 @@
     <div class="navbar-collapse">
       <ul class="nav navbar-nav">
         <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
-        <li ui-sref-active="active"><a ui-sref="users">Users</a></li>
+        <li ui-sref-active="active"><a ui-sref="users">{{ ::'menu.users' | translate }}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown current-user-dropdown">
@@ -17,7 +17,7 @@
           </a>
         </li>
         <li class="dropdown current-user-dropdown">
-          <a href="" ng-click="vmNav.logout()" ng-if="user.signedIn">Logout</a>
+          <a href="" ng-click="vmNav.logout()" ng-if="user.signedIn">{{ ::'menu.logout' | translate }}</a>
         </li>
       </ul>
     </div>

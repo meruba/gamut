@@ -17,4 +17,5 @@
 //= require angular-cookie
 //= require ng-token-auth
 //= require angular-toastr
+//= require angular-translate
 //= require_tree .

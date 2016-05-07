@@ -5,6 +5,7 @@
     'app.controllers',
     'app.directives',
     'app.services',
+    'pascalprecht.translate',
     'ui.router',
     'templates',
     'ng-token-auth',

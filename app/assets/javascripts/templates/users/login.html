@@ -6,16 +6,16 @@
       </div>
       <form class="sign-in-up-form ng-valid-email ng-dirty ng-valid-parse ng-valid ng-valid-required" ng-init="loginForm = {}" ng-submit="submitLogin(loginForm)" role="form" autocomplete="off" style="">
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">{{ ::'login.email' | translate }}</label>
           <input class="form-control email-input ng-untouched ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required" id="email" name="email" ng-model="loginForm.email" required="required" type="email">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">{{ ::'login.password' | translate }}</label>
           <input class="form-control input-password ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" id="password" name="password" ng-model="loginForm.password" required="required" type="password" style="">
         </div>
-        <button class="btn btn-block btn-primary btn-sm" translate="" type="submit">Sign in</button>
+        <button class="btn btn-block btn-primary btn-sm" translate="" type="submit">{{ ::'login' | translate }}</button>
         <div class="login-link text-center">
-          Not a member? <a translate="" ui-sref="register" href="#/register">Sign up now</a>
+          {{ ::'login.info_login' | translate }} <a translate="" ui-sref="register" href="#/register">{{ ::'signup' | translate }}</a>
         </div>
       </form>
     </div>

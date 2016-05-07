@@ -1,11 +1,11 @@
 <div class="container">
   <div class="container-fluid">
-    <h1 class="text-center">USERS <span class="badge">{{vmUsers.totalUsers}}</span></h1>
+    <h1 class="text-center">{{ ::'user.users' | translate }} <span class="badge">{{vmUsers.totalUsers}}</span></h1>
     <table class="table table-striped table-bordered">
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Username</th>
+        <th>{{ ::'user.attributes.name' | translate }}</th>
+        <th>{{ ::'user.attributes.email' | translate }}</th>
+        <th>{{ ::'user.attributes.username' | translate }}</th>
       </tr>
       <tr ng-repeat="user in vmUsers.UserList">
         <td>

@@ -6,24 +6,24 @@
       </div>
       <form class="sign-in-up-form ng-valid-email ng-invalid ng-invalid-required ng-dirty ng-valid-parse" ng-init="registrationForm = {}" ng-submit="handleRegBtnClick()" role="form" style="">
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">{{ ::'login.name' | translate }}</label>
           <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="name" name="name" ng-model="registrationForm.name" required="required" type="text" style="">
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">{{ ::'login.email' | translate }}</label>
           <input class="form-control email-input ng-untouched ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required" id="email" name="email" ng-model="registrationForm.email" required="required" type="email" style="">
         </div>
         <div class="form-group">
-          <label for="password" translate="">Password</label>
+          <label for="password" translate="">{{ ::'login.password' | translate }}</label>
           <input class="form-control input-password ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" id="password" name="password" ng-model="registrationForm.password" required="required" type="password" style="">
         </div>
         <div class="form-group">
-          <label for="password_confirmation" translate="">Password confirmation</label>
+          <label for="password_confirmation" translate="">{{ ::'login.password_confirmation' | translate }}</label>
           <input class="form-control input-password ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" id="password_confirmation" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" type="password">
         </div>
-        <button class="btn btn-block btn-primary btn-sm" translate="" type="submit">Register</button>
+        <button class="btn btn-block btn-primary btn-sm" type="submit">{{ ::'signup' | translate }}</button>
         <div class="login-link text-center">
-          I have an account <a translate="" ui-sref="login" href="#/register">Sign in</a>
+          {{ ::'login.info_register' | translate }} <a ui-sref="login" href="#/register">{{ ::'login' | translate }}</a>
         </div>
       </form>
     </div>

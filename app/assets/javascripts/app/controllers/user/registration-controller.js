@@ -8,7 +8,6 @@
   function RegistrationController($scope, $state, $auth, toastr) {
 
     $scope.$on('auth:registration-email-error', function(ev, reason) {
-      console.log(reason);
       angular.forEach(reason.errors.full_messages, function(value, key) {
         toastr.error(value);
       })
@@ -23,7 +22,7 @@
             password: $scope.registrationForm.password
           })
           $state.go('home');
-          toastr.success('Registered successfully!');
+          toastr.success('Registrado exitosamente!');
         });
     };
 
