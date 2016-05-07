@@ -18,4 +18,6 @@
 //= require ng-token-auth
 //= require angular-toastr
 //= require angular-translate
+//= require identicon
+//= require angular-identicon
 //= require_tree .

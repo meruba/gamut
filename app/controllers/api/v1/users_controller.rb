@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      
+
       respond_to :json
 
       def index
@@ -18,16 +18,19 @@ module Api
       end
 
       def update
-        @user = User.find(params[:id])
         @user.update(user_params)
-        respond_with @user
+        respond_with(:api, :v1, @user)
       end
+
+      private
+
       def user_params
         params.require(:user).permit(:name,
                                       :email,
                                       :username
                                     )
       end
+
     end
   end
 end

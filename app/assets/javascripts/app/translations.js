@@ -35,9 +35,12 @@
         user: 'Usuario',
         users: 'Usuarios',
         attributes: {
-          name: 'Nombre',
+          name: 'Nombres',
           email: 'Correo',
-          username: 'Username'
+          username: 'Username',
+          address: 'Dirección',
+          cedula: 'Cédula',
+          telephone: 'Teléfono'
         }
       },
       dashboard: {

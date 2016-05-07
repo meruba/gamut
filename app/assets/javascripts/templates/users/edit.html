@@ -1,0 +1,27 @@
+<div class="col-md-4 col-md-offset-4">
+  <div class="user-information">
+    <div id="header">
+      <identicon username="vmUser.userData.email" size="100"></identicon>
+      <h4>
+        <div class="btn btn-xs btn-default">Change image</div>
+      </h4>
+    </div>
+    <div id="content">
+      <form ng-init="vmUser.userData" class="sign-in-up-form ng-valid-email ng-invalid ng-invalid-required ng-dirty ng-valid-parse" ng-submit="vmUser.updateUser()" role="form">
+        <div class="form-group">
+          <label for="name">{{ ::'user.attributes.name' | translate }}</label>
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="name" name="name" ng-model="vmUser.userData.name" type="text">
+        </div>
+        <div class="form-group">
+          <label for="email">{{ ::'user.attributes.email' | translate }}</label>
+          <input class="form-control email-input ng-untouched ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required" id="email" name="email" ng-model="vmUser.userData.email" required="required" type="email">
+        </div>
+        <div class="form-group">
+          <label for="username">{{ ::'user.attributes.username' | translate }}</label>
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="username" name="username" ng-model="vmUser.userData.username" required="required" type="text">
+        </div>
+        <button class="btn btn-block btn-primary btn-sm" type="submit">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>

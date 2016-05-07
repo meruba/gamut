@@ -9,7 +9,8 @@
       </tr>
       <tr ng-repeat="user in vmUsers.UserList">
         <td>
-          <a ui-sref="user({ userId: user.id })">{{ user.name }}</a>
+          <identicon username="user.email" size="20"></identicon>
+          <a ui-sref="user.show({ userId: user.id })">{{ user.name }}</a>
         </td>
         <td>{{ user.email }}</td>
         <td>{{ user.username }}</td>

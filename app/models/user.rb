@@ -35,4 +35,10 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
 
+  begin :validations
+    validates :name, presence: true,
+                    uniqueness: true,
+                    allow_blank: false
+  end
+
 end

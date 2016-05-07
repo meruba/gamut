@@ -5,6 +5,7 @@
     'app.controllers',
     'app.directives',
     'app.services',
+    'ui.identicon',
     'pascalprecht.translate',
     'ui.router',
     'templates',
@@ -33,17 +34,23 @@
         templateUrl: 'home.html',
         controller: 'HomeController as vmHome'
       })
-      .state('users', {
-        url: '/users',
-        templateUrl: 'users/users-list.html',
-        controller: 'UsersController as vmUsers',
+      .state('user', {
+        url: '/user',
+        templateUrl: 'users/user-layout.html',
         resolve: {
           auth: ['$auth', '$state', function($auth, $state) {
             return $auth.validateUser()
               .catch(function(response) {
                 $state.go('login');
               })
-          }],
+          }]
+        }
+      })
+      .state('user.list', {
+        url: '/list',
+        templateUrl: 'users/users-list.html',
+        controller: 'UsersController as vmUsers',
+        resolve: {
           usersData: function (UserService) {
             return UserService.users().then(function(data) {
               return data;
@@ -51,17 +58,24 @@
           }
         }
       })
-      .state('user', {
-        url: '/user/{userId:int}',
+      .state('user.show', {
+        url: '/{userId:int}/show',
         templateUrl: 'users/user.html',
         controller: 'UserController as vmUser',
         resolve: {
-          auth: ['$auth', '$state', function($auth, $state) {
-            return $auth.validateUser()
-              .catch(function(response) {
-                $state.go('login');
-              })
-          }],
+          userData: function (UserService, $stateParams) {
+            var id = $stateParams.userId;
+            return UserService.user(id).then(function(data) {
+              return data;
+            });
+          }
+        }
+      })
+      .state('user.edit', {
+        url: '/{userId:int}/edit',
+        templateUrl: 'users/edit.html',
+        controller: 'UserController as vmUser',
+        resolve: {
           userData: function (UserService, $stateParams) {
             var id = $stateParams.userId;
             return UserService.user(id).then(function(data) {
@@ -77,7 +91,7 @@
     $auth.validateUser()
       .then(function(user) {
         if (!user.id) {
-          $state.go('home');
+          $state.go('login');
         }
       });
   }]);
