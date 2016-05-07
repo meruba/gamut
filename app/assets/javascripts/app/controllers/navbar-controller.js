@@ -7,10 +7,18 @@
 
   function NavbarController($state,
                             $auth,
+                            $rootScope,
                             toastr) {
 
     var vmNav = this;
     vmNav.logout = logout;
+
+    $rootScope.$on('$stateChangeSuccess',
+      function(event, toState, toParams, fromState, fromParams) {
+        $state.current = toState;
+        vmNav.showNav = $state.current.name === 'login' || $state.current.name === 'register';
+      }
+    );
 
     function logout() {
       $auth.signOut()

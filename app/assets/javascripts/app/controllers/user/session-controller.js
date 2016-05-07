@@ -8,7 +8,7 @@
   function SessionController($scope, $state, $auth, toastr) {
 
     $scope.$on('auth:login-success', function() {
-      $state.go('home.users');
+      $state.go('users');
       toastr.success('Signed in successfully!');
     });
 

@@ -5,9 +5,10 @@
     .module('app.controllers')
     .controller('UsersController', UsersController);
 
-  function UsersController($scope) {
+  function UsersController(usersData) {
     var vmUsers = this;
-    vmUsers.test = 'MY USERS';
+    vmUsers.UserList = usersData.users;
+    vmUsers.totalUsers = vmUsers.UserList.length;
   }
 
 })();

@@ -1,13 +1,6 @@
-<!-- <div ng-controller="NavbarController as vmNav" class="text-center">
-  <h2>Please <a href ui-sref="register">Register</a> or
-    <a href ui-sref="login" ng-if="!user.signedIn">Log In</a>
-    <a href="" ng-click="vmNav.logout()" ng-if="user.signedIn">Logout</a>
-  </h2>
-  <h3 >SingIn: {{user.signedIn}}</h3>
-  <h3 >Wellcome: {{user.username}}</h3>
-</div> -->
-
-<nav ng-controller="NavbarController as vmNav" class="navbar navbar-default navbar-static-top main-navbar">
+<nav ng-controller="NavbarController as vmNav"
+    class="navbar navbar-default navbar-static-top main-navbar"
+    ng-show="!vmNav.showNav">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="">Gamut</a>
@@ -15,19 +8,13 @@
     <div class="navbar-collapse">
       <ul class="nav navbar-nav">
         <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
-        <li ui-sref-active="active"><a ui-sref="home.users">Users</a></li>
+        <li ui-sref-active="active"><a ui-sref="users">Users</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown current-user-dropdown">
           <a data-toggle="dropdown" href="" aria-expanded="false">
-            <!-- <img class="avatar navbar-avatar margin-right" src="http://www.gravatar.com/avatar/e4bd445b4f9a911e48767e2f298fc071?d=retro&amp;s=80" alt="E4bd445b4f9a911e48767e2f298fc071?d=retro&amp;s=80"> -->
             {{user.username}}
           </a>
-          <!-- <ul class="dropdown-menu" role="menu">
-            <li><a href="/admin/users/3">Mi perfil</a></li>
-            <li class="divider"></li>
-            <li><a rel="nofollow" data-method="delete" href="/users/sign_out">Cerrar sesión</a></li>
-          </ul> -->
         </li>
         <li class="dropdown current-user-dropdown">
           <a href="" ng-click="vmNav.logout()" ng-if="user.signedIn">Logout</a>

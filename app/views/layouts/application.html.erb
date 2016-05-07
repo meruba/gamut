@@ -8,7 +8,8 @@
 </head>
 <body ng-app="app">
   <div class="container-body">
-    <div ui-view></div>
+    <div ng-include="'shared/navbar.html'"></div>
+    <div class="container" ui-view></div>
   </div>
 </body>
 </html>

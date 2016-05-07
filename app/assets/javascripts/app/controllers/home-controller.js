@@ -5,9 +5,8 @@
     .module('app.controllers')
     .controller('HomeController', HomeController);
 
-  function HomeController($scope) {
+  function HomeController() {
     var vmHome = this;
-    vmHome.test = 'Angular Loaded! :)';    
   }
 
 })();

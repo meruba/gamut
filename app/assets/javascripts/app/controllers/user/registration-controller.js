@@ -19,7 +19,7 @@
         .then(function() {
           $auth.submitLogin({
             email: $scope.registrationForm.email,
-            username: $scope.registrationForm.username,
+            name: $scope.registrationForm.name,
             password: $scope.registrationForm.password
           })
           $state.go('home');
