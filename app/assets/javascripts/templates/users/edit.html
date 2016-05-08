@@ -1,24 +1,38 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-6 col-md-offset-3">
   <div class="user-information">
-    <div id="header">
-      <identicon username="vmUser.userData.email" size="100"></identicon>
-      <h4>
-        <div class="btn btn-xs btn-default">Change image</div>
-      </h4>
+    <progresive-bar options="vmUser.optionsBar"></progresive-bar>
+    <div class="row" id="header">
+      <div class="col-md-4">
+        <identicon username="vmUser.userData.email" size="150"></identicon>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group">
+          <label for="name">{{ ::'user.attributes.name' | translate }}</label>
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="name" name="name" ng-model="vmUser.userData.name" ng-blur="vmUser.completeDataLive(vmUser.userData)" type="text">
+        </div>
+        <div class="form-group">
+          <label for="email">{{ ::'user.attributes.email' | translate }}</label>
+          <input class="form-control email-input ng-untouched ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required" id="email" name="email" ng-model="vmUser.userData.email" required="required" ng-blur="vmUser.completeDataLive(vmUser.userData)" type="email">
+        </div>
+      </div>
     </div>
     <div id="content">
       <form ng-init="vmUser.userData" class="sign-in-up-form ng-valid-email ng-invalid ng-invalid-required ng-dirty ng-valid-parse" ng-submit="vmUser.updateUser()" role="form">
         <div class="form-group">
-          <label for="name">{{ ::'user.attributes.name' | translate }}</label>
-          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="name" name="name" ng-model="vmUser.userData.name" type="text">
-        </div>
-        <div class="form-group">
-          <label for="email">{{ ::'user.attributes.email' | translate }}</label>
-          <input class="form-control email-input ng-untouched ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required" id="email" name="email" ng-model="vmUser.userData.email" required="required" type="email">
+          <label for="identification">{{ ::'user.attributes.identification' | translate }}</label>
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="identification" name="identification" ng-model="vmUser.userData.identification" ng-blur="vmUser.completeDataLive(vmUser.userData)" type="text">
         </div>
         <div class="form-group">
           <label for="username">{{ ::'user.attributes.username' | translate }}</label>
-          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="username" name="username" ng-model="vmUser.userData.username" required="required" type="text">
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="username" name="username" ng-model="vmUser.userData.username" required="required" ng-blur="vmUser.completeDataLive(vmUser.userData)" type="text">
+        </div>
+        <div class="form-group">
+          <label for="address">{{ ::'user.attributes.address' | translate }}</label>
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="address" name="address" ng-model="vmUser.userData.address" ng-blur="vmUser.completeDataLive(vmUser.userData)" type="text">
+        </div>
+        <div class="form-group">
+          <label for="telephone">{{ ::'user.attributes.telephone' | translate }}</label>
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" id="telephone" name="telephone" ng-model="vmUser.userData.telephone" ng-blur="vmUser.completeDataLive(vmUser.userData)" type="text">
         </div>
         <button class="btn btn-block btn-primary btn-sm" type="submit">Guardar</button>
       </form>

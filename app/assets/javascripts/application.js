@@ -15,6 +15,7 @@
 //= require angular-ui-router
 //= require angular-resource
 //= require angular-cookie
+//= require angular-bootstrap
 //= require ng-token-auth
 //= require angular-toastr
 //= require angular-translate

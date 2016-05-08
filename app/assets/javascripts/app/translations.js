@@ -39,9 +39,10 @@
           email: 'Correo',
           username: 'Username',
           address: 'Dirección',
-          cedula: 'Cédula',
+          identification: 'Cédula',
           telephone: 'Teléfono'
-        }
+        },
+        progress: 'Información %'
       },
       dashboard: {
         welcome: 'Bienvenido'

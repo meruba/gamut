@@ -26,6 +26,9 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  username               :string
+#  identification         :string
+#  address                :string
+#  telephone              :string
 #
 
 require 'test_helper'

@@ -26,6 +26,9 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  username               :string
+#  identification         :string
+#  address                :string
+#  telephone              :string
 #
 
 class User < ActiveRecord::Base
@@ -36,9 +39,9 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   begin :validations
-    validates :name, presence: true,
-                    uniqueness: true,
-                    allow_blank: false
+    validates :name, :email, presence: true,
+                              uniqueness: true,
+                              allow_blank: false
   end
 
 end

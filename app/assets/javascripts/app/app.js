@@ -6,6 +6,7 @@
     'app.directives',
     'app.services',
     'ui.identicon',
+    'ui.bootstrap',
     'pascalprecht.translate',
     'ui.router',
     'templates',
@@ -74,7 +75,7 @@
       .state('user.edit', {
         url: '/{userId:int}/edit',
         templateUrl: 'users/edit.html',
-        controller: 'UserController as vmUser',
+        controller: 'UpdateUserController as vmUser',
         resolve: {
           userData: function (UserService, $stateParams) {
             var id = $stateParams.userId;
