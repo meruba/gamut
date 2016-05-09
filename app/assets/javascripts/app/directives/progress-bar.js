@@ -20,6 +20,8 @@
     return directive;
   }
 
+  barController.$inject = ['$scope'];
+  
   function barController($scope){
 
     var vm = this;
@@ -51,13 +53,13 @@
 
     function colors() {
       if (vm.percentage < 25) {
-        vm.type = 'danger';
+        vm.type = 'progress-bar-danger';
       } else if (vm.percentage < 50) {
-        vm.type = 'warning';
+        vm.type = 'progress-bar-warning';
       } else if (vm.percentage < 75) {
-        vm.type = 'info';
+        vm.type = 'progress-bar-info';
       } else {
-        vm.type = 'success';
+        vm.type = 'progress-bar-success';
       }
     }
 

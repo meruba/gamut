@@ -1,8 +1,12 @@
-<uib-progressbar max="vm.options.maxValue"
-                value="vm.percentage"
-                type="{{vm.type}}"
-                style="height:{{vm.height}};">
-  <div class="vm.options.showLabel">
-    {{vm.percentage}} %
-  </div>
-</uib-progressbar>
+<div class="progress"
+    style="height:{{vm.height}};">
+    <div class="progress-bar {{vm.type}}"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="{{vm.percentage}}"
+        style="width:{{vm.percentage}}%;height:{{vm.height}};">
+          <div class="vm.options.showLabel">
+            {{vm.percentage}} %
+          </div>
+    </div>
+</div>
