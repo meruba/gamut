@@ -123,6 +123,11 @@
           }]
         }
       })
+      .state('restaurant.new', {
+        url: '/new',
+        templateUrl: 'restaurants/new.html',
+        controller: 'RestFormController as vmRest'
+      })
       .state('restaurant.list', {
         url: '/list',
         templateUrl: 'restaurants/restaurants-list.html',
