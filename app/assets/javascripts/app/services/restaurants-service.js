@@ -51,8 +51,7 @@
         toastr.success('Almacenado Exitosamente!', 'Restaurante');
         return res.data;
       }, function error(err) {
-        toastr.error('Ha Ocurrido un error', 'Error');
-        console.error('ERR', err);
+        return err.data;
       });
     }
 

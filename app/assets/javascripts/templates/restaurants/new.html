@@ -8,19 +8,19 @@
       <form class="sign-in-rest-form ng-valid-email ng-invalid ng-invalid-required ng-dirty ng-valid-parse" ng-submit="vmRest.submitForm()" role="form" style="">
         <div class="form-group">
           <label for="name">{{ ::'restaurant.attributes.name' | translate }}</label>
-          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" name="name" ng-model="vmRest.registrationForm.name" required="required" type="text" style="">
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" name="name" ng-model="vmRest.restForm.name" type="text" style="">
         </div>
         <div class="form-group">
           <label for="email">{{ ::'restaurant.attributes.email' | translate }}</label>
-          <input class="form-control email-input ng-untouched ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required" name="email" ng-model="vmRest.registrationForm.email" required="required" type="email" style="">
+          <input class="form-control email-input ng-untouched ng-valid-email ng-not-empty ng-dirty ng-valid ng-valid-required" name="email" ng-model="vmRest.restForm.email" type="email" style="">
         </div>
         <div class="form-group">
           <label for="address">{{ ::'restaurant.attributes.address' | translate }}</label>
-          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" name="address" ng-model="vmRest.registrationForm.address" required="required" type="text" style="">
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" name="address" ng-model="vmRest.restForm.address" type="text" style="">
         </div>
         <div class="form-group">
           <label for="telephone">{{ ::'restaurant.attributes.telephone' | translate }}</label>
-          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" name="telephone" ng-model="vmRest.registrationForm.telephone" required="required" type="text" style="">
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" name="telephone" ng-model="vmRest.restForm.telephone" type="text" style="">
         </div>
         <button class="btn btn-block btn-primary btn-sm" type="submit">{{ ::'signup' | translate }}</button>
       </form>

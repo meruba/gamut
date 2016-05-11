@@ -6,14 +6,26 @@
     .controller('RestFormController', RestFormController);
 
   function RestFormController(RestaurantService,
-                              $state) {
+                              $state,
+                              toastr) {
     var vmRest = this;
     vmRest.submitForm = submitForm;
-    vmRest.registrationForm = {}
+    vmRest.restForm = {
+      name: '',
+      email: '',
+      address: '',
+      telephone: ''
+    }
 
     function submitForm() {
-      RestaurantService.newRestaurant(vmRest.registrationForm).then(function(resp){
-        $state.go('restaurant.list');
+      RestaurantService.newRestaurant(vmRest.restForm).then(function(resp){
+        if (resp.errors) {
+          angular.forEach(resp.errors, function(value, key) {
+            toastr.error(value[0]);
+          });
+        }else{
+          $state.go('restaurant.list');
+        }
       });
     }
   }
