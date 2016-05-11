@@ -29,6 +29,7 @@
       menu: {
         menu: 'Menú',
         users: 'Usuarios',
+        restaurants: 'Restaurantes',
         logout: 'Salir'
       },
       user: {

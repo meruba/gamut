@@ -1,0 +1,65 @@
+<nav ng-controller="NavbarController as vmNav"
+  class="navbar navbar-default"
+  ng-show="!vmNav.showNav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#gls-navbar"
+        aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="">Gamut</a>
+    </div>
+    <div class="collapse navbar-collapse" id="gls-navbar">
+      <ul class="nav navbar-nav">
+        <li ui-sref-active="active">
+          <a ui-sref="home">Home</a>
+        </li>
+        <li ui-sref-active="active">
+          <a ng-if="user.role === 'admin'"
+            ui-sref="user.list">
+            {{ ::'menu.users' | translate }}
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="restaurant.list">
+            {{ ::'menu.restaurants' | translate }}
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false">
+            <identicon username="user.email" size="20"></identicon>
+            {{user.name}}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="user.edit({userId: user.id})">
+                {{user.name}}
+              </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a href=""
+                ng-click="vmNav.logout()"
+                ng-if="user.signedIn">
+                {{ ::'menu.logout' | translate }}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

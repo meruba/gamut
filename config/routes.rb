@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
       get "search/user"
 
+      resources :restaurants
+      
     end
   end
 

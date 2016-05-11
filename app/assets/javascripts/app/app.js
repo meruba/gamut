@@ -110,6 +110,30 @@
             return $auth.user.role === 'admin' ? 'user.show' : null;
           }
         }
+      })
+      .state('restaurant', {
+        url: '/restaurant',
+        templateUrl: 'restaurants/restaurant-layout.html',
+        resolve: {
+          auth: ['$auth', '$state', function($auth, $state) {
+            return $auth.validateUser()
+              .catch(function(response) {
+                $state.go('login');
+              })
+          }]
+        }
+      })
+      .state('restaurant.list', {
+        url: '/list',
+        templateUrl: 'restaurants/restaurants-list.html',
+        controller: 'RestaurantsController as vmRest',
+        resolve: {
+          restData: function (RestaurantService) {
+            return RestaurantService.restaurants().then(function(data) {
+              return data;
+            });
+          }
+        }
       });
     $urlRouterProvider.otherwise('/login');
   });
