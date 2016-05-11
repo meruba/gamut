@@ -16,4 +16,9 @@
 #
 
 class Restaurant < ActiveRecord::Base
+  begin :validations
+    validates :name, :email, :address, :telephone,  presence: true,
+                                                    uniqueness: true,
+                                                    allow_blank: false
+  end
 end
