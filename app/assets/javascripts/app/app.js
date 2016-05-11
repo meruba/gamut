@@ -134,6 +134,19 @@
             });
           }
         }
+      })
+      .state('restaurant.show', {
+        url: '/{restId:int}/show',
+        templateUrl: 'restaurants/restaurant.html',
+        controller: 'RestaurantController as vmRest',
+        resolve: {
+          restData: function (RestaurantService, $stateParams) {
+            var id = $stateParams.restId;
+            return RestaurantService.restaurant(id).then(function(data) {
+              return data;
+            });
+          }
+        }
       });
     $urlRouterProvider.otherwise('/login');
   });

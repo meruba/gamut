@@ -50,6 +50,21 @@
         },
         progress: 'Información %'
       },
+      restaurant: {
+        restaurant: 'Restaurante',
+        restaurants: 'Restaurantes',
+        attributes: {
+          name: 'Nombre',
+          email: 'Correo',
+          logo: 'Logo',
+          address: 'Dirección',
+          telephone: 'Teléfono',
+          delivery_time: 'Tiempo de envio',
+          open_time: 'Hora de apertura',
+          close_time: 'Hora de cierre'
+        },
+        progress: 'Información %'
+      },
       dashboard: {
         welcome: 'Bienvenido'
       },
