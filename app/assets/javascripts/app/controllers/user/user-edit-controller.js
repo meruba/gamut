@@ -29,7 +29,7 @@
     function updateUser() {
       $auth.updateAccount(vmUser.userData)
         .then(function(resp) {
-          $state.go('user.list');
+          $state.go('home');
         })
         .catch(function(resp) {
           angular.forEach(resp.data.errors.full_messages, function(value, key) {

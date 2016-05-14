@@ -11,7 +11,7 @@
                               toastr) {
 
     $scope.$on('auth:login-success', function(ev) {
-      $state.go('user.list');
+      $state.go('home');
     });
 
     $scope.$on('auth:login-error', function(ev, reason) {
