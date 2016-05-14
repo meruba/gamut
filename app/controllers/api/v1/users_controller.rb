@@ -1,8 +1,8 @@
 module Api
   module V1
     class UsersController < ApplicationController
-
       before_action :authenticate_user!
+      authorize_resource
 
       respond_to :json
 
@@ -29,7 +29,8 @@ module Api
       def user_params
         params.require(:user).permit(:name,
                                       :email,
-                                      :username
+                                      :username,
+                                      :role
                                     )
       end
 

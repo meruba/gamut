@@ -29,6 +29,7 @@
 #  identification         :string
 #  address                :string
 #  telephone              :string
+#  role                   :string           default("customer"), not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

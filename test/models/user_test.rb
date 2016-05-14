@@ -29,6 +29,7 @@
 #  identification         :string
 #  address                :string
 #  telephone              :string
+#  role                   :string           default("customer"), not null
 #
 
 require 'test_helper'

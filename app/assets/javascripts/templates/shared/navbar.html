@@ -8,7 +8,12 @@
     <div class="navbar-collapse">
       <ul class="nav navbar-nav">
         <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
-        <li ui-sref-active="active"><a ui-sref="user.list">{{ ::'menu.users' | translate }}</a></li>
+        <li ui-sref-active="active">
+          <a ng-if="user.role === 'admin'"
+            ui-sref="user.list">
+            {{ ::'menu.users' | translate }}
+          </a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown current-user-dropdown">

@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_params, if: :devise_controller?
 
+  # cancan
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path,
+                status: :forbidden,
+                error: "You need permission"
+  end
+
   def angular
     render 'layouts/application'
   end

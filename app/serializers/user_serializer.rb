@@ -6,5 +6,6 @@ class UserSerializer < ActiveModel::Serializer
              :username,
              :identification,
              :address,
-             :telephone
+             :telephone,
+             :role
 end

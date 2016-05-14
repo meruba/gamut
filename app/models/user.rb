@@ -29,14 +29,18 @@
 #  identification         :string
 #  address                :string
 #  telephone              :string
+#  role                   :string           default("customer"), not null
 #
 
 class User < ActiveRecord::Base
+
   # Include default devise modules. :confirmable
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
           :omniauthable
+          
   include DeviseTokenAuth::Concerns::User
+  include Roles
 
   begin :validations
     validates :name, :email, presence: true,
