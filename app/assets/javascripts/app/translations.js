@@ -30,6 +30,7 @@
         menu: 'Menú',
         users: 'Usuarios',
         restaurants: 'Restaurantes',
+        restaurant: 'Mi Restaurante',
         logout: 'Salir'
       },
       user: {
@@ -82,7 +83,8 @@
         'signup': 'Registrarse'
       },
       title: {
-        'user-list': 'Usuarios'
+        'user-list': 'Usuarios',
+        'restaurant-list': 'Restaurantes'
       },
       action: {
         save: 'Guardar',

@@ -10,7 +10,8 @@
     var service = {
       restaurants: restaurants,
       restaurant: restaurant,
-      newRestaurant: newRestaurant
+      newRestaurant: newRestaurant,
+      updateRestaurant: updateRestaurant
     };
 
     return service;
@@ -50,6 +51,25 @@
         }
       }).then(function success(res) {
         toastr.success('Almacenado Exitosamente!', 'Restaurante');
+        return res.data;
+      }, function error(err) {
+        return err.data;
+      });
+    }
+
+    function updateRestaurant(id, params) {
+      return $http({
+        method: 'PUT',
+        url: '/api/v1/restaurants/' + id,
+        data:{
+          owner: params.owner,
+          name: params.name,
+          email: params.email,
+          address: params.address,
+          telephone: params.telephone
+        }
+      }).then(function success(res) {
+        toastr.info('Actualizado Exitosamente!', 'Restaurante');
         return res.data;
       }, function error(err) {
         return err.data;
