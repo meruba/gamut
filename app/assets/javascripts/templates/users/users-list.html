@@ -1,24 +1,22 @@
-<div class="container">
-  <div class="container-fluid">
-    <h1 class="text-center">{{ ::'user.users' | translate }} <span class="badge">{{vmUsers.totalUsers}}</span></h1>
-    <table class="table table-striped table-bordered">
-      <tr>
-        <th>{{ ::'user.attributes.name' | translate }}</th>
-        <th>{{ ::'user.attributes.email' | translate }}</th>
-        <th>{{ ::'user.attributes.username' | translate }}</th>
-        <th>{{ ::'user.progress' | translate }}</th>
-      </tr>
-      <tr ng-repeat="user in vmUsers.UserList">
-        <td>
-          <identicon username="user.email" size="20"></identicon>
-          <a ui-sref="user.show({ userId: user.id })">{{ user.name }}</a>
-        </td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.username }}</td>
-        <td>
+<div class="users-section">
+  <div class="row header-panel">
+    <span>{{ ::'title.user-list' | translate }}</span>
+    <span class="badge pull-right">{{vmUsers.totalUsers}}</span>
+  </div>
+  <div class="row body-panel">
+    <div class="col-md-4 user" ng-repeat="user in vmUsers.UserList">
+      <div ui-sref="user.show({ userId: user.id })" class="link-user">
+        <div class="col-md-4 col-xs-4 logo">
+          <identicon username="user.email" size="80"></identicon>
+        </div>
+        <div class="col-md-8 col-xs-8 description">
+          <h4>{{user.name}}</h4>
+          <h6><i class="glyphicon glyphicon-map-marker"></i> {{user.address}}</h6>
+          <h6 class="text-muted"><i class="glyphicon glyphicon-user"></i> {{user.role}}</h6>
           <progresive-bar options="{data: user, height:'5'}"></progresive-bar>
-        </td>
-      </tr>
-    </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+

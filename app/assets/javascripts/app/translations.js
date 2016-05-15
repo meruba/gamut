@@ -58,6 +58,9 @@
       },
       signup: {
         'signup': 'Registrarse'
+      },
+      title: {
+        'user-list': 'Usuarios'
       }
     });
 
