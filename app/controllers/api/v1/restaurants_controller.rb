@@ -26,6 +26,7 @@ module Api
 
       def restaurant_params
         params.require(:restaurant).permit(:name,
+                                          :owner,
                                           :logo,
                                           :telephone,
                                           :address,

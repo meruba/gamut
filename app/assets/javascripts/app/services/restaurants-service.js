@@ -42,6 +42,7 @@
         method: 'POST',
         url: '/api/v1/restaurants',
         data:{
+          owner: params.owner,
           name: params.name,
           email: params.email,
           address: params.address,

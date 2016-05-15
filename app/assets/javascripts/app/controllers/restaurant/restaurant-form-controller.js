@@ -11,6 +11,7 @@
     var vmRest = this;
     vmRest.submitForm = submitForm;
     vmRest.restForm = {
+      owner: '',
       name: '',
       email: '',
       address: '',
@@ -24,7 +25,7 @@
             toastr.error(value[0]);
           });
         }else{
-          $state.go('restaurant.list');
+          $state.go('home');
         }
       });
     }

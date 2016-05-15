@@ -50,4 +50,8 @@ class User < ActiveRecord::Base
                               allow_blank: false
   end
 
+  begin :relationships
+    has_one :restaurant
+  end
+
 end

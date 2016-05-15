@@ -111,6 +111,19 @@
           }
         }
       })
+      .state('user.restaurant', {
+        url: '/{userId:int}/restaurant',
+        templateUrl: 'restaurants/restaurant.html',
+        controller: 'RestaurantController as vmRest',
+        resolve: {
+          restData: function (UserService, $stateParams) {
+            var id = $stateParams.userId;
+            return UserService.restaurant(id).then(function(data) {
+              return data;
+            });
+          }
+        }
+      })
       .state('restaurant', {
         url: '/restaurant',
         templateUrl: 'restaurants/restaurant-layout.html',

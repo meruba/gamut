@@ -13,6 +13,8 @@
 #  close_time    :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  user_id       :integer
+#  owner         :string
 #
 
 require 'test_helper'

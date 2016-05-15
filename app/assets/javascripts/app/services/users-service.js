@@ -10,6 +10,7 @@
       users: users,
       user: user,
       searchUsers: searchUsers
+      restaurant: restaurant
     };
 
     return service;
@@ -43,6 +44,17 @@
         params: {
           query: query
         }
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
+
+    function restaurant(id) {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/users/' + id + '/restaurant'
       }).then(function success(res) {
         return res.data;
       }, function error(err) {

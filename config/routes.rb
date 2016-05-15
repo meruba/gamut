@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
       resources :users do
         post "upload_image"
+        get "restaurant"
       end
 
       get "search/user"

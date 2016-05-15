@@ -2,6 +2,7 @@ class RestaurantSerializer < ActiveModel::Serializer
   root false
   attributes  :id,
               :name,
+              :owner,
               :logo,
               :telephone,
               :address,
