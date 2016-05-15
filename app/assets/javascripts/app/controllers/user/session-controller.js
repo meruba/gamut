@@ -23,7 +23,7 @@
     });
 
     $scope.$on('auth:account-update-success', function(ev) {
-      $state.go('user.list');
+      $state.go('home');
     });
   }
 

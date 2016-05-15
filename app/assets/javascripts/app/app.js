@@ -93,13 +93,5 @@
     $urlRouterProvider.otherwise('/login');
   });
 
-  angular.module('app').run(['$auth','$state', function($auth, $state) {
-    $auth.validateUser()
-      .then(function(user) {
-        if (!user.id) {
-          $state.go('login');
-        }
-      });
-  }]);
 
 })();
