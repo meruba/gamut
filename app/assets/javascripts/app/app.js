@@ -14,7 +14,12 @@
     'toastr'
   ])
 
-  .config(function ($stateProvider, $urlRouterProvider, $authProvider) {
+  .config(function ($stateProvider,
+                    $urlRouterProvider,
+                    $authProvider,
+                    $httpProvider) {
+
+    $httpProvider.interceptors.push('interceptorService');
     $stateProvider
       .state('login', {
         url: '/login',
