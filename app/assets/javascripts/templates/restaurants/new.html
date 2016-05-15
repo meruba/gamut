@@ -7,6 +7,10 @@
       </div>
       <form class="sign-in-rest-form ng-valid-email ng-invalid ng-invalid-required ng-dirty ng-valid-parse" ng-submit="vmRest.submitForm()" role="form" style="">
         <div class="form-group">
+          <label for="owner">{{ ::'restaurant.attributes.owner' | translate }}</label>
+          <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" name="owner" ng-model="vmRest.restForm.owner" type="text" style="">
+        </div>
+        <div class="form-group">
           <label for="name">{{ ::'restaurant.attributes.name' | translate }}</label>
           <input class="form-control ng-untouched ng-not-empty ng-dirty ng-valid ng-valid-required" name="name" ng-model="vmRest.restForm.name" type="text" style="">
         </div>

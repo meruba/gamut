@@ -10,6 +10,10 @@ module Api
         respond_with(User.all.order("id DESC"))
       end
 
+      def restaurant
+        respond_with(User.find(params[:user_id]).restaurant)
+      end
+
       def show
         respond_with(User.find(params[:id]))
       end

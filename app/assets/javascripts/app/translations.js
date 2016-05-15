@@ -54,7 +54,8 @@
         restaurant: 'Restaurante',
         restaurants: 'Restaurantes',
         attributes: {
-          name: 'Nombre',
+          owner: 'Representante',
+          name: 'Nombre del local',
           email: 'Correo',
           logo: 'Logo',
           address: 'Dirección',

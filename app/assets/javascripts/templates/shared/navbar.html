@@ -26,7 +26,8 @@
           </a>
         </li>
         <li ui-sref-active="active">
-          <a ui-sref="restaurant.list">
+          <a ng-if="user.role === 'admin'"
+            ui-sref="restaurant.list">
             {{ ::'menu.restaurants' | translate }}
           </a>
         </li>
@@ -50,6 +51,11 @@
               </a>
             </li>
             <li role="separator" class="divider"></li>
+            <li ng-if="user.role === 'restaurant'">
+              <a ui-sref="user.restaurant({userId: user.id})">
+                My Restaurant
+              </a>
+            </li>
             <li>
               <a href=""
                 ng-click="vmNav.logout()"
