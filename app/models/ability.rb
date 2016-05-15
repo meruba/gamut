@@ -10,6 +10,8 @@ class Ability
     when "restaurant"
       can [:show, :update, :index, :upload_image], User
       cannot [:create, :destroy], User
+      can [:show, :update], Restaurant
+      cannot [:create, :destroy], Restaurant
     when "customer"
       can [:show, :update, :upload_image], User
       cannot [:create, :destroy], User

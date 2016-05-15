@@ -1,6 +1,8 @@
 module Api
   module V1
     class RestaurantsController < ApplicationController
+      before_action :authenticate_user!
+      authorize_resource
 
       respond_to :json
 
@@ -18,6 +20,7 @@ module Api
       end
 
       def update
+        @restaurant = Restaurant.find(params[:id])
         @restaurant.update(restaurant_params)
         respond_with(:api, :v1, @restaurant)
       end

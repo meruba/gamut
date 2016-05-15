@@ -53,7 +53,7 @@
             <li role="separator" class="divider"></li>
             <li ng-if="user.role === 'restaurant'">
               <a ui-sref="user.restaurant({userId: user.id})">
-                My Restaurant
+                {{ ::'menu.restaurant' | translate }}
               </a>
             </li>
             <li>
