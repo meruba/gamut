@@ -22,4 +22,6 @@
 //= require identicon/pnglib
 //= require identicon/identicon
 //= require angular-identicon
+//= require jquery
+//= require bootstrap
 //= require_tree .

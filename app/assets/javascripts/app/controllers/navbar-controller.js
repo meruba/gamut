@@ -24,7 +24,6 @@
       $auth.signOut()
         .then(function(resp) {
           $state.go('login');
-          toastr.success('Session cerrada!');
         });
     }
 

@@ -29,6 +29,7 @@
     function updateUser() {
       $auth.updateAccount(vmUser.userData)
         .then(function(resp) {
+          toastr.info("Campos Actualizados");
           $state.go('home');
         })
         .catch(function(resp) {
