@@ -8,9 +8,16 @@ class UserSerializer < ActiveModel::Serializer
              :address,
              :telephone,
              :role,
+             :uid,
+             :provider,
+             :restaurant_id,
              :image
 
   def image
     object.image.url
+  end
+
+  def restaurant_id
+    object.restaurant ? object.restaurant.id : ""
   end
 end

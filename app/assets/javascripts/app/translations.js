@@ -31,6 +31,7 @@
         users: 'Usuarios',
         restaurants: 'Restaurantes',
         restaurant: 'Mi Restaurante',
+        menu_rest: 'Mi Menu',
         logout: 'Salir'
       },
       user: {

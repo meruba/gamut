@@ -178,6 +178,20 @@
             });
           }
         }
+      })
+      .state('restaurant.menu', {
+        url: '/{restId:int}/menu',
+        templateUrl: 'restaurants/menu/show.html',
+        controller: 'MenuRestController as vmRest',
+        resolve: {
+          restMenu: function (RestaurantService, $stateParams) {
+            var id = $stateParams.restId;
+            return RestaurantService.menu(id).then(function(data) {
+            debugger
+              return data;
+            });
+          }
+        }
       });
     $urlRouterProvider.otherwise('/login');
   });

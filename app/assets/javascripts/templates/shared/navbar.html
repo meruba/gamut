@@ -31,6 +31,12 @@
             {{ ::'menu.restaurants' | translate }}
           </a>
         </li>
+        <li ui-sref-active="active">
+          <a ng-if="user.role === 'restaurant'"
+            ui-sref="restaurant.menu({restId: user.restaurant_id})">
+            {{ ::'menu.menu_rest' | translate }}
+          </a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -52,7 +58,7 @@
             </li>
             <li role="separator" class="divider"></li>
             <li ng-if="user.role === 'restaurant'">
-              <a ui-sref="user.restaurant({userId: user.id})">
+              <a ui-sref="restaurant.show({restId: user.restaurant_id})">
                 {{ ::'menu.restaurant' | translate }}
               </a>
             </li>
