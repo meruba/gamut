@@ -42,6 +42,11 @@
           identification: 'Cédula',
           telephone: 'Teléfono'
         },
+        role: {
+          restaurant: 'restaurante',
+          customer: 'cliente',
+          admin: 'administrador'
+        },
         progress: 'Información %'
       },
       dashboard: {

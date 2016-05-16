@@ -12,7 +12,7 @@
         <div class="col-md-8 col-xs-8 description">
           <h4>{{user.name}}</h4>
           <h6><i class="glyphicon glyphicon-map-marker"></i> {{user.address}}</h6>
-          <h6 class="text-muted"><i class="glyphicon glyphicon-user"></i> {{user.role}}</h6>
+          <h6 class="text-muted"><i class="glyphicon glyphicon-user"></i> {{ ::'user.role.' + user.role | translate }}</h6>
           <progresive-bar options="{data: user, height:'5'}"></progresive-bar>
         </div>
       </div>
