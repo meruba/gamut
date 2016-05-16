@@ -26,6 +26,7 @@ class Restaurant < ActiveRecord::Base
 
   begin :relationships
     belongs_to :user, dependent: :destroy
+    has_many :products
   end
 
   begin :callbacks
