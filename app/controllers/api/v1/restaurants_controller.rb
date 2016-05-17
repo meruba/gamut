@@ -10,11 +10,6 @@ module Api
         respond_with(Restaurant.all.order("id DESC"))
       end
 
-      def menu
-        @restaurant = Restaurant.find(params[:restaurant_id]).products
-        respond_with(:api, :v1, @restaurant)
-      end
-
       def show
         respond_with(Restaurant.find(params[:id]))
       end
