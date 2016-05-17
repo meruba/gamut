@@ -7,7 +7,7 @@
 
   function MenuRestController(restMenu) {
     var vmRest = this;
-    vmRest.rest = restMenu;
+    vmRest.menu = restMenu.products;
   }
 
 })();

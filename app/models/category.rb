@@ -9,4 +9,7 @@
 #
 
 class Category < ActiveRecord::Base
+  begin :relationships
+    has_one :category
+  end
 end
