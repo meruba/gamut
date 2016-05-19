@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+html
+  head
+    title Gamut
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
+      = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+      = javascript_include_tag 'application', 'data-turbolinks-track' => true
+      = csrf_meta_tags
+  body ng-app="app"
+    .container-body
+      div ng-include="'shared/navbar.html'"
+      .container ui-view=""

@@ -14,12 +14,12 @@
     });
 
     $scope.handleRegBtnClick = function() {
-      $auth.submitRegistration($scope.registrationForm)
+      $auth.submitRegistration($scope.userForm)
         .then(function() {
           $auth.submitLogin({
-            email: $scope.registrationForm.email,
-            name: $scope.registrationForm.name,
-            password: $scope.registrationForm.password
+            email: $scope.userForm.email,
+            name: $scope.userForm.name,
+            password: $scope.userForm.password
           })
           $state.go('home');
           toastr.success('Registrado exitosamente!');

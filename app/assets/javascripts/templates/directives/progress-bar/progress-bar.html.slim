@@ -1,0 +1,7 @@
+.progress style="height:{{vm.height}};"
+  .progress-bar (aria-valuemax="{{vm.percentage}}"
+                aria-valuemin="0"
+                class="{{vm.type}}"
+                role="progressbar"
+                style="width:{{vm.percentage}}%;height:{{vm.height}};" )
+    div class="vm.options.showLabel" {{vm.percentage}} %

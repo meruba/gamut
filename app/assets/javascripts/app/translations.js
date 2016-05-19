@@ -66,6 +66,10 @@
       },
       title: {
         'user-list': 'Usuarios'
+      },
+      action: {
+        save: 'Guardar',
+        update: 'Actualizar'
       }
     });
 

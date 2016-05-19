@@ -1,0 +1,53 @@
+.col-md-6.col-md-offset-3
+  .user-information
+    progresive-bar options="vmUser.optionsBar"
+    #header.row
+      .col-md-4
+        identicon size="150" username="vmUser.userData.email"
+      .col-md-8
+        .form-group
+          label for="name" {{ ::'user.attributes.name' | translate }}
+          input#name.form-control. (name="name"
+                                    ng-blur="vmUser.completeDataLive(vmUser.userData)"
+                                    ng-model="vmUser.userData.name"
+                                    required="required"
+                                    type="text")
+        .form-group
+          label for="email" {{ ::'user.attributes.email' | translate }}
+          input#email.form-control (name="email"
+                                    ng-blur="vmUser.completeDataLive(vmUser.userData)"
+                                    ng-model="vmUser.userData.email"
+                                    required="required"
+                                    type="email")
+    #content
+      form (ng-init="vmUser.userData"
+            ng-submit="vmUser.updateUser()"
+            role="form")
+        .form-group
+          label for="identification" {{ ::'user.attributes.identification' | translate }}
+          input#identification.form-control (name="identification"
+                                            ng-blur="vmUser.completeDataLive(vmUser.userData)"
+                                            ng-model="vmUser.userData.identification"
+                                            required="required"
+                                            type="text")
+        .form-group
+          label for="username" {{ ::'user.attributes.username' | translate }}
+          input#username.form-control (name="username"
+                                      ng-blur="vmUser.completeDataLive(vmUser.userData)"
+                                      ng-model="vmUser.userData.username"
+                                      required="required"
+                                      type="text")
+        .form-group
+          label for="address" {{ ::'user.attributes.address' | translate }}
+          input#address.form-control (name="address"
+                                      ng-blur="vmUser.completeDataLive(vmUser.userData)"
+                                      ng-model="vmUser.userData.address"
+                                      required="required"
+                                      type="text")
+        .form-group
+          label for="telephone" {{ ::'user.attributes.telephone' | translate }}
+          input#telephone.form-control (name="telephone"
+                                        ng-blur="vmUser.completeDataLive(vmUser.userData)"
+                                        ng-model="vmUser.userData.telephone"
+                                        type="text")
+        button.btn.btn-block.btn-primary.btn-sm type="submit" {{ ::'action.update' | translate }}

@@ -1,0 +1,36 @@
+nav.navbar.navbar-default (ng-controller=("NavbarController as vmNav")
+                          ng-show="!vmNav.showNav")
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed (aria-expanded="false"
+                                      data-target="#gls-navbar"
+                                      data-toggle="collapse"
+                                      type="button")
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href=""  Gamut
+    #gls-navbar.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li ui-sref-active="active"
+          a ui-sref="home"  Home
+        li ui-sref-active="active"
+          a ng-if=("user.role === 'admin'") ui-sref="user.list"
+            | {{ ::'menu.users' | translate }}
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          a.dropdown-toggle (aria-expanded="false"
+                            aria-haspopup="true"
+                            data-toggle="dropdown"
+                            href=""
+                            role="button")
+            identicon size="20" username="user.email"
+            span.caret
+          ul.dropdown-menu
+            li
+              a ui-sref=("user.edit({userId: user.id})")
+                | {{user.name}}
+            li.divider role="separator"
+            li
+              a href="" ng-click="vmNav.logout()" ng-if="user.signedIn"
+                | {{ ::'menu.logout' | translate }}

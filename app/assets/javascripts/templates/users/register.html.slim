@@ -1,0 +1,36 @@
+.col-md-4.col-md-offset-4
+  .login
+    .login-screen
+      .logo-app.text-center
+        img src="/images/goloso.png"
+      form (ng-init="userForm = {}"
+            ng-submit="handleRegBtnClick()"
+            role="form")
+        .form-group
+          label for="name" {{ ::'login.name' | translate }}
+          input#name.form-control (name="name"
+                                  ng-model="userForm.name"
+                                  required="required"
+                                  type="text")
+        .form-group
+          label for="email" {{ ::'login.email' | translate }}
+          input#email.form-control (name="email"
+                                    ng-model="userForm.email"
+                                    required="required"
+                                    type="email")
+        .form-group
+          label for="password" {{ ::'login.password' | translate }}
+          input#password.form-control (name="password"
+                                      ng-model="userForm.password"
+                                      required="required"
+                                      type="password")
+        .form-group
+          label for="password_confirmation" {{ ::'login.password_confirmation' | translate }}
+          input#password_confirmation.form-control (name="password_confirmation"
+                                                    ng-model="userForm.password_confirmation"
+                                                    required="required"
+                                                    type="password")
+        button.btn.btn-block.btn-primary.btn-sm type="submit" {{ ::'signup' | translate }}
+        .login-link
+          span {{ ::'login.info_register' | translate }}
+          a href="#/register" ui-sref=("login") {{ ::'login' | translate }}

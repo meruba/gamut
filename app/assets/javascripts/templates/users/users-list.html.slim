@@ -1,0 +1,18 @@
+.users-section
+  .row.header-panel
+    span {{ ::'title.user-list' | translate }}
+    span.badge.pull-right {{vmUsers.totalUsers}}
+  .row.body-panel
+    .col-md-4.user ng-repeat=("user in vmUsers.UserList")
+      .link-user ui-sref=("user.show({ userId: user.id })")
+        .col-md-4.col-xs-4.logo
+          identicon size="80" username="user.email"
+        .col-md-8.col-xs-8.description
+          h4 {{user.name}}
+          h6#address
+            i.glyphicon.glyphicon-map-marker
+            | {{user.address}}
+          h6#rol.text-muted
+            i.glyphicon.glyphicon-user
+            | {{ ::'user.role.' + user.role | translate }}
+          progresive-bar options=("{data: user, height:'5'}")
