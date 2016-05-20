@@ -186,7 +186,7 @@
         resolve: {
           restMenu: function (RestaurantService, $stateParams) {
             var id = $stateParams.restId;
-            return RestaurantService.restaurant(id).then(function(data) {
+            return RestaurantService.menu(id).then(function(data) {
               return data;
             });
           }
