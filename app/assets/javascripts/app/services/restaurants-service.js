@@ -11,7 +11,8 @@
       restaurants: restaurants,
       restaurant: restaurant,
       newRestaurant: newRestaurant,
-      updateRestaurant: updateRestaurant
+      updateRestaurant: updateRestaurant,
+      menu: menu
     };
 
     return service;
@@ -31,6 +32,17 @@
       return $http({
         method: 'GET',
         url: '/api/v1/restaurants/' + id
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
+
+    function menu(id){
+      return $http({
+        method: 'GET',
+        url: '/api/v1/restaurants/' + id + '/menu'
       }).then(function success(res) {
         return res.data;
       }, function error(err) {
