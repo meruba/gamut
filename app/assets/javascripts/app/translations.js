@@ -85,11 +85,14 @@
       },
       title: {
         'user-list': 'Usuarios',
-        'restaurant-list': 'Restaurantes'
+        'restaurant-list': 'Restaurantes',
+        'restaurant-menu': 'Mi Menú'
       },
       action: {
         save: 'Guardar',
         update: 'Actualizar',
+        new: 'Nuevo',
+        edit: 'Editar',
         uploadImage: 'Actualizar imagen',
         updateInfoUser: 'Actualizar información'
       },
