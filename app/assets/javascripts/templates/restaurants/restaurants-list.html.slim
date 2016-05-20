@@ -1,0 +1,18 @@
+.restaurants-section
+  .row.header-panel
+    span {{ ::'title.restaurant-list' | translate }}
+    a.btn.btn-success.btn-sm.pull-right ui-sref="restaurant.new()"  +
+  .row.body-panel
+    .col-md-6.restaurant ng-repeat=("rest in vmRest.restList")
+      .link-rest ui-sref=("restaurant.show({ restId: rest.id })")
+        .col-md-2.col-xs-4.logo
+          identicon size="80" username="rest.email"
+        .col-md-10.col-xs-8.description
+          h4 {{rest.name}}
+          h5
+            i.glyphicon.glyphicon-map-marker
+            | {{rest.address}}
+          h5 Open 3am-7pm
+          h6.text-muted
+            i.glyphicon.glyphicon-time
+            | {{rest.delivery_time}}

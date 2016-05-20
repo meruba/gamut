@@ -1,0 +1,21 @@
+.restaurant-detail
+  #header-rest.text-center
+    h1 {{::vmRest.rest.name}}
+  #body-rest
+    h4
+      i.glyphicon.glyphicon-envelope
+      | {{vmRest.rest.email}}
+    h4
+      i.glyphicon.glyphicon-map-marker
+      | {{vmRest.rest.address}}
+    h4
+      i.glyphicon.glyphicon-earphone
+      | {{vmRest.rest.telephone}}
+    h4
+      i.glyphicon.glyphicon-time
+      | {{vmRest.rest.delivery_time}}
+    h4
+      i.glyphicon.glyphicon-time
+      | Open 10am-7:00pm
+  a ui-sref=("restaurant.edit({restId: vmRest.rest.id})")
+    | {{ ::'action.edit' | translate }}

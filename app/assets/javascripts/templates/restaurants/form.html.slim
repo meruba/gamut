@@ -1,0 +1,32 @@
+.col-md-4.col-md-offset-4
+  .login
+    .login-screen
+      .icon-form.text-center
+        i.glyphicon.glyphicon-cutlery
+      form.sign-in-rest-form ng-submit="vmRest.submitForm()" role="form"
+        .form-group
+          label for="name" {{ ::'restaurant.attributes.name' | translate }}
+          input.form-control (name="name"
+                              ng-model="vmRest.restForm.name"
+                              type="text")
+        .form-group
+          label for="owner" {{ ::'restaurant.attributes.owner' | translate }}
+          input.form-control (name="owner"
+                              ng-model="vmRest.restForm.owner"
+                              type="text")
+        .form-group
+          label for="email" {{ ::'restaurant.attributes.email' | translate }}
+          input.form-control (name="email"
+                              ng-model="vmRest.restForm.email"
+                              type="email")
+        .form-group
+          label for="address" {{ ::'restaurant.attributes.address' | translate }}
+          input.form-control (name="address"
+                              ng-model="vmRest.restForm.address"
+                              type="text")
+        .form-group
+          label for="telephone" {{ ::'restaurant.attributes.telephone' | translate }}
+          input.form-control (name="telephone"
+                              ng-model="vmRest.restForm.telephone"
+                              type="text")
+        .btn.btn-block.btn-primary.btn-sm type="submit" {{ ::'action.save' | translate }}
