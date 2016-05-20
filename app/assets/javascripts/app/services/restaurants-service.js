@@ -12,7 +12,8 @@
       restaurant: restaurant,
       newRestaurant: newRestaurant,
       updateRestaurant: updateRestaurant,
-      menu: menu
+      menu: menu,
+      categories: categories
     };
 
     return service;
@@ -85,6 +86,17 @@
         return res.data;
       }, function error(err) {
         return err.data;
+      });
+    }
+
+    function categories() {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/categories'
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
       });
     }
 

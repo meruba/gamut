@@ -1,0 +1,34 @@
+.form-menu
+  .modal-header#header
+    h4
+      i class="glyphicon glyphicon-cutlery"
+      | {{ ::'title.menu' | translate }}
+  .modal-body#body
+    .row
+      .form-group.col-md-8
+        label for="name" {{ ::'product.attributes.name' | translate }}
+        input.form-control (name="name"
+                            ng-model="vmRest.restForm.name"
+                            type="text")
+      .form-group.col-md-4
+        label for="price" {{ ::'product.attributes.price' | translate }}
+        .input-group
+          input.form-control (name="price"
+                              ng-model="vmRest.restForm.price"
+                              type="text")
+          .input-group-addon $
+    .form-group
+      label for="category" {{ ::'product.attributes.category' | translate }}
+      .input-group
+        input.form-control (name="category"
+                            ng-model="vmRest.restForm.category"
+                            type="text")
+        .input-group-addon +
+    .form-group
+      label for="description" {{ ::'product.attributes.description' | translate }}
+      textarea.form-control (name="description"
+                            ng-model="vmRest.restForm.description"
+                            type="text")
+  .modal-footer#footer
+    .col-md-6.col-xs-6.cancel-btn cancel
+    .col-md-6.col-xs-6.save-btn save

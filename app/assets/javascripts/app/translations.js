@@ -68,6 +68,14 @@
         },
         progress: 'Información %'
       },
+      product: {
+        attributes:{
+          name: 'Nombre',
+          category: 'Categoria',
+          price: 'Precio',
+          description: 'Description'
+        }
+      },
       dashboard: {
         welcome: 'Bienvenido'
       },
@@ -86,7 +94,8 @@
       title: {
         'user-list': 'Usuarios',
         'restaurant-list': 'Restaurantes',
-        'restaurant-menu': 'Mi Menú'
+        'restaurant-menu': 'Mi Menú',
+        'menu': 'Menu'
       },
       action: {
         save: 'Guardar',
