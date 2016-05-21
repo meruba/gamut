@@ -15,7 +15,7 @@ nav.navbar.navbar-default (ng-controller=("NavbarController as vmNav")
         li ui-sref-active="active"
           a ui-sref="home"  Home
         li ui-sref-active="active"
-          a ng-if=("user.role === 'admin'") ui-sref="user.list"
+          a ng-if=("user.role === 'admin'") ui-sref="user"
             | {{ ::'menu.users' | translate }}
       ul.nav.navbar-nav.navbar-right
         li.dropdown

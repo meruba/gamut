@@ -44,9 +44,7 @@
       .state('user', {
         url: '/user',
         templateUrl: 'users/user-layout.html',
-        ncyBreadcrumb: {
-          skip: true
-        },
+        redirectTo: 'user.list',
         resolve: {
           auth: ['$auth', '$state', function($auth, $state) {
             return $auth.validateUser()
@@ -54,6 +52,9 @@
                 $state.go('login');
               })
           }]
+        },
+        ncyBreadcrumb: {
+          skip: true
         }
       })
       .state('user.list', {
