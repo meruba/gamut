@@ -24,6 +24,8 @@
         maxValue: 100,
         height: 5
       }
+      //show counter header
+      $scope.vmHeader.showCounter = false;
     }
 
     function updateUser() {

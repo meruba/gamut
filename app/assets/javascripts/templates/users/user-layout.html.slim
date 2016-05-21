@@ -1,7 +1,7 @@
 .users-section
   .row.header-panel
-    .any ncy-breadcrumb=''
-    span.badge.pull-right ng-if="vmUsers.totalUsers"
-      | {{vmUsers.totalUsers}}
+    #content
+      ncy-breadcrumb=''
+      span.badge ng-if="vmHeader.showCounter" {{vmHeader.totalUsers}}
   .row.body-panel
     div ui-view=""

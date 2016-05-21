@@ -7,6 +7,7 @@
 
   function UserController(userData,
                             $state,
+                            $scope,
                             $auth,
                             toastr) {
     var vmUser = this;
@@ -20,6 +21,8 @@
         maxValue: 100,
         height: 5
       }
+      //hide counter header
+      $scope.vmHeader.showCounter = false;
     }
   }
 

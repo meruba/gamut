@@ -44,6 +44,7 @@
       .state('user', {
         url: '/user',
         templateUrl: 'users/user-layout.html',
+        controller: 'HeaderUserController as vmHeader',
         redirectTo: 'user.list',
         resolve: {
           auth: ['$auth', '$state', function($auth, $state) {
