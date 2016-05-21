@@ -134,6 +134,9 @@
                 $state.go('login');
               })
           }]
+        },
+        ncyBreadcrumb: {
+          skip: true
         }
       })
       .state('restaurant.new', {
@@ -181,7 +184,15 @@
       })
       .state('restaurant.menu', {
         url: '/{restId:int}/menu',
-        templateUrl: 'restaurants/menu/show.html',
+        templateUrl: 'restaurants/menu/main.html',
+        redirectTo: 'restaurant.menu.list',
+        ncyBreadcrumb: {
+          skip: true
+        }
+      })
+      .state('restaurant.menu.list', {
+        url: '/list',
+        templateUrl: 'restaurants/menu/list.html',
         controller: 'MenuRestController as vmRest',
         resolve: {
           restMenu: function (RestaurantService, $stateParams) {
@@ -190,10 +201,22 @@
               return data;
             });
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Menù',
+          parent: 'restaurant.menu'
+        }
+      })
+      .state('restaurant.menu.product', {
+        url: '/product',
+        templateUrl: 'restaurants/menu/new.html',
+        controller: 'MenuController as vmMenu',
+        ncyBreadcrumb: {
+          label: 'Agregar menù',
+          parent: 'restaurant.menu.list'
         }
       });
     $urlRouterProvider.otherwise('/login');
   });
-
 
 })();

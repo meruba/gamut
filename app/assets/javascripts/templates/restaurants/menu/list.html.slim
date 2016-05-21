@@ -1,0 +1,6 @@
+.col-md-4.restaurant ng-repeat="(key, value) in vmRest.menu"
+  .link-rest
+    h4 {{key}}
+    ul.col-md-10.col-xs-8.description ng-repeat=("item in value")
+      li
+        | {{item.name}}

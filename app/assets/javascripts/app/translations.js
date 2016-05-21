@@ -95,13 +95,14 @@
         'user-list': 'Usuarios',
         'restaurant-list': 'Restaurantes',
         'restaurant-menu': 'Mi Menú',
-        'menu': 'Menu'
+        'menu': 'Agregar menu'
       },
       action: {
         save: 'Guardar',
         update: 'Actualizar',
         new: 'Nuevo',
         edit: 'Editar',
+        cancel: 'Cancelar',
         uploadImage: 'Actualizar imagen',
         updateInfoUser: 'Actualizar información'
       },
