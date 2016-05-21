@@ -8,6 +8,7 @@
     'ui.identicon',
     'ui.bootstrap',
     'pascalprecht.translate',
+    'ncy-angular-breadcrumb',
     'ui.router',
     'templates',
     'ng-token-auth',
@@ -43,6 +44,9 @@
       .state('user', {
         url: '/user',
         templateUrl: 'users/user-layout.html',
+        ncyBreadcrumb: {
+          skip: true
+        },
         resolve: {
           auth: ['$auth', '$state', function($auth, $state) {
             return $auth.validateUser()
@@ -56,6 +60,9 @@
         url: '/list',
         templateUrl: 'users/users-list.html',
         controller: 'UsersController as vmUsers',
+        ncyBreadcrumb: {
+          label: 'Usuarios'
+        },
         resolve: {
           usersData: function (UserService) {
             return UserService.users().then(function(data) {
@@ -75,6 +82,10 @@
               return data;
             });
           }
+        },
+        ncyBreadcrumb: {
+          label: '{{vmUser.userData.name}}',
+          parent: 'user.list'
         }
       })
       .state('user.edit', {
@@ -88,6 +99,10 @@
               return data;
             });
           }
+        },
+        ncyBreadcrumb: {
+          label: '{{vmUser.userData.name}}',
+          parent: 'user.list'
         }
       });
     $urlRouterProvider.otherwise('/login');

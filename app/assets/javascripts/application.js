@@ -19,6 +19,7 @@
 //= require ng-token-auth
 //= require angular-toastr
 //= require angular-translate
+//= require angular-breadcrumb
 //= require identicon/pnglib
 //= require identicon/identicon
 //= require angular-identicon

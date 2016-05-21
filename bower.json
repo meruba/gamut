@@ -15,7 +15,8 @@
       "ng-token-auth": "0.0.29",
       "angular-toastr": "1.7.0",
       "angular-translate": "2.11.0",
-      "angular-identicon": "0.1.18"
+      "angular-identicon": "0.1.18",
+      "angular-breadcrumb": "0.4.1"
     }
   }
 }
