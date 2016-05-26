@@ -98,13 +98,14 @@
         'menu': 'Agregar menu'
       },
       action: {
-        save: 'Guardar',
-        update: 'Actualizar',
-        new: 'Nuevo',
-        edit: 'Editar',
-        cancel: 'Cancelar',
-        uploadImage: 'Actualizar imagen',
-        updateInfoUser: 'Actualizar información'
+        'save': 'Guardar',
+        'update': 'Actualizar',
+        'new': 'Nuevo',
+        'edit': 'Editar',
+        'cancel': 'Cancelar',
+        'add': 'Agregar',
+        'uploadImage': 'Actualizar imagen',
+        'updateInfoUser': 'Actualizar información'
       },
       placeholder: {
         'search-user': 'Nombre de usuario o identificación'
