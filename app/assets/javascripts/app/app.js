@@ -203,7 +203,7 @@
           }
         },
         ncyBreadcrumb: {
-          label: 'Menù',
+          label: 'Menú',
           parent: 'restaurant.menu'
         }
       })
@@ -211,8 +211,15 @@
         url: '/product',
         templateUrl: 'restaurants/menu/new.html',
         controller: 'MenuController as vmMenu',
+        resolve: {
+          categories: function (RestaurantService) {
+            return RestaurantService.categories().then(function(data) {
+              return data.categories;
+            });
+          }
+        },
         ncyBreadcrumb: {
-          label: 'Agregar menù',
+          label: 'Agregar menú',
           parent: 'restaurant.menu.list'
         }
       });

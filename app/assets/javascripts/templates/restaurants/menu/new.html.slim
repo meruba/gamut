@@ -1,36 +1,39 @@
-.form-menu.col-md-6.col-md-offset-3
-  #header
-    h4
-      i class="glyphicon glyphicon-cutlery"
-      | {{ ::'title.menu' | translate }}
-  #body
-    .row
-      .form-group.col-md-8
-        label for="name" {{ ::'product.attributes.name' | translate }}
-        input.form-control (name="name"
-                            ng-model="vmMenu.restForm.name"
-                            type="text")
-      .form-group.col-md-4
-        label for="price" {{ ::'product.attributes.price' | translate }}
-        .input-group
-          input.form-control (name="price"
-                              ng-model="vmMenu.restForm.price"
-                              type="text")
-          .input-group-addon $
-    .form-group
-      label for="category" {{ ::'product.attributes.category' | translate }}
-      .input-group
-        input.form-control (name="category"
-                            ng-model="vmMenu.restForm.category"
-                            type="text")
-        .input-group-addon +
-    .form-group
-      label for="description" {{ ::'product.attributes.description' | translate }}
-      textarea.form-control (name="description"
-                            ng-model="vmMenu.restForm.description"
-                            type="text")
-  #footer
-    .col-md-6.col-xs-6.cancel-btn ng-click="vmMenu.cancel()"
-      | {{ ::'action.cancel' | translate }}
-    .col-md-6.col-xs-6.save-btn ng-click="vmMenu.saveMenu()"
+.menu-content.col-md-12
+  .form-menu.col-md-8
+    .col-md-offset-1.col-md-10
+      #header
+        input (ng-model="vmMenu.selectCategory"
+                type="text"
+                placeholder="Selecciona una Categoria"
+                uib-typeahead="category as category.name for category in vmMenu.categories | filter:{name:$viewValue}| limitTo:4")
+      #body
+        .row
+          .form-group.col-md-8
+            label for="name" {{ ::'product.attributes.name' | translate }}
+            input.form-control (name="name"
+                                ng-model="vmMenu.restForm.name"
+                                type="text")
+          .form-group.col-md-4
+            label for="price" {{ ::'product.attributes.price' | translate }}
+            .input-group
+              input.form-control (name="price"
+                                  ng-model="vmMenu.restForm.price"
+                                  type="text")
+              .input-group-addon $
+          .form-group.col-md-12
+            label for="description" {{ ::'product.attributes.description' | translate }}
+            textarea.form-control (name="description"
+                                ng-model="vmMenu.restForm.description"
+                                type="text")
+      #footer
+        a.btn-link + nueva categoria
+        .btn.btn-primary.ghost.pull-right ng-click="vmMenu.addMenu(vmMenu.restForm,
+                                                            user.restaurant_id)"
+          | {{ ::'action.add' | translate }}
+
+  .menu-list-preview.col-md-4
+    h4#title Menu
+    .all-menu
+      div ng-include=(" vmMenu.emptyList ? 'empty-states/restaurant/menu-list.html' : 'restaurants/menu/form.html' ")
+    .btn.btn-block.btn-info.save-btn ng-click="vmMenu.saveMenu()"
       | {{ ::'action.save' | translate }}

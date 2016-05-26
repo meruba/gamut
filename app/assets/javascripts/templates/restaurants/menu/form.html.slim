@@ -1,0 +1,6 @@
+#menu ng-repeat="(key, value) in vmMenu.allMenu"
+  h4#category {{key}}
+  #item ng-repeat=("item in value track by $index")
+    li ng-click="vmMenu.editItem(key, item)"
+      | {{item.name}}
+      span.pull-right.text-danger ng-click="vmMenu.removeItem(key, item)" x
