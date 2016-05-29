@@ -10,14 +10,15 @@
                               toastr,
                               $auth,
                               $scope,
-                              ProductService) {
+                              ProductService,
+                              CategoryService) {
 
     var vmRest = this;
     vmRest.saveForm = saveForm;
-    vmRest.saveMenu = saveMenu;
-    vmRest.editMenu = editMenu;
     vmRest.editItem = editItem;
     vmRest.removeItem = removeItem;
+    vmRest.newCategory = newCategory;
+    vmRest.saveCategory = saveCategory;
 
     init();
 
@@ -32,6 +33,7 @@
         restaurant_id: $auth.user.restaurant_id
       };
       vmRest.updateMenu = false;
+      vmRest.showCategory = false;
     }
 
     function saveForm() {
@@ -44,32 +46,37 @@
 
     function saveMenu() {
       vmRest.restForm.category_id = vmRest.restForm.category.id;
-      ProductService.newProduct(vmRest.restForm).then(function(resp){
-        if (resp.errors) {
-          angular.forEach(resp.errors, function(value, key) {
-            toastr.error(value[0]);
-          });
+      ProductService.newProduct(vmRest.restForm).then(function(product){
+        if (product.errors) {
+          errorsAlert(product.errors);
         }else{
-          addMenu(resp);
+          addMenu(product);
         }
       });
     }
 
     function editMenu() {
-      ProductService.updateProduct(vmRest.restForm.id, vmRest.restForm).then(function(resp){
-        if (resp.errors) {
-          angular.forEach(resp.errors, function(value, key) {
-            toastr.error(value[0]);
-          });
+      ProductService.updateProduct(vmRest.restForm.id, vmRest.restForm).then(function(product){
+        if (product.errors) {
+          errorsAlert(product.errors);
         }else{
           clearForm();
-          vmRest.itemEdit = resp;
+          vmRest.itemEdit = product;
           vmRest.updateMenu = false;
+          $scope.vmHeader.showForm = false;
         }
       });
     }
 
-    function removeItem(item) {
+    function editItem(item) {
+      var itemCache = angular.copy(item);
+      vmRest.itemEdit = item;
+      vmRest.updateMenu = true;
+      $scope.vmHeader.showForm = true;
+      vmRest.restForm = itemCache;
+    }
+
+    function removeItem(ev, item) {
       ProductService.removeProduct(item.id).then(function(resp){
         if (resp.errors) {
           angular.forEach(resp.errors, function(value, key) {
@@ -97,12 +104,27 @@
       vmRest.restForm.price = '';
     }
 
-    function editItem(item) {
-      var itemCache = angular.copy(item);
-      vmRest.itemEdit = item;
-      vmRest.updateMenu = true;
-      $scope.vmHeader.showForm = true;
-      vmRest.restForm = itemCache;
+    function newCategory() {
+      vmRest.showCategory = !vmRest.showCategory;
+    }
+
+    function saveCategory() {
+      CategoryService.newCategory(vmRest.category).then(function(category){
+        if (category.errors) {
+          errorsAlert(category.errors);
+        }else{
+          vmRest.showCategory = false;
+          vmRest.categories.push(category);
+          vmRest.category.name = '';
+          vmRest.restForm.category = category;
+        }
+      });
+    }
+
+    function errorsAlert(errors) {
+      angular.forEach(errors, function(value, key) {
+        toastr.error(value[0]);
+      });
     }
   }
 
