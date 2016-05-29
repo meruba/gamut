@@ -1,0 +1,9 @@
+.menu-rest.col-md-6 ng-repeat="(key, value) in vmRest.menu"
+  #content
+    h4 {{key}}
+    ul.list-menu
+      li ng-repeat=("item in value")
+        | {{item.name}}
+        span.price.pull-right
+          | $ {{item.price}}
+        .text-muted {{item.description}}
