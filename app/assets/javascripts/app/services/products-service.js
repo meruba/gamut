@@ -10,7 +10,8 @@
     var service = {
       product: product,
       newProduct: newProduct,
-      updateProduct: updateProduct
+      updateProduct: updateProduct,
+      removeProduct: removeProduct
     };
 
     return service;
@@ -58,6 +59,18 @@
         }
       }).then(function success(res) {
         toastr.info('Actualizado Exitosamente!', 'Menu');
+        return res.config.data;
+      }, function error(err) {
+        return err.data;
+      });
+    }
+
+    function removeProduct(id) {
+      return $http({
+        method: 'POST',
+        url: '/api/v1/products/'+ id + '/remove'
+      }).then(function success(res) {
+        toastr.info('Eliminado Exitosamente!', 'Menu');
         return res.data;
       }, function error(err) {
         return err.data;

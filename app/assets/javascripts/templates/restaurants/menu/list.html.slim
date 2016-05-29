@@ -28,7 +28,7 @@
                               ng-model="vmRest.restForm.description"
                               rows="3"
                               type="text")
-      .btn.btn-info.btn-xs.pull-right ng-click="vmRest.saveMenu()"
+      .btn.btn-info.btn-xs.pull-right ng-click="vmRest.saveForm()"
                                       | {{ ::'action.save' | translate }}
 .row
   div#all-menu ng-include="'restaurants/menu/items.html'"
