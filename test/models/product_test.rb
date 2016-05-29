@@ -11,6 +11,7 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  public        :boolean          default("true")
+#  removed       :boolean          default("false")
 #
 
 require 'test_helper'

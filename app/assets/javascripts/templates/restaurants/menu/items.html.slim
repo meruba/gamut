@@ -2,8 +2,15 @@
   #content
     h4 {{key}}
     ul.list-menu
-      li ng-repeat=("item in value")
+      li ng-repeat=("item in value") ng-if="!item.removed"
         | {{item.name}}
         span.price.pull-right
           | $ {{item.price}}
         .text-muted {{item.description}}
+        span.btns-options
+          .btn.btn-xs#edit ng-click="vmRest.editItem(item)"
+            i.glyphicon.glyphicon-pencil
+          .btn.btn-xs#remove ng-click="vmRest.removeItem(item)"
+            i.glyphicon.glyphicon-remove
+          .btn.btn-xs#active ng-click="vmRest.activeItem(item)"
+            i.glyphicon.glyphicon-ok

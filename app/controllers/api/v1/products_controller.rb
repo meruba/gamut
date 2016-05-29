@@ -3,7 +3,7 @@ module Api
     class ProductsController < ApplicationController
 
       before_action :authenticate_user!
-
+      before_action :find_product, only: [:update, :remove]
       respond_to :json
 
       def index
@@ -15,12 +15,18 @@ module Api
       end
 
       def create
-        @product = Product.create(product_params)
-        respond_with(:api, :v1, @product)
+        product = Product.create(product_params)
+        respond_with(:api, :v1, product)
       end
 
       def update
         @product.update(product_params)
+        respond_with(:api, :v1, @product)
+      end
+
+      def remove
+        @product.removed = !@product.removed
+        @product.save
         respond_with(:api, :v1, @product)
       end
 
@@ -32,7 +38,13 @@ module Api
                                         :description,
                                         :price,
                                         :category_id,
-                                        :restaurant_id)
+                                        :restaurant_id,
+                                        :removed,
+                                        :public)
+      end
+
+      def find_product
+        @product = Product.find(params[:id])
       end
 
     end
