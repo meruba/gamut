@@ -1,34 +1,4 @@
 .menu-form.row ng-if="vmHeader.showForm"
-  .col-md-offset-2.col-md-8
-    .col-md-6
-      .form-group
-        label for="name" {{ ::'product.attributes.category' | translate }}
-        input.form-control (ng-model="vmRest.restForm.category"
-                type="text"
-                placeholder="Selecciona una Categoria"
-                uib-typeahead="category as category.name for category in vmRest.categories | filter:{name:$viewValue}| limitTo:4")
-      .form-group.row
-        .col-md-8
-          label for="name" {{ ::'product.attributes.name' | translate }}
-          input.form-control (name="name"
-                              ng-model="vmRest.restForm.name"
-                              type="text")
-        .col-md-4
-          label for="price" {{ ::'product.attributes.price' | translate }}
-          .input-group
-            input.form-control (name="price"
-                                ng-model="vmRest.restForm.price"
-                                placeholder="0.0"
-                                type="text")
-            .input-group-addon $
-    .col-md-6
-      .form-group
-        label for="description" {{ ::'product.attributes.description' | translate }}
-        textarea.form-control (name="description"
-                              ng-model="vmRest.restForm.description"
-                              rows="3"
-                              type="text")
-      .btn.btn-info.btn-xs.pull-right ng-click="vmRest.saveForm()"
-                                      | {{ ::'action.save' | translate }}
+  div ng-include="'restaurants/menu/form.html'"
 .row
   div#all-menu ng-include="'restaurants/menu/items.html'"
