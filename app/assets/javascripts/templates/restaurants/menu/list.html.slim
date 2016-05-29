@@ -1,5 +1,5 @@
-.menu-content.row ng-if="vmHeader.showForm"
-  .form-menu.col-md-offset-2.col-md-8
+.menu-form.row ng-if="vmHeader.showForm"
+  .col-md-offset-2.col-md-8
     .col-md-6
       .form-group
         label for="name" {{ ::'product.attributes.category' | translate }}
@@ -31,10 +31,4 @@
       .btn.btn-info.btn-xs.pull-right ng-click="vmRest.saveMenu()"
                                       | {{ ::'action.save' | translate }}
 .row
-  h1.text-center Tus Productos
-  .col-md-4.restaurant ng-repeat="(key, value) in vmRest.menu"
-    .link-rest
-      h4 {{key}}
-      ul.col-md-10.col-xs-8.description ng-repeat=("item in value")
-        li
-          | {{item.name}}
+  div#all-menu ng-include="'restaurants/menu/items.html'"
