@@ -1,6 +1,40 @@
-.col-md-4.restaurant ng-repeat="(key, value) in vmRest.menu"
-  .link-rest
-    h4 {{key}}
-    ul.col-md-10.col-xs-8.description ng-repeat=("item in value")
-      li
-        | {{item.name}}
+.menu-content.row ng-if="vmHeader.showForm"
+  .form-menu.col-md-offset-2.col-md-8
+    .col-md-6
+      .form-group
+        label for="name" {{ ::'product.attributes.category' | translate }}
+        input.form-control (ng-model="vmRest.restForm.category"
+                type="text"
+                placeholder="Selecciona una Categoria"
+                uib-typeahead="category as category.name for category in vmRest.categories | filter:{name:$viewValue}| limitTo:4")
+      .form-group.row
+        .col-md-8
+          label for="name" {{ ::'product.attributes.name' | translate }}
+          input.form-control (name="name"
+                              ng-model="vmRest.restForm.name"
+                              type="text")
+        .col-md-4
+          label for="price" {{ ::'product.attributes.price' | translate }}
+          .input-group
+            input.form-control (name="price"
+                                ng-model="vmRest.restForm.price"
+                                placeholder="0.0"
+                                type="text")
+            .input-group-addon $
+    .col-md-6
+      .form-group
+        label for="description" {{ ::'product.attributes.description' | translate }}
+        textarea.form-control (name="description"
+                              ng-model="vmRest.restForm.description"
+                              rows="3"
+                              type="text")
+      .btn.btn-info.btn-xs.pull-right ng-click="vmRest.saveMenu()"
+                                      | {{ ::'action.save' | translate }}
+.row
+  h1.text-center Tus Productos
+  .col-md-4.restaurant ng-repeat="(key, value) in vmRest.menu"
+    .link-rest
+      h4 {{key}}
+      ul.col-md-10.col-xs-8.description ng-repeat=("item in value")
+        li
+          | {{item.name}}
