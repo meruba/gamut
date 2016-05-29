@@ -2,6 +2,9 @@
   .row.header-panel
     #content
       ncy-breadcrumb=''
-      a.btn.btn-success.btn-sm ui-sref="restaurant.menu.product" +
+      .btns-action
+        a.btn.btn-sm (class="{{vmHeader.showForm ? 'btn-default': 'btn-success'}}"
+                      ng-click="vmHeader.toggleShow()")
+                      | {{vmHeader.showForm ? 'x': '+'}}
   .row.body-panel
     .div ui-view=""
