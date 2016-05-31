@@ -17,7 +17,6 @@
 
   .config(function ($stateProvider,
                     $urlRouterProvider,
-                    $authProvider,
                     $httpProvider) {
 
     $httpProvider.interceptors.push('interceptorService');
@@ -62,15 +61,15 @@
         url: '/list',
         templateUrl: 'users/users-list.html',
         controller: 'UsersController as vmUsers',
-        ncyBreadcrumb: {
-          label: 'Usuarios'
-        },
         resolve: {
           usersData: function (UserService) {
             return UserService.users().then(function(data) {
               return data;
             });
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Usuarios'
         }
       })
       .state('user.show', {
@@ -87,7 +86,9 @@
         },
         ncyBreadcrumb: {
           label: '{{vmUser.userData.name}}',
-          parent: 'user.list'
+          parent: function($auth) {
+            return $auth.user.role === 'admin' ? 'user.list' : null;
+          }
         }
       })
       .state('user.edit', {
