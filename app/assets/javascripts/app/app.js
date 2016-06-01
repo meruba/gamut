@@ -105,7 +105,9 @@
         },
         ncyBreadcrumb: {
           label: '{{vmUser.userData.name}}',
-          parent: 'user.list'
+          parent: function($auth) {
+            return $auth.user.role === 'admin' ? 'user.list' : null;
+          }
         }
       });
     $urlRouterProvider.otherwise('/login');
