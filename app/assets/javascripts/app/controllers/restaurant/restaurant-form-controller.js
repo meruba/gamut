@@ -7,16 +7,25 @@
 
   function RestFormController(RestaurantService,
                               $state,
+                              $scope,
                               toastr) {
     var vmRest = this;
     vmRest.submitForm = submitForm;
-    vmRest.restForm = {
-      owner: '',
-      name: '',
-      email: '',
-      address: '',
-      telephone: ''
+
+    init();
+
+    function init() {
+      vmRest.restForm = {
+        owner: '',
+        name: '',
+        email: '',
+        address: '',
+        telephone: ''
+      };
+      //update header controller values
+      $scope.vmHeader.showNewRest = false;
     }
+
 
     function submitForm() {
       RestaurantService.newRestaurant(vmRest.restForm).then(function(resp){

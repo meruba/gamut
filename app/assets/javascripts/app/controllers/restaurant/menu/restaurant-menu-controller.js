@@ -34,6 +34,8 @@
       };
       vmRest.updateMenu = false;
       vmRest.showCategory = false;
+      //update header controller values
+      $scope.vmHeader.showNewMenu = true;
     }
 
     function saveForm() {

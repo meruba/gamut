@@ -5,9 +5,19 @@
     .module('app.controllers')
     .controller('RestaurantController', RestaurantController);
 
-  function RestaurantController(restData) {
+  function RestaurantController(restData,
+                                $scope) {
     var vmRest = this;
-    vmRest.rest = restData;
+
+    init();
+
+    function init() {
+      vmRest.rest = restData;
+      //update header controller values
+      $scope.vmHeader.showNewRest = false;
+      $scope.vmHeader.showNewMenu = false;
+    }
+
   }
 
 })();

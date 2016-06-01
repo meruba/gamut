@@ -5,14 +5,22 @@
     .module('app.controllers')
     .controller('HeaderRestController', HeaderRestController);
 
-  function HeaderRestController() {
+  function HeaderRestController($state,
+                                $rootScope) {
     var vmHeader = this;
-    vmHeader.showForm = false;
     vmHeader.toggleShow = toggleShow
+
+    init();
+
+    function init() {
+      vmHeader.showNewMenu = ($state.current.name === 'restaurant.menu');
+      vmHeader.showNewRest = ($state.current.name === 'restaurant.list');
+    }
 
     function toggleShow() {
       vmHeader.showForm = !vmHeader.showForm;
     }
+
   }
 
 })();
