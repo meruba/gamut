@@ -18,7 +18,7 @@ nav.navbar.navbar-default (ng-controller=("NavbarController as vmNav")
           a ng-if=("user.role === 'admin'") ui-sref="user"
             | {{ ::'menu.users' | translate }}
         li ui-sref-active="active"
-          a ng-if=("user.role === 'admin'") ui-sref="restaurant.list"
+          a ng-if=("user.role === 'admin'") ui-sref="restaurant"
             | {{ ::'menu.restaurants' | translate }}
         li ui-sref-active="active"
           a (ng-if=("user.role === 'restaurant'")

@@ -1,1 +1,13 @@
-.container ui-view=""
+.restaurants-section
+  .row.header-panel
+    #content
+      ncy-breadcrumb=''
+      .btns-action
+        a.btn.btn-success.btn-sm.pull-right (ng-if="vmHeader.showNewRest"
+                                            ui-sref="restaurant.new()")  +
+        a.btn.btn-sm (class="{{vmHeader.showForm ? 'btn-default': 'btn-success'}}"
+                      ng-if="vmHeader.showNewMenu"
+                      ng-click="vmHeader.toggleShow()")
+                      | {{vmHeader.showForm ? 'x': '+'}}
+  .row.body-panel
+    .div ui-view=""

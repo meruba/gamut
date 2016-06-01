@@ -128,6 +128,7 @@
         url: '/restaurant',
         templateUrl: 'restaurants/restaurant-layout.html',
         controller: 'HeaderRestController as vmHeader',
+        redirectTo: 'restaurant.list',
         resolve: {
           auth: ['$auth', '$state', function($auth, $state) {
             return $auth.validateUser()
@@ -140,11 +141,6 @@
           skip: true
         }
       })
-      .state('restaurant.new', {
-        url: '/new',
-        templateUrl: 'restaurants/new.html',
-        controller: 'RestFormController as vmRest'
-      })
       .state('restaurant.list', {
         url: '/list',
         templateUrl: 'restaurants/restaurants-list.html',
@@ -155,6 +151,18 @@
               return data;
             });
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Restaurantes'
+        }
+      })
+      .state('restaurant.new', {
+        url: '/new',
+        templateUrl: 'restaurants/new.html',
+        controller: 'RestFormController as vmRest',
+        ncyBreadcrumb: {
+          label: 'Nuevo',
+          parent: 'restaurant.list'
         }
       })
       .state('restaurant.show', {
@@ -167,6 +175,12 @@
             return RestaurantService.restaurant(id).then(function(data) {
               return data;
             });
+          }
+        },
+        ncyBreadcrumb: {
+          label: 'Mi restaurant',
+          parent: function($auth) {
+            return $auth.user.role === 'admin' ? 'restaurant.list' : null;
           }
         }
       })
@@ -181,18 +195,14 @@
               return data;
             });
           }
+        },
+        ncyBreadcrumb: {
+          label: '{{vmRest.restForm.name}}',
+          parent: 'restaurant.show'
         }
       })
       .state('restaurant.menu', {
         url: '/{restId:int}/menu',
-        templateUrl: 'restaurants/menu/main.html',
-        redirectTo: 'restaurant.menu.list',
-        ncyBreadcrumb: {
-          skip: true
-        }
-      })
-      .state('restaurant.menu.list', {
-        url: '/list',
         templateUrl: 'restaurants/menu/list.html',
         controller: 'MenuRestController as vmRest',
         resolve: {
@@ -209,24 +219,7 @@
           }
         },
         ncyBreadcrumb: {
-          label: 'Menú',
-          parent: 'restaurant.menu'
-        }
-      })
-      .state('restaurant.menu.product', {
-        url: '/product',
-        templateUrl: 'restaurants/menu/new.html',
-        controller: 'MenuController as vmMenu',
-        resolve: {
-          categories: function (RestaurantService) {
-            return RestaurantService.categories().then(function(data) {
-              return data.categories;
-            });
-          }
-        },
-        ncyBreadcrumb: {
-          label: 'Agregar menú',
-          parent: 'restaurant.menu.list'
+          label: 'Menú'
         }
       });
     $urlRouterProvider.otherwise('/login');
