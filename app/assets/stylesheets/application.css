@@ -12,6 +12,7 @@
  *
  *= require bootstrap/dist/css/bootstrap
  *= require angular-toastr
+ *= require animate.css/animate
  *= require_tree .
  *= require_self
  */

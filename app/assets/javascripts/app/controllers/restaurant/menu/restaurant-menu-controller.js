@@ -91,7 +91,7 @@
     function addMenu(menu) {
       /*build object to show*/
       if ( vmRest.menu.hasOwnProperty(menu.category_name) ) {
-        vmRest.menu[menu.category_name].push(menu.product);
+        vmRest.menu[menu.category_name].unshift(menu.product);
       }else{
         vmRest.menu[menu.category_name] = [menu.product];
       }
