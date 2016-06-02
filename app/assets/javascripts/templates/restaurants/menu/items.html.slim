@@ -2,7 +2,7 @@
   #content
     h4 {{key}}
     ul.list-menu
-      li ng-repeat=("item in value") ng-if="!item.removed"
+      li.list-anm ng-repeat=("item in value") ng-if="!item.removed"
         | {{item.name}}
         span.price.pull-right
           | $ {{item.price}}
