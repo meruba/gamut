@@ -13,6 +13,7 @@
 //= require angular
 //= require angular-rails-templates
 //= require angular-ui-router
+//= require angular-animate
 //= require angular-resource
 //= require angular-cookie
 //= require angular-bootstrap

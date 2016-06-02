@@ -78,12 +78,10 @@
       vmRest.restForm = itemCache;
     }
 
-    function removeItem(ev, item) {
+    function removeItem(item) {
       ProductService.removeProduct(item.id).then(function(resp){
         if (resp.errors) {
-          angular.forEach(resp.errors, function(value, key) {
-            toastr.error(value[0]);
-          });
+          errorsAlert(resp.errors);
         }else{
           item.removed = true;
         }

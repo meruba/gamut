@@ -13,6 +13,7 @@
     'templates',
     'ng-token-auth',
     'ngFileUpload',
+    'ngAnimate',
     'toastr'
   ])
 
