@@ -11,19 +11,26 @@
                             $scope,
                             toastr) {
     var vmUser = this;
-    vmUser.userData = userData;
     vmUser.updateUser = updateUser;
     vmUser.completeDataLive = completeDataLive;
 
     init();
 
     function init(){
+      vmUser.userData = {
+        name: userData.name,
+        email: userData.email,
+        identification: userData.identification,
+        username: userData.username,
+        address: userData.address,
+        telephone: userData.telephone
+      };
       vmUser.optionsBar = {
         data: vmUser.userData,
         showLabel: true,
         maxValue: 100,
         height: 5
-      }
+      };
       //show counter header
       $scope.vmHeader.showCounter = false;
     }
