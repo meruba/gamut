@@ -2,7 +2,7 @@
   #content
     h4 {{key}}
     ul.list-menu
-      li.list-anm ng-repeat=("item in value") ng-if="!item.removed"
+      li.list-anm ng-repeat="item in value" ng-if="!item.removed"
         | {{item.name}}
         span.price.pull-right
           | $ {{item.price}}
@@ -12,5 +12,7 @@
             i.glyphicon.glyphicon-pencil
           .btn.btn-xs#remove ng-click="vmRest.removeItem(item)"
             i.glyphicon.glyphicon-remove
-          .btn.btn-xs#active ng-click="vmRest.activeItem(item)"
-            i.glyphicon.glyphicon-ok
+          .btn.btn-xs#active ng-click="vmRest.publicItem(item)"
+            i.glyphicon class="{{item.public ?
+                              'glyphicon-check':
+                              'glyphicon-unchecked'}}"

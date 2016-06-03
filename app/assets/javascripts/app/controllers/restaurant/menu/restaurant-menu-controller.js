@@ -17,6 +17,7 @@
     vmRest.saveForm = saveForm;
     vmRest.editItem = editItem;
     vmRest.removeItem = removeItem;
+    vmRest.publicItem = publicItem;
     vmRest.newCategory = newCategory;
     vmRest.saveCategory = saveCategory;
 
@@ -117,6 +118,16 @@
           vmRest.categories.push(category);
           vmRest.category.name = '';
           vmRest.restForm.category = category;
+        }
+      });
+    }
+
+    function publicItem(item) {
+      ProductService.publicProduct(item.id).then(function(resp){
+        if (resp.errors) {
+          errorsAlert(resp.errors);
+        }else{
+          item.public = resp.product.public;
         }
       });
     }

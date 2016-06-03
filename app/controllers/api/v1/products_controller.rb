@@ -3,7 +3,7 @@ module Api
     class ProductsController < ApplicationController
 
       before_action :authenticate_user!
-      before_action :find_product, only: [:update, :remove]
+      before_action :find_product, only: [:update, :remove, :public]
       respond_to :json
 
       def index
@@ -26,6 +26,12 @@ module Api
 
       def remove
         @product.removed = !@product.removed
+        @product.save
+        respond_with(:api, :v1, @product)
+      end
+
+      def public
+        @product.public = !@product.public
         @product.save
         respond_with(:api, :v1, @product)
       end
