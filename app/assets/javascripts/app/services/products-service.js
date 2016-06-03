@@ -11,7 +11,8 @@
       product: product,
       newProduct: newProduct,
       updateProduct: updateProduct,
-      removeProduct: removeProduct
+      removeProduct: removeProduct,
+      publicProduct: publicProduct
     };
 
     return service;
@@ -71,6 +72,18 @@
         url: '/api/v1/products/'+ id + '/remove'
       }).then(function success(res) {
         toastr.info('Eliminado Exitosamente!', 'Menu');
+        return res.data;
+      }, function error(err) {
+        return err.data;
+      });
+    }
+
+    function publicProduct(id) {
+      return $http({
+        method: 'POST',
+        url: '/api/v1/products/'+ id + '/public'
+      }).then(function success(res) {
+        toastr.info('Actualizado Exitosamente!', 'Menu');
         return res.data;
       }, function error(err) {
         return err.data;
