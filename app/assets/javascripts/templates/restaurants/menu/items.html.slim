@@ -4,18 +4,19 @@
     ul.list-menu
       li.list-anm (ng-repeat="item in value"
                   ng-if="!item.removed"
-                  ng-class="{unpublic: !item.public}")
+                  ng-class="{unpublic: !item.public, selected: item.selected}"
+                  ng-click="vmRest.selectItem(item)")
         #title
           | {{item.name}}
           span.price.pull-right
             | $ {{item.price}}
         .text-muted {{item.description}}
-        span.btns-options
-          .btn.btn-xs#edit ng-click="vmRest.editItem(item, key, $index)"
+        span.btns-options ng-if="item.selected"
+          .btn.btn-xs#edit ng-click="vmRest.editItem(item, key, $index); $event.stopPropagation();"
             i.glyphicon.glyphicon-pencil
-          .btn.btn-xs#remove ng-click="vmRest.removeItem(item)"
+          .btn.btn-xs#remove ng-click="vmRest.removeItem(item); $event.stopPropagation();"
             i.glyphicon.glyphicon-remove
-          .btn.btn-xs#active ng-click="vmRest.publicItem(item)"
+          .btn.btn-xs#active ng-click="vmRest.publicItem(item); $event.stopPropagation();"
             i.glyphicon class="{{item.public ?
                               'glyphicon-check':
                               'glyphicon-unchecked'}}"

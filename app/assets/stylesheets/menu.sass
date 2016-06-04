@@ -25,14 +25,17 @@
         border-bottom: 1px solid #e7e7e7
         .price
           font-weight: bold
-        &:hover, &:focus
+        &:hover
           background-color: #F8F8F8
           cursor: pointer
-      li:hover .btns-options
-        display: block
+      li.selected
+        background-color: #F8F8F8
+      li.unpublic
+        #title
+          text-decoration: line-through
       .btns-options
         text-align: right
-        display: none
+        display: block
         .btn
           border-radius: 50%
           background-color: #e7e7e7
@@ -48,9 +51,6 @@
           &:hover
             background-color: #8CC152
             color: white
-      li.unpublic
-        #title
-          text-decoration: line-through
 
 @media all and (min-width: 20em)
   .menu-rest

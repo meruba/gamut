@@ -20,6 +20,7 @@
     vmRest.publicItem = publicItem;
     vmRest.newCategory = newCategory;
     vmRest.saveCategory = saveCategory;
+    vmRest.selectItem = selectItem;
 
     init();
 
@@ -136,6 +137,15 @@
           item.public = resp.product.public;
         }
       });
+    }
+
+    function selectItem(item) {
+      item.selected = (item.selected === undefined) ? true : !item.selected;
+      if (vmRest.itemSelected) {
+        if (vmRest.itemSelected.id === item.id) return;
+        vmRest.itemSelected.selected = false;
+      }
+      vmRest.itemSelected = item;
     }
 
     function clearForm() {
