@@ -79,9 +79,16 @@
         category: category,
         position: index
       };
+      var categoryEdit = {
+        id: item.category_id,
+        name: category
+      };
+      /*update toggle buttons*/
       vmRest.updateMenu = true;
       $scope.vmHeader.showForm = true;
+      /*set values to form*/
       vmRest.restForm = angular.copy(item);
+      vmRest.restForm.category = categoryEdit;
     }
 
     function removeItem(item) {
