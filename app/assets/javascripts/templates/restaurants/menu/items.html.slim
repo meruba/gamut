@@ -2,10 +2,13 @@
   #content
     h4 {{key}}
     ul.list-menu
-      li.list-anm ng-repeat="item in value" ng-if="!item.removed"
-        | {{item.name}}
-        span.price.pull-right
-          | $ {{item.price}}
+      li.list-anm (ng-repeat="item in value"
+                  ng-if="!item.removed"
+                  ng-class="{unpublic: !item.public}")
+        #title
+          | {{item.name}}
+          span.price.pull-right
+            | $ {{item.price}}
         .text-muted {{item.description}}
         span.btns-options
           .btn.btn-xs#edit ng-click="vmRest.editItem(item, key, $index)"

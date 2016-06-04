@@ -5,8 +5,8 @@
     .module('app.controllers')
     .controller('HeaderRestController', HeaderRestController);
 
-  function HeaderRestController($state,
-                                $rootScope) {
+  function HeaderRestController($state) {
+
     var vmHeader = this;
     vmHeader.toggleShow = toggleShow
 
