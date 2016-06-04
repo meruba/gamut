@@ -47,10 +47,10 @@
       });
     }
 
-    function updateProduct(id, params) {
+    function updateProduct(params) {
       return $http({
         method: 'PUT',
-        url: '/api/v1/products/' + id,
+        url: '/api/v1/products/' + params.id,
         data:{
           name: params.name,
           description: params.description,

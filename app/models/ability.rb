@@ -12,6 +12,7 @@ class Ability
       cannot [:create, :destroy], User
       can [:show, :update, :menu], Restaurant
       cannot [:create, :destroy], Restaurant
+      can [:create, :show, :update, :remove, :public], Product
     when "customer"
       can [:show, :update, :upload_image], User
       cannot [:create, :destroy], User
