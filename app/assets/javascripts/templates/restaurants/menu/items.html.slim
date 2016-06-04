@@ -8,7 +8,7 @@
           | $ {{item.price}}
         .text-muted {{item.description}}
         span.btns-options
-          .btn.btn-xs#edit ng-click="vmRest.editItem(item)"
+          .btn.btn-xs#edit ng-click="vmRest.editItem(item, key, $index)"
             i.glyphicon.glyphicon-pencil
           .btn.btn-xs#remove ng-click="vmRest.removeItem(item)"
             i.glyphicon.glyphicon-remove

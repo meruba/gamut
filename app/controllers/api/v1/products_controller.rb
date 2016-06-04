@@ -4,6 +4,7 @@ module Api
 
       before_action :authenticate_user!
       before_action :find_product, only: [:update, :remove, :public]
+      authorize_resource
       respond_to :json
 
       def index

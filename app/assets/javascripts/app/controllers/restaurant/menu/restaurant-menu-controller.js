@@ -59,24 +59,29 @@
     }
 
     function editMenu() {
-      ProductService.updateProduct(vmRest.restForm.id, vmRest.restForm).then(function(product){
+      ProductService.updateProduct(vmRest.restForm).then(function(product){
         if (product.errors) {
           errorsAlert(product.errors);
         }else{
-          clearForm();
-          vmRest.itemEdit = product;
+          var id = vmRest.restForm.id;
+          vmRest.menu[vmRest.itemEdit.category][vmRest.itemEdit.position] = product;
+          vmRest.menu[vmRest.itemEdit.category][vmRest.itemEdit.position].id = id;
           vmRest.updateMenu = false;
           $scope.vmHeader.showForm = false;
+          clearForm();
         }
       });
     }
 
-    function editItem(item) {
-      var itemCache = angular.copy(item);
-      vmRest.itemEdit = item;
+    function editItem(item, category, index) {
+      vmRest.itemEdit = {
+        item: item,
+        category: category,
+        position: index
+      };
       vmRest.updateMenu = true;
       $scope.vmHeader.showForm = true;
-      vmRest.restForm = itemCache;
+      vmRest.restForm = angular.copy(item);
     }
 
     function removeItem(item) {
@@ -97,12 +102,6 @@
         vmRest.menu[menu.category_name] = [menu.product];
       }
       clearForm();
-    }
-
-    function clearForm() {
-      vmRest.restForm.name = '';
-      vmRest.restForm.description = '';
-      vmRest.restForm.price = '';
     }
 
     function newCategory() {
@@ -130,6 +129,12 @@
           item.public = resp.product.public;
         }
       });
+    }
+
+    function clearForm() {
+      vmRest.restForm.name = '';
+      vmRest.restForm.description = '';
+      vmRest.restForm.price = '';
     }
 
     function errorsAlert(errors) {
