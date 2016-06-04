@@ -7,5 +7,10 @@ class UserSerializer < ActiveModel::Serializer
              :identification,
              :address,
              :telephone,
-             :role
+             :role,
+             :image
+
+  def image
+    object.image.url
+  end
 end

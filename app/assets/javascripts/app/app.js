@@ -12,6 +12,7 @@
     'ui.router',
     'templates',
     'ng-token-auth',
+    'ngFileUpload',
     'toastr'
   ])
 
@@ -104,9 +105,9 @@
           }
         },
         ncyBreadcrumb: {
-          label: '{{vmUser.userData.name}}',
+          label: 'Actualizar',
           parent: function($auth) {
-            return $auth.user.role === 'admin' ? 'user.list' : null;
+            return $auth.user.role === 'admin' ? 'user.show' : null;
           }
         }
       });

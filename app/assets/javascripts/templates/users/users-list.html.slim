@@ -1,7 +1,7 @@
 .col-md-4.user ng-repeat=("user in vmUsers.UserList")
   .link-user ui-sref=("user.show({ userId: user.id })")
     .col-md-4.col-xs-4.logo
-      identicon size="80" username="user.email"
+      image-upload options="{image: user.image, identicon: user.email}"
     .col-md-8.col-xs-8.description
       h4 {{user.name}}
       h6#address

@@ -38,9 +38,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
           :omniauthable
-          
+
   include DeviseTokenAuth::Concerns::User
   include Roles
+  mount_uploader :image, ImageUploader
+
 
   begin :validations
     validates :name, :email, presence: true,

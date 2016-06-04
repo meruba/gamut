@@ -25,4 +25,5 @@
 //= require angular-identicon
 //= require jquery
 //= require bootstrap
+//= require ng-file-upload
 //= require_tree .

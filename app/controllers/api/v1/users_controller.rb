@@ -24,12 +24,20 @@ module Api
         respond_with(:api, :v1, @user)
       end
 
+      def upload_image
+        @user = User.find(params[:user_id])
+        @user.image = params[:file]
+        @user.save
+        respond_with(:api, :v1, @user)
+      end
+
       private
 
       def user_params
         params.require(:user).permit(:name,
                                       :email,
                                       :username,
+                                      :image,
                                       :role
                                     )
       end

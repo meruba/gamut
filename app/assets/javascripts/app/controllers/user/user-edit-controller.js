@@ -31,6 +31,11 @@
         maxValue: 100,
         height: 5
       };
+      vmUser.imageOptions = {
+        image: userData.image,
+        identicon: vmUser.userData.email,
+        url: '/api/v1/users/'+ userData.id +'/upload_image'
+      };
       //show counter header
       $scope.vmHeader.showCounter = false;
     }

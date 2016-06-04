@@ -69,7 +69,9 @@
       },
       action: {
         save: 'Guardar',
-        update: 'Actualizar'
+        update: 'Actualizar',
+        uploadImage: 'Actualizar imagen',
+        updateInfoUser: 'Actualizar información'
       }
     });
 
