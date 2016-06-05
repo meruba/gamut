@@ -8,10 +8,10 @@ class Ability
     when "admin"
       can :manage, :all
     when "restaurant"
-      can [:show, :update, :index], User
+      can [:show, :update, :index, :upload_image], User
       cannot [:create, :destroy], User
     when "customer"
-      can [:show, :update], User
+      can [:show, :update, :upload_image], User
       cannot [:create, :destroy], User
     end
   end
