@@ -15,7 +15,7 @@
     init();
 
     function init() {
-      vmRest.restForm = {
+      vmRest.rest = {
         owner: '',
         name: '',
         email: '',
@@ -28,7 +28,7 @@
 
 
     function submitForm() {
-      RestaurantService.newRestaurant(vmRest.restForm).then(function(resp){
+      RestaurantService.newRestaurant(vmRest.rest).then(function(resp){
         if (resp.errors) {
           angular.forEach(resp.errors, function(value, key) {
             toastr.error(value[0]);
