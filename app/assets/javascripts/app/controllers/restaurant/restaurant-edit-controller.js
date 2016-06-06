@@ -10,11 +10,11 @@
                                 RestaurantService,
                                 toastr) {
     var vmRest = this;
-    vmRest.restForm = restData;
+    vmRest.rest = restData;
     vmRest.submitForm = submitForm;
 
     function submitForm() {
-      RestaurantService.updateRestaurant(vmRest.restForm.id, vmRest.restForm).then(function(resp){
+      RestaurantService.updateRestaurant(vmRest.rest).then(function(resp){
         if (resp.errors) {
           angular.forEach(resp.errors, function(value, key) {
             toastr.error(value[0]);
