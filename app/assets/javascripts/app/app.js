@@ -179,7 +179,7 @@
           }
         },
         ncyBreadcrumb: {
-          label: 'Mi restaurant',
+          label: '{{vmRest.rest.name}}',
           parent: function($auth) {
             return $auth.user.role === 'admin' ? 'restaurant.list' : null;
           }
@@ -198,7 +198,7 @@
           }
         },
         ncyBreadcrumb: {
-          label: '{{vmRest.restForm.name}}',
+          label: 'Actualizar',
           parent: 'restaurant.show'
         }
       })

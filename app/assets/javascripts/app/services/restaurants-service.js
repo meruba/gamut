@@ -70,10 +70,10 @@
       });
     }
 
-    function updateRestaurant(id, params) {
+    function updateRestaurant(params) {
       return $http({
         method: 'PUT',
-        url: '/api/v1/restaurants/' + id,
+        url: '/api/v1/restaurants/' + params.id,
         data:{
           owner: params.owner,
           name: params.name,
