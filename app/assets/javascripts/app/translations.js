@@ -64,7 +64,8 @@
           telephone: 'Teléfono',
           delivery_time: 'Tiempo de envio',
           open_time: 'Hora de apertura',
-          close_time: 'Hora de cierre'
+          close_time: 'Hora de cierre',
+          open_close_time: 'Horario de atención'
         },
         progress: 'Información %'
       },

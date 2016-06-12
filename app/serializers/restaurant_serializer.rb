@@ -10,6 +10,7 @@ class RestaurantSerializer < ActiveModel::Serializer
               :delivery_time,
               :open_time,
               :close_time,
+              :user_id,
               :products
 
 end
