@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   private
 
   def configure_permitted_params
-    added_attrs = [:username, :email, :name]
+    added_attrs = [:username, :email, :name, :has_account]
     edit_attrs = [:username, :email, :name, :identification, :address, :telephone]
     devise_parameter_sanitizer.for(:sign_up) << added_attrs
     devise_parameter_sanitizer.for(:sign_in) << added_attrs

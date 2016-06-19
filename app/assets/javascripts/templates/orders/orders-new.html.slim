@@ -1,0 +1,27 @@
+.order-container
+  #form.col-md-8
+    order-form-steps data="vmOrder.restaurants"
+  #order.col-md-4
+    h4.text-center Tu Pedido
+    .products
+      .row.item-selected.list-anm ng-repeat="item in vmOrder.itemsSelected"
+        .col-md-3.col-xs-3
+          input.form-control (type="number"
+                              ng-init="item.value = 1"
+                              ng-model="item.value"
+                              ng-change="vmOrder.calculate(item)")
+        .col-md-9.col-xs-9
+          h5
+            | {{item.name}}
+            span.price.pull-right
+              | ${{item.totalItem || item.price }}
+    .taxs
+      .delivery-price
+        h4 Precio de envio
+        input.form-control (type="number"
+                            min="0"
+                            ng-model="vmOrder.deliveryPrice"
+                            ng-change="vmOrder.sumValues()")
+      .totalOrder
+        h4 Total: ${{vmOrder.totalOrder}}
+    button.btn.btn-danger.btn-block Checkout

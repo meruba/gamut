@@ -31,6 +31,7 @@
 #  telephone              :string
 #  role                   :string           default("customer"), not null
 #  is_active              :boolean          default("true")
+#  has_account            :boolean          default("true")
 #
 
 class User < ActiveRecord::Base
@@ -46,7 +47,7 @@ class User < ActiveRecord::Base
 
 
   begin :validations
-    validates :name, :email, presence: true,
+    validates :name,  :email, presence: true,
                               uniqueness: true,
                               allow_blank: false
   end
@@ -59,4 +60,10 @@ class User < ActiveRecord::Base
     super and self.is_active?
   end
 
+  #overrides
+  def password_required?
+    if new_record?
+      self.has_account ? true:false
+    end
+  end
 end

@@ -1,0 +1,17 @@
+input.form-control (type="text"
+                    placeholder="Ingrese nombre o identificacion"
+                    ng-model="query"
+                    ng-change="vmStep.step1.searchUser(query)")
+.results.text-center
+  gls-loader loaded="vmStep.load"
+  .empty-users ng-if="vmStep.step1.totalResults === 0"
+    .text-muted.fa.fa-search.fa-4x
+    h5.text-muted Resultados de busqueda
+  .users-result (ng-repeat="user in vmStep.step1.userResults"
+                ng-click="vmStep.step1.selectUser(user)")
+    .row.result
+      .letter-name
+        span {{user.name.charAt(0)}}
+      .info-customer
+        h4 {{user.name}}
+        h5.text-muted {{user.identification}}

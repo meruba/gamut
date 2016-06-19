@@ -1,0 +1,9 @@
+.row-gls.step-2 ng-if="vmStep.step1.selectedUser"
+  .rest-container.col-md-4 (ng-repeat="rest in vmStep.restaurants"
+                            ng-if="!vmStep.step2.showHeader")
+    .item (ng-click="vmStep.step2.selectRest(rest, $index)"
+          ng-class="rest.selected ? 'rest-selected' : ''")
+      h4 {{rest.name}}
+  .order-header ng-if="vmStep.step2.showHeader"
+    .item-header.rest-selected ng-click="vmStep.step2.showRestaurants()"
+      h4 {{vmStep.step2.selectedRest.name}}

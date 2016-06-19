@@ -1,0 +1,107 @@
+.form-steps
+  #step
+    margin-right: 0px
+    margin-left: 0px
+    overflow: hidden
+  .step-1
+    .options
+      display: flex
+      justify-content: center
+      background-color: #e7e7e7
+      border: 1px solid #e2e2e2
+      margin-top: 8px
+      #option
+        .container-icon
+          display: flex
+          justify-content: center
+          flex-wrap: wrap
+          background-color: white
+          cursor: pointer
+          padding: 10px
+          width: 192px
+          i
+            padding-right: 10px
+        .selected
+          background-color: #d9534f
+          color: white
+    .container-selected
+      padding-top: 15px
+      #search
+        .results
+          position: relative
+          padding-top: 10px
+          .users-result
+            .result
+              display: flex
+              border: 1px solid #e7e7e7
+              margin-bottom: 5px
+              cursor: pointer
+              &:hover
+                background-color: #f7f8fa
+              .letter-name
+                display: flex
+                flex-basis: 20%
+                justify-content: center
+                align-items: center
+                color: #d9534f
+                border: 1px solid #e7e7e7
+                text-transform: uppercase
+                font-size: 35px
+              .info-customer
+                flex-basis: 80%
+    .user-selected
+      padding: 10px
+      background-color: #f7f8fa
+      .user
+        display: flex
+        .letter-name
+          display: flex
+          flex-basis: 40%
+          justify-content: center
+          align-items: center
+          span
+            color: #d9534f
+            font-size: 45px
+            background-color: white
+            padding: 15px 30px
+            text-transform: uppercase
+        .user-info
+          flex-basis: 60%
+  .step-2
+    .rest-container
+      padding: 15px 5px 5px 10px
+      .item
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: #d62831
+        color: white
+        border-radius: 5px
+        height: 80px
+        cursor: pointer
+        // &:hover
+        //   background-color: #e57373
+      .rest-selected
+        background-color: #6d6c69
+    .order-header
+      .item-header
+        background-color: #6d6c69
+        display: flex
+        align-items: center
+        justify-content: center
+        color: white
+        border-radius: 5px
+        height: 80px
+        cursor: pointer
+  .step-3
+    .product
+      min-height: 80px
+      border: 1px solid #e7e7e7
+      margin: -1px 0 0 -1px
+      &:hover
+        cursor: pointer
+        background-color: #F7F8FA
+    .menu-selected
+      background-color: #e8e8e8
+      border: 1px solid white
+      z-index: 1

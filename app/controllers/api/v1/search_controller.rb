@@ -13,6 +13,11 @@ module Api
         respond_with(:api, :v1, @restaurant, meta: {count: @restaurant.count})
       end
 
+      def customer
+        @users = CustomerSearch.new(q: params[:query]).results.limit(5)
+        respond_with(:api, :v1, @users)
+      end
+      
     end
   end
 end

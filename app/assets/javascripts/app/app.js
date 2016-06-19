@@ -224,6 +224,45 @@
           label: 'Menú',
           parent: 'restaurant.show'
         }
+      })
+      .state('order', {
+        url: '/order',
+        templateUrl: 'orders/order-layout.html',
+        redirectTo: 'order.new',
+        resolve: {
+          auth: ['$auth', '$state', function($auth, $state) {
+            return $auth.validateUser()
+              .catch(function(response) {
+                $state.go('login');
+              })
+          }]
+        },
+        ncyBreadcrumb: {
+          skip: true
+        }
+      })
+      .state('order.list', {
+        url: '/list',
+        templateUrl: 'orders/orders-list.html',
+        controller: 'OrdersController as vmOrders',
+        ncyBreadcrumb: {
+          label: 'Pedidos'
+        }
+      })
+      .state('order.new', {
+        url: '/new',
+        templateUrl: 'orders/orders-new.html',
+        controller: 'OrderNewController as vmOrder',
+        resolve: {
+          restData: function (RestaurantService) {
+            return RestaurantService.restaurants().then(function(data) {
+              return data;
+            });
+          }
+        },
+        ncyBreadcrumb: {
+          label: 'Nuevo'
+        }
       });
     $urlRouterProvider.otherwise('/login');
   });

@@ -45,7 +45,11 @@ module Api
                                       :username,
                                       :image,
                                       :role,
-                                      :is_active
+                                      :is_active,
+                                      :identification,
+                                      :address,
+                                      :telephone,
+                                      :has_account
                                     )
       end
 

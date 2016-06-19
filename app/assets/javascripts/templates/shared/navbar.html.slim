@@ -24,6 +24,10 @@ nav.navbar.navbar-default (ng-controller=("NavbarController as vmNav")
           a (ng-if=("user.role === 'restaurant'")
             ui-sref="restaurant.menu({restId: user.restaurant_id})")
             | {{ ::'menu.menu_rest' | translate }}
+        li ui-sref-active="active"
+          a (ng-if=("user.role === 'admin'")
+            ui-sref="order")
+            | Pedido
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle (aria-expanded="false"

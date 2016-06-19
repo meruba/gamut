@@ -1,0 +1,11 @@
+.row-gls.step-3
+  .col-md-6.list-anm.product (ng-repeat="menu in vmStep.step2.menu"
+                              ng-if="!menu.removed || !menu.public"
+                              ng-click="vmStep.step3.addProduct(menu)"
+                              ng-class="menu.selected ? 'menu-selected' : ''")
+    #details
+      h5
+        | {{menu.name}}
+        span.price.pull-right
+          | ${{menu.price}}
+      .text-muted {{menu.description}}

@@ -13,6 +13,7 @@
  *= require bootstrap/dist/css/bootstrap
  *= require angular-toastr
  *= require animate.css/animate
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */

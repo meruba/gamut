@@ -25,6 +25,33 @@ ActiveRecord::Schema.define(version: 20160717223922) do
 
   add_index "categories", ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
 
+  create_table "item_orders", force: :cascade do |t|
+    t.integer  "quantity"
+    t.float    "unit_value"
+    t.float    "discount"
+    t.float    "total"
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "item_orders", ["order_id"], name: "index_item_orders_on_order_id", using: :btree
+  add_index "item_orders", ["product_id"], name: "index_item_orders_on_product_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.float    "total",          null: false
+    t.float    "price_delivery", null: false
+    t.string   "address",        null: false
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "restaurant_id"
+  end
+
+  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name",                          null: false
     t.float    "price",                         null: false
@@ -85,6 +112,7 @@ ActiveRecord::Schema.define(version: 20160717223922) do
     t.string   "address"
     t.string   "telephone"
     t.string   "role",                   default: "customer", null: false
+    t.boolean  "has_account",            default: true
     t.boolean  "is_active",              default: true
   end
 
