@@ -1,8 +1,7 @@
 .image-avatar
   identicon ng-if="!vm.image" size="100" username="vm.textIdenticon"
-  .img-cld
-    img.img-rounded (ng-if="vm.image"
-                    src="{{vm.image}}"
+  .img-cld ng-if="vm.image"
+    img.img-rounded (ng-src="{{vm.image}}"
                     style="max-width:{{vm.width}}; max-height:{{vm.height}}")
   .btn-upload.btn.btn-default.btn-xs (ng-if="vm.options.url"
                                       href="#"
