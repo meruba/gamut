@@ -1,7 +1,7 @@
 .row.user-information
   .col-md-6#primary-info
-    row.col-md-6.col-md-offset-3.text-center
-      image-upload.img-user options="{image: vmUser.userData.image, identicon: vmUser.userData.email}"
+    .row.col-md-6.col-md-offset-3.text-center
+      image-upload.img-user.flex-center options="{image: vmUser.userData.image, identicon: vmUser.userData.email}"
       h4 {{vmUser.userData.name}}
       h5.text-muted {{vmUser.userData.email}}
       .col-md-8.col-md-offset-2.col-xs-8.col-xs-offset-2

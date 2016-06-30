@@ -1,4 +1,4 @@
-.col-md-4.user ng-repeat=("user in vmUsers.UserList")
+.col-md-4.col-sm-6.user ng-repeat=("user in vmUsers.UserList")
   .link-user ui-sref=("user.show({ userId: user.id })")
     .col-md-4.col-xs-4.logo
       image-upload options="{image: user.image, identicon: user.email}"

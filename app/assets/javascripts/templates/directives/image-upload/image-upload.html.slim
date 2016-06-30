@@ -1,5 +1,5 @@
 .image-avatar
-  identicon ng-if="!vm.image" size="100" username="vm.textIdenticon"
+  identicon.img-responsive ng-if="!vm.image" size="100" username="vm.textIdenticon"
   .img-cld ng-if="vm.image"
     img.img-rounded (ng-src="{{vm.image}}"
                     style="max-width:{{vm.width}}; max-height:{{vm.height}}")
