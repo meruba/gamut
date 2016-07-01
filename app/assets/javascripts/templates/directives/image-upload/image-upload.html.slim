@@ -4,7 +4,7 @@
     .loader-img
       .spinner
   .img-cld ng-if="vm.image && !vm.uploading"
-    img.img-rounded image-load="" ng-src="{{vm.image}}" style="max-width:{{vm.width}}; max-height:{{vm.height}}"
+    img.img-rounded ng-src="{{vm.image}}" style="max-width:{{vm.width}}; max-height:{{vm.height}}"
   .btn-upload.btn.btn-default.btn-xs (ng-if="vm.options.url"
                                       href="#"
                                       ngf-select="vm.uploadFiles($files)"
