@@ -50,7 +50,7 @@
             vm.status = file.progress + "%";
             vm.uploading = true;
           }).success(function (data, status, headers, config) {
-            vm.image = data.image;
+            vm.image = data.image || data.logo;
             vm.uploading = false;
           }).error(function (data, status, headers, config) {
             file.result = data;

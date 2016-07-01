@@ -1,12 +1,12 @@
 .row.restaurant-detail
   .col-md-6#primary-info
-    row.col-md-6.col-md-offset-3.text-center
-      image-upload.img-user options="{image: vmRest.rest.image, identicon: vmRest.rest.email}"
+    .row.col-md-6.col-md-offset-3.text-center
+      image-upload.img-user.flex-center options="vmRest.imageOptions"
       h4 {{vmRest.rest.name}}
       h5.text-muted {{vmRest.rest.email}}
       .col-md-8.col-md-offset-2.col-xs-8.col-xs-offset-2
-      a.btn.btn-link (ui-sref=("restaurant.edit({restId: vmRest.rest.id})") )
-        | {{ ::'action.edit' | translate }}
+        a.btn.btn-link (ui-sref=("restaurant.edit({restId: vmRest.rest.id})") )
+          | {{ ::'action.edit' | translate }}
   .col-md-6#secondary-info
     .col-md-12
       div

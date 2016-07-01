@@ -13,4 +13,7 @@ class RestaurantSerializer < ActiveModel::Serializer
               :user_id,
               :products
 
+  def logo
+    object.logo.url
+  end
 end

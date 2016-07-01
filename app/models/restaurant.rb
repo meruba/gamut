@@ -24,6 +24,8 @@ class Restaurant < ActiveRecord::Base
                                                     allow_blank: false
   end
 
+  mount_uploader :logo, ImageUploader
+
   begin :relationships
     belongs_to :user, dependent: :destroy
     has_many :products
