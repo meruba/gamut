@@ -30,6 +30,13 @@ module Api
         respond_with(:api, :v1, @restaurant)
       end
 
+      def upload_image
+        @restaurant = Restaurant.find(params[:restaurant_id])
+        @restaurant.logo = params[:file]
+        @restaurant.save
+        respond_with(:api, :v1, @restaurant)
+      end
+
       private
 
       def restaurant_params
