@@ -1,5 +1,7 @@
 .image-avatar
-  identicon.img-responsive ng-if="!vm.image" size="100" username="vm.textIdenticon"
+  identicon.img-responsive (ng-if="!vm.image && !vm.uploading" 
+                            size="100"
+                            username="vm.textIdenticon")
   div ng-if="vm.uploading"
     .loader-img
       .spinner
