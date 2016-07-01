@@ -30,6 +30,7 @@
     vm.textIdenticon = vm.options.identicon;
     vm.width = vm.options.width || '100%';
     vm.height = vm.options.height || '100%';
+    vm.uploading = false;
 
     vm.uploadFiles = uploadFiles;
     function uploadFiles(files){
@@ -46,9 +47,11 @@
             }
           }).progress(function (e) {
             file.progress = Math.round((e.loaded * 100.0) / e.total);
-            vm.status = file.progress + "%"
+            vm.status = file.progress + "%";
+            vm.uploading = true;
           }).success(function (data, status, headers, config) {
             vm.image = data.image;
+            vm.uploading = false;
           }).error(function (data, status, headers, config) {
             file.result = data;
           });
