@@ -8,7 +8,8 @@
   function UserService($http) {
     var service = {
       users: users,
-      user: user
+      user: user,
+      searchUsers: searchUsers
     };
 
     return service;
@@ -28,6 +29,20 @@
       return $http({
         method: 'GET',
         url: '/api/v1/users/' + id
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
+
+    function searchUsers(query) {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/search/user',
+        params: {
+          query: query
+        }
       }).then(function success(res) {
         return res.data;
       }, function error(err) {
