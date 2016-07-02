@@ -3,16 +3,19 @@
                       ng-model="vmUsers.query"
                       ng-change="vmUsers.search(vmUsers.query)"
                       placeholder="Ingrese: número de identificación o nombre de usuario")
-.col-md-4.col-sm-6.user ng-repeat=("user in vmUsers.UserList")
-  .link-user ui-sref=("user.show({ userId: user.id })")
-    .col-md-4.col-xs-4.logo
-      image-upload options="{image: user.image, identicon: user.email}"
-    .col-md-8.col-xs-8.description
-      h4 {{user.name}}
-      h6#address
-        i.glyphicon.glyphicon-map-marker
-        | {{user.address}}
-      h6#rol.text-muted
-        i.glyphicon.glyphicon-user
-        | {{ ::'user.role.' + user.role | translate }}
-      progresive-bar options=("{data: user, height:'5'}")
+div ng-if="vmUsers.UserList.length > 0"
+  .col-md-4.col-sm-6.user ng-repeat=("user in vmUsers.UserList")
+    .link-user ui-sref=("user.show({ userId: user.id })")
+      .col-md-4.col-xs-4.logo
+        image-upload options="{image: user.image, identicon: user.email}"
+      .col-md-8.col-xs-8.description
+        h4 {{user.name}}
+        h6#address
+          i.glyphicon.glyphicon-map-marker
+          | {{user.address}}
+        h6#rol.text-muted
+          i.glyphicon.glyphicon-user
+          | {{ ::'user.role.' + user.role | translate }}
+        progresive-bar options=("{data: user, height:'5'}")
+div ng-if="vmUsers.UserList.length === 0"                    
+  .no-results ng-include="'empty-states/search-users.html'"

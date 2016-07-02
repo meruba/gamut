@@ -72,6 +72,10 @@
         update: 'Actualizar',
         uploadImage: 'Actualizar imagen',
         updateInfoUser: 'Actualizar información'
+      },
+      'empty-states':{
+        'general': 'No hemos encontrado resultados',
+        'tip-user': 'Intenta escribiendo nuevamente...'
       }
     });
 
