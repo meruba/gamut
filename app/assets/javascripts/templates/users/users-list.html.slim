@@ -1,3 +1,8 @@
+.search-form ng-if="vmUsers.searchForm"
+  input.form-control (type="text"
+                      ng-model="vmUsers.query"
+                      ng-change="vmUsers.search(vmUsers.query)"
+                      placeholder="Ingrese: número de identificación o nombre de usuario")
 .col-md-4.col-sm-6.user ng-repeat=("user in vmUsers.UserList")
   .link-user ui-sref=("user.show({ userId: user.id })")
     .col-md-4.col-xs-4.logo

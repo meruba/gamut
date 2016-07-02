@@ -21,8 +21,9 @@
         maxValue: 100,
         height: 5
       }
-      //hide counter header
+      //hide counter header and reset searchForm
       $scope.vmHeader.showCounter = false;
+      $scope.vmHeader.searchForm = false;
     }
   }
 

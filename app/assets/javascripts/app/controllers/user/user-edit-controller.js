@@ -36,8 +36,9 @@
         identicon: vmUser.userData.email,
         url: '/api/v1/users/'+ userData.id +'/upload_image'
       };
-      //show counter header
+      //hide counter header and reset searchForm
       $scope.vmHeader.showCounter = false;
+      $scope.vmHeader.searchForm = false;
     }
 
     function updateUser() {

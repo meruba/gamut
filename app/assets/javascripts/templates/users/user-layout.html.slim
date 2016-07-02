@@ -1,7 +1,12 @@
 .users-section
   .row.header-panel
     #content
-      ncy-breadcrumb=''
-      span.badge ng-if="vmHeader.showCounter" {{vmHeader.totalUsers}}
+      .users.flex-center
+        span.badge ng-if="vmHeader.showCounter" {{vmHeader.totalUsers}}
+        span
+          ncy-breadcrumb=''
+      .search ng-if="vmHeader.showCounter"
+        .search-user.glyphicon.glyphicon-search.btn.btn-xs (ng-class="vmHeader.searchForm ? 'active-search' : ''"
+                                                            ng-click="vmHeader.toggleSearch()")
   .row.body-panel
     div ui-view=""
