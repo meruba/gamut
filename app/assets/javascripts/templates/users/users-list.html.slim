@@ -1,8 +1,9 @@
 .search-form ng-if="vmUsers.searchForm"
-  input.form-control (type="text"
+  input.search-input  (type="text"
                       ng-model="vmUsers.query"
                       ng-change="vmUsers.search(vmUsers.query)"
-                      placeholder="Ingrese: número de identificación o nombre de usuario")
+                      ng-model-options="{debounce: 400}"
+                      placeholder="{{ ::'placeholder.search-user' | translate }}")
 div ng-if="vmUsers.UserList.length > 0"
   .col-md-4.col-sm-6.user ng-repeat=("user in vmUsers.UserList")
     .link-user ui-sref=("user.show({ userId: user.id })")
@@ -17,5 +18,5 @@ div ng-if="vmUsers.UserList.length > 0"
           i.glyphicon.glyphicon-user
           | {{ ::'user.role.' + user.role | translate }}
         progresive-bar options=("{data: user, height:'5'}")
-div ng-if="vmUsers.UserList.length === 0"                    
+div ng-if="vmUsers.UserList.length === 0"
   .no-results ng-include="'empty-states/search-users.html'"

@@ -73,8 +73,11 @@
         uploadImage: 'Actualizar imagen',
         updateInfoUser: 'Actualizar información'
       },
+      placeholder: {
+        'search-user': 'Nombre de usuario o identificación'
+      },
       'empty-states':{
-        'general': 'No hemos encontrado resultados',
+        'general': 'No se encontro resultados',
         'tip-user': 'Intenta escribiendo nuevamente...'
       }
     });

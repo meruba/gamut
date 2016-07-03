@@ -5,8 +5,8 @@
         span.badge ng-if="vmHeader.showCounter" {{vmHeader.totalUsers}}
         span
           ncy-breadcrumb=''
-      .search ng-if="vmHeader.showCounter"
-        .search-user.glyphicon.glyphicon-search.btn.btn-xs (ng-class="vmHeader.searchForm ? 'active-search' : ''"
+      .div ng-if="vmHeader.showCounter"
+        .search-btn.glyphicon.glyphicon-search.btn.btn-xs (ng-class="vmHeader.searchForm ? 'active-search' : 'inactive-search'"
                                                             ng-click="vmHeader.toggleSearch()")
   .row.body-panel
     div ui-view=""
