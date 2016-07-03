@@ -1,13 +1,18 @@
 .restaurants-section
   .row.header-panel
     #content
-      ncy-breadcrumb=''
-      .btns-action
-        a.btn.btn-success.btn-sm.pull-right (ng-if="vmHeader.showNewRest"
+      .restaurants.flex-center
+        span.badge ng-if="vmHeader.onlyRests" {{vmHeader.totalRest}}
+        ncy-breadcrumb=''
+      .btns-action.flex-center
+        a.circle.btn.btn-success.btn-sm.pull-right (ng-if="vmHeader.showNewRest"
                                             ui-sref="restaurant.new()")  +
         a.btn.btn-sm (class="{{vmHeader.showForm ? 'btn-default': 'btn-success'}}"
                       ng-if="vmHeader.showNewMenu"
                       ng-click="vmHeader.toggleShow()")
                       | {{vmHeader.showForm ? 'x': '+'}}
+        .div ng-if="vmHeader.showNewRest"
+          .search-btn.glyphicon.glyphicon-search.btn.btn-xs (ng-class="vmHeader.searchForm ? 'active-search' : 'inactive-search'"
+                                                              ng-click="vmHeader.toggleSearch()")
   .row.body-panel
     .div ui-view=""

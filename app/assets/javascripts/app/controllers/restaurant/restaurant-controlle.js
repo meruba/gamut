@@ -21,6 +21,7 @@
       //update header controller values
       $scope.vmHeader.showNewRest = false;
       $scope.vmHeader.showNewMenu = false;
+      $scope.vmHeader.onlyRests = false;
     }
 
   }

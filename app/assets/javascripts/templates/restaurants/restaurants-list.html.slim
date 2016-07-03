@@ -1,13 +1,22 @@
-.col-md-6.restaurant ng-repeat=("rest in vmRest.restList")
-  .link-rest ui-sref=("restaurant.show({ restId: rest.id })")
-    .col-md-2.col-xs-4.logo
-      image-upload options="{image: rest.logo, identicon: rest.email}"
-    .col-md-10.col-xs-8.description
-      h4 {{rest.name}}
-      h5
-        i.glyphicon.glyphicon-map-marker
-        | {{rest.address}}
-      h5 Open 3am-7pm
-      h6.text-muted
-        i.glyphicon.glyphicon-time
-        | {{rest.delivery_time}}
+.search-form ng-if="vmRest.searchForm"
+  input.search-input  (type="text"
+                      ng-model="vmRest.query"
+                      ng-change="vmRest.search(vmRest.query)"
+                      ng-model-options="{debounce: 400}"
+                      placeholder="{{ ::'placeholder.search-user' | translate }}")
+div ng-if="vmRest.restList.length > 0"
+  .col-md-6.restaurant ng-repeat=("rest in vmRest.restList")
+    .link-rest ui-sref=("restaurant.show({ restId: rest.id })")
+      .col-md-2.col-xs-4.logo
+        image-upload options="{image: rest.logo, identicon: rest.email}"
+      .col-md-10.col-xs-8.description
+        h4 {{rest.name}}
+        h5
+          i.glyphicon.glyphicon-map-marker
+          | {{rest.address}}
+        h5 Open 3am-7pm
+        h6.text-muted
+          i.glyphicon.glyphicon-time
+          | {{rest.delivery_time}}
+div ng-if="vmRest.restList.length === 0"
+  .no-results ng-include="'empty-states/search-users.html'"
