@@ -9,7 +9,7 @@
     var service = {
       users: users,
       user: user,
-      searchUsers: searchUsers
+      searchUsers: searchUsers,
       restaurant: restaurant
     };
 
