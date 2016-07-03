@@ -34,6 +34,7 @@ gem 'active_model_serializers'
 gem 'slim-rails'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'searchlight'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
