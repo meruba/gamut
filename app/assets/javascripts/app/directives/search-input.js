@@ -53,13 +53,15 @@
     }
 
     function reset() {
-      vmSearch.query = '';
-      search(vmSearch.query);
+      if (vmSearch.query !== '') {
+        vmSearch.query = '';
+        search(vmSearch.query);
+      }
     }
 
     $scope.$on('_SHOW_SEARCH_',function (ev, show) {
       vmSearch.show = show;
-      if (!show && vmSearch.query.length !== 0) {
+      if (!show) {
         reset();
       }
     });
