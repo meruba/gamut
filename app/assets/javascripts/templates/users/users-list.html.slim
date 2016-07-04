@@ -1,9 +1,5 @@
-.search-form ng-if="vmUsers.searchForm"
-  input.search-input  (type="text"
-                      ng-model="vmUsers.query"
-                      ng-change="vmUsers.search(vmUsers.query)"
-                      ng-model-options="{debounce: 400}"
-                      placeholder="{{ ::'placeholder.search-user' | translate }}")
+.search-section
+  search-input options="vmUsers.optionsSearch"
 div ng-if="vmUsers.UserList.length > 0"
   .col-md-4.col-sm-6.user ng-repeat=("user in vmUsers.UserList")
     .link-user ui-sref=("user.show({ userId: user.id })")

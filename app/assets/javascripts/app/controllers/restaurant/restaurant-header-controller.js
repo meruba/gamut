@@ -27,7 +27,7 @@
 
     function toggleSearch() {
       vmHeader.searchForm = !vmHeader.searchForm;
-      $rootScope.$broadcast('_SHOW_SEARCH_RESTAURANT_',vmHeader.searchForm);
+      $rootScope.$broadcast('_SHOW_SEARCH_', vmHeader.searchForm);
     }
 
   }
