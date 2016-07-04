@@ -4,3 +4,4 @@
                       ng-change="vmSearch.search(vmSearch.query)"
                       ng-model-options="{debounce: vmSearch.debounce}"
                       placeholder="{{ ::vmSearch.placeholder | translate }}")
+  span.reset-input.glyphicon.glyphicon-remove ng-click="vmSearch.reset()"

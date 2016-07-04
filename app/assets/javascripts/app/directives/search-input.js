@@ -26,6 +26,7 @@
 
     var vmSearch = this;
     vmSearch.search = search;
+    vmSearch.reset = reset;
 
     init();
 
@@ -45,17 +46,22 @@
       }
     }
 
-    function search() {
-      vmSearch.service(vmSearch.query).then(function(resp){
+    function search(query) {
+      vmSearch.service(query).then(function(resp){
         $scope.$emit('_SEARCH_RESULTS_', resp);
       });
+    }
+
+    function reset() {
+      debugger
+      vmSearch.query = '';
+      search(vmSearch.query);
     }
 
     $scope.$on('_SHOW_SEARCH_',function (ev, show) {
       vmSearch.show = show;
       if (!show && vmSearch.query.length !== 0) {
-        vmSearch.query = '';
-        search(vmSearch.query);
+        reset();
       }
     });
 
