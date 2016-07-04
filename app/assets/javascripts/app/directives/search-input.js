@@ -53,7 +53,6 @@
     }
 
     function reset() {
-      debugger
       vmSearch.query = '';
       search(vmSearch.query);
     }
