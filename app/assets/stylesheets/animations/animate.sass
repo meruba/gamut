@@ -7,3 +7,15 @@
     color: red
   &.ng-leave
     animation: fadeOut 0.5s
+
+.search-anm
+  &.ng-enter
+    transition: .2s linear
+    max-height: 0
+    &.ng-enter-active
+      max-height: 100px
+  &.ng-leave
+    transition: .2s linear
+    max-height: 100px
+    &.ng-leave-active
+      max-height: 0

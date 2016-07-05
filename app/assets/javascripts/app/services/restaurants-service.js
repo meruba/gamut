@@ -12,6 +12,7 @@
       restaurant: restaurant,
       newRestaurant: newRestaurant,
       updateRestaurant: updateRestaurant,
+      searchRestaurant: searchRestaurant,
       menu: menu,
       categories: categories
     };
@@ -100,6 +101,19 @@
       });
     }
 
+    function searchRestaurant(query) {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/search/restaurant',
+        params: {
+          query: query
+        }
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
   }
 
 })();

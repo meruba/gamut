@@ -24,6 +24,7 @@
       };
       //update header controller values
       $scope.vmHeader.showNewRest = false;
+      $scope.vmHeader.onlyRests = false;
     }
 
 
