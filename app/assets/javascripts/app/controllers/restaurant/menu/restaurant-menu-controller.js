@@ -26,6 +26,7 @@
 
     function init() {
       vmRest.menu = restMenu.products;
+      vmRest.emptyResults = jQuery.isEmptyObject(vmRest.menu);
       vmRest.categories = categories;
       vmRest.restForm = {
         name: '',

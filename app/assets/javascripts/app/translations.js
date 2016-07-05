@@ -114,7 +114,9 @@
       },
       'empty-states':{
         'general': 'No se encontro resultados',
-        'tip-user': 'Intenta escribiendo nuevamente...'
+        'tip-user': 'Intenta escribiendo nuevamente...',
+        'menu': 'Bienvenido(a)',
+        'tip-menu': 'Puedes registrar tu menu desde el boton de la derecha'
       }
     });
 
