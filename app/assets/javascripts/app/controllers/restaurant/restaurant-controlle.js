@@ -22,6 +22,7 @@
       $scope.vmHeader.showNewRest = false;
       $scope.vmHeader.showNewMenu = false;
       $scope.vmHeader.onlyRests = false;
+      $scope.vmHeader.searchForm = false;
     }
 
   }
