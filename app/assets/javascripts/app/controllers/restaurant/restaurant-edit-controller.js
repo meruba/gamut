@@ -8,10 +8,21 @@
   function UpdateRestController(restData,
                                 $state,
                                 RestaurantService,
-                                toastr) {
+                                toastr,
+                                $scope) {
     var vmRest = this;
     vmRest.rest = restData;
     vmRest.submitForm = submitForm;
+
+    init();
+
+    function init() {
+      //update header controller values
+      $scope.vmHeader.showNewRest = false;
+      $scope.vmHeader.showNewMenu = false;
+      $scope.vmHeader.onlyRests = false;
+      $scope.vmHeader.searchForm = false;
+    }
 
     function submitForm() {
       RestaurantService.updateRestaurant(vmRest.rest).then(function(resp){

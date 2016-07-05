@@ -109,7 +109,8 @@
         'updateInfoUser': 'Actualizar información'
       },
       placeholder: {
-        'search-user': 'Nombre de usuario o identificación'
+        'search-user': 'Nombre de usuario o identificación',
+        'search-restaurant': 'Nombre del restaurante o dirección'
       },
       'empty-states':{
         'general': 'No se encontro resultados',
