@@ -212,11 +212,6 @@
             return RestaurantService.menu(id).then(function(data) {
               return data;
             });
-          },
-          categories: function (RestaurantService) {
-            return RestaurantService.categories().then(function(data) {
-              return data.categories;
-            });
           }
         },
         ncyBreadcrumb: {
