@@ -48,7 +48,7 @@
             return RestaurantService.categories()
               .then(function(data) {
                 return {
-                  categories: data.categories,
+                  categories: data,
                   item: item,
                   menu: menu
                 };

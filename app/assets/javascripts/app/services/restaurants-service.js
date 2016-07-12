@@ -5,7 +5,7 @@
     .module('app.services')
     .factory('RestaurantService', RestaurantService);
 
-  function RestaurantService($http, toastr) {
+  function RestaurantService($http, toastr, $auth) {
 
     var service = {
       restaurants: restaurants,
@@ -91,9 +91,11 @@
     }
 
     function categories() {
+      var restId = $auth.user.restaurant_id;
       return $http({
         method: 'GET',
-        url: '/api/v1/categories'
+        url: ' /api/v1/restaurants/' + restId + '/categories',
+        data: {}
       }).then(function success(res) {
         return res.data;
       }, function error(err) {

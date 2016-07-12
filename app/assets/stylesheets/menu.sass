@@ -5,6 +5,7 @@
   margin-right: -10px
   background-color: #F8F8F8
   color: #777777
+
 #all-menu
   display: flex
   flex-wrap: wrap
@@ -59,3 +60,48 @@
 @media all and (min-width: 60em)
   .menu-rest
     width: 50%
+
+.nav-tabs
+  border-bottom: 2px solid #DDD
+  > li
+    &.active
+      > a
+        border-width: 0
+        &:focus, &:hover
+          border-width: 0
+      > a
+        border: none
+        color: #4285F4 !important
+        background: transparent
+      > a::after
+        transform: scale(1)
+    > a
+      border: none
+      color: #666
+    > a
+      &:hover
+        border: none
+        color: #4285F4 !important
+        background: transparent
+      &::after
+        content: ""
+        background: #4285F4
+        height: 2px
+        position: absolute
+        width: 100%
+        left: 0px
+        bottom: -1px
+        transition: all 250ms ease 0s
+        transform: scale(0)
+    &:hover > a::after
+      transform: scale(1)
+
+.tab-nav > li > a::after
+  background: #21527d none repeat scroll 0% 0%
+  color: #fff
+
+.tab-pane
+  padding: 15px 0
+
+.tab-content
+  padding: 20px

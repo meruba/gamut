@@ -4,28 +4,44 @@
       i class="glyphicon glyphicon-cutlery"
       | {{ ::'title.menu' | translate }}
   .modal-body#body
-    .row
-      .form-group.col-md-8
-        label for="name" {{ ::'product.attributes.name' | translate }}
-        input.form-control (name="name"
-                            ng-model="vmMenu.item.name"
-                            type="text")
-      .form-group.col-md-4
-        label for="price" {{ ::'product.attributes.price' | translate }}
-        .input-group
-          input.form-control (name="price"
-                              ng-model="vmMenu.item.price"
-                              type="text")
-          .input-group-addon $
-    .form-group
-      label for="category" {{ ::'product.attributes.category' | translate }}
-      select.form-control (ng-model="vmMenu.item.category"
-                    ng-options="category.name for category in vmMenu.categories track by category.id")
-    .form-group
-      label for="description" {{ ::'product.attributes.description' | translate }}
-      textarea.form-control (name="description"
-                            ng-model="vmMenu.item.description"
-                            type="text")
+    form.tab-form-demo name="outerForm"
+      uib-tabset active="activeForm"
+        uib-tab heading=("Categoria") index="0"
+          ng-form name="nestedForm"
+            .form-group ng-if="!vmMenu.toggleShow"
+              label for="category" {{ ::'product.attributes.category' | translate }}
+              select.form-control (ng-model="vmMenu.item.category"
+                            ng-options="category.name for category in vmMenu.categories track by category.id")
+            .form-group ng-if="vmMenu.toggleShow"
+              label for="newCategory" Nueva Categoria
+              .input-group
+                input.form-control (name="newCategory"
+                                    ng-model="vmMenu.category.new"
+                                    type="text")
+                .input-group-addon ng-click="vmMenu.saveCategory()"
+                  .glyphicon.glyphicon-ok
+            .btn.btn-xs ( ng-click="vmMenu.newCategory()"
+                          class="{{ vmMenu.toggleShow ? 'btn-default' : 'btn-primary' }}")
+              | {{vmMenu.toggleShow ? 'Cancelar' : 'Nuevo'}}
+        uib-tab heading=("Datos") index="1"
+          .row
+            .form-group.col-md-8
+              label for="name" {{ ::'product.attributes.name' | translate }}
+              input.form-control (name="name"
+                                  ng-model="vmMenu.item.name"
+                                  type="text")
+            .form-group.col-md-4
+              label for="price" {{ ::'product.attributes.price' | translate }}
+              .input-group
+                input.form-control (name="price"
+                                    ng-model="vmMenu.item.price"
+                                    type="number")
+                .input-group-addon $
+          .form-group
+            label for="description" {{ ::'product.attributes.description' | translate }}
+            textarea.form-control (name="description"
+                                  ng-model="vmMenu.item.description"
+                                  type="text")
   .modal-footer#footer
     .col-md-3.col-xs-3.cancel-btn ng-click="vmMenu.cancel()" cancel
     .col-md-3.col-xs-3.save-btn ng-click="vmMenu.save()" save

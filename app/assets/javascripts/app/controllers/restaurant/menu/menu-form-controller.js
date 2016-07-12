@@ -8,6 +8,7 @@
   function MenuController(toastr,
                           menuData,
                           ProductService,
+                          CategoryService,
                           $uibModalInstance,
                           $auth,
                           $scope) {
@@ -17,6 +18,8 @@
     vmMenu.save = save;
     vmMenu.remove = remove;
     vmMenu.publicItem = publicItem;
+    vmMenu.saveCategory = saveCategory;
+    vmMenu.newCategory = newCategory;
 
     init();
 
@@ -110,6 +113,24 @@
       angular.forEach(errors, function(value, key) {
         toastr.error(value[0]);
       });
+    }
+
+    function saveCategory() {
+      var data = {
+        name: vmMenu.category.new,
+        restaurant_id: $auth.user.restaurant_id
+      }
+      CategoryService.newCategory(data).then(function (resp) {
+        if (resp.errors) {
+          errorsAlert(resp.errors);
+        }else{
+          /*pending success */
+        }
+      });
+    }
+
+    function newCategory() {
+      vmMenu.toggleShow = !vmMenu.toggleShow;
     }
 
   }

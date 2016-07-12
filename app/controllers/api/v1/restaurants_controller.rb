@@ -37,6 +37,11 @@ module Api
         respond_with(:api, :v1, @restaurant)
       end
 
+      def categories
+        @categories = Restaurant.find(params[:restaurant_id]).categories
+        respond_with(:api, :v1, @categories, root: false)
+      end
+
       private
 
       def restaurant_params
