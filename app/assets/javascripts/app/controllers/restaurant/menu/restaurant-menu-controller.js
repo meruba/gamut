@@ -17,6 +17,9 @@
     function init() {
       vmRest.menu = restMenu.products;
       vmRest.emptyResults = jQuery.isEmptyObject(vmRest.menu);
+      /*breadcrumbs name*/
+      vmRest.rest = {};
+      vmRest.rest.name = restMenu.name;
     }
 
     function newItem() {
@@ -38,7 +41,7 @@
     function configModal(item, menu) {
       var modalInstance = $uibModal.open({
         animation: true,
-        templateUrl: 'restaurants/menu/menu.html',
+        templateUrl: 'restaurants/menu/form.html',
         controller: 'MenuController as vmMenu',
         resolve: {
           menuData: function(RestaurantService) {

@@ -1,43 +1,33 @@
-.col-md-offset-2.col-md-8
-  .col-md-6
-    .form-group
-      label for="category"
-        | {{ ::'product.attributes.category' | translate }}
-      span.pull-right (class="{{vmRest.showCategory ? 'circle-default': 'circle-success'}}"
-                      ng-click="vmRest.newCategory()")
-        | {{vmRest.showCategory ? 'x': '+'}}
-      input.form-control (ng-model="vmRest.restForm.category"
-              ng-if="!vmRest.showCategory"
-              type="text"
-              placeholder="Selecciona una Categoria"
-              uib-typeahead="category as category.name for category in vmRest.categories | filter:{name:$viewValue}| limitTo:4")
-      .input-group ng-if="vmRest.showCategory"
-        input.form-control (name="name"
-                            placeholder="Ingresa nueva categoria"
-                            ng-model="vmRest.category.name"
-                            type="text")
-        .input-group-addon.btn-info
-          i.glyphicon.glyphicon-ok ng-click="vmRest.saveCategory()"
-    .form-group.row
-      .col-md-8
+.form-menu
+  .modal-header#header
+    h4
+      i class="glyphicon glyphicon-cutlery"
+      | {{ ::'title.menu' | translate }}
+  .modal-body#body
+    .row
+      .form-group.col-md-8
         label for="name" {{ ::'product.attributes.name' | translate }}
         input.form-control (name="name"
-                            ng-model="vmRest.restForm.name"
+                            ng-model="vmMenu.item.name"
                             type="text")
-      .col-md-4
+      .form-group.col-md-4
         label for="price" {{ ::'product.attributes.price' | translate }}
         .input-group
           input.form-control (name="price"
-                              ng-model="vmRest.restForm.price"
-                              placeholder="0.0"
+                              ng-model="vmMenu.item.price"
                               type="text")
           .input-group-addon $
-  .col-md-6
+    .form-group
+      label for="category" {{ ::'product.attributes.category' | translate }}
+      select.form-control (ng-model="vmMenu.item.category"
+                    ng-options="category.name for category in vmMenu.categories track by category.id")
     .form-group
       label for="description" {{ ::'product.attributes.description' | translate }}
       textarea.form-control (name="description"
-                            ng-model="vmRest.restForm.description"
-                            rows="3"
+                            ng-model="vmMenu.item.description"
                             type="text")
-    .btn.btn-info.btn-xs.pull-right ng-click="vmRest.saveForm()"
-                                    | {{ ::'action.save' | translate }}
+  .modal-footer#footer
+    .col-md-3.col-xs-3.cancel-btn ng-click="vmMenu.cancel()" cancel
+    .col-md-3.col-xs-3.save-btn ng-click="vmMenu.save()" save
+    .col-md-3.col-xs-3.save-btn ng-click="vmMenu.publicItem(vmMenu.item)" public
+    .col-md-3.col-xs-3.save-btn ng-click="vmMenu.remove(vmMenu.item)" remove

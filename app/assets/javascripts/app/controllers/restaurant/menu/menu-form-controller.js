@@ -43,10 +43,8 @@
       };
       var key  = vmMenu.editItem ? 'update' : 'new';
       var service = action[key];
-
       vmMenu.item.restaurant_id =  $auth.user.restaurant_id
       vmMenu.item.category_id = vmMenu.item.category.id;
-
       service(vmMenu.item).then(function(product){
         if (product.errors) {
           errorsAlert(product.errors);
@@ -78,8 +76,8 @@
     function updateItem(item) {
       var menu  = menuData.menu;
       var itemOld  = menuData.item;
+      menu[itemOld.category.name].splice(itemOld.position, 1);
       if (menu.hasOwnProperty(item.category.name) ) {
-        menu[itemOld.category.name].splice(itemOld.position, 1);
         menu[item.category.name].push(item);
       }else{
         menu[item.category.name] = [item];

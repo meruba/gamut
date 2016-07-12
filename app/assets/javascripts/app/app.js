@@ -215,7 +215,8 @@
           }
         },
         ncyBreadcrumb: {
-          label: 'Menú'
+          label: 'Menú',
+          parent: 'restaurant.show'
         }
       });
     $urlRouterProvider.otherwise('/login');
