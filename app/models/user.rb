@@ -30,6 +30,7 @@
 #  address                :string
 #  telephone              :string
 #  role                   :string           default("customer"), not null
+#  has_account            :boolean          default("true")
 #
 
 class User < ActiveRecord::Base
@@ -51,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   begin :relationships
-    has_one :restaurant
+    has_one :restaurant, dependent: :destroy
   end
 
 end

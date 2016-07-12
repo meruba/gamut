@@ -48,7 +48,8 @@ module Api
                                           :email,
                                           :delivery_time,
                                           :open_time,
-                                          :close_time
+                                          :close_time,
+                                          :user_id
                                           )
       end
     end

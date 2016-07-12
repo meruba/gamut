@@ -27,8 +27,9 @@ class Restaurant < ActiveRecord::Base
   mount_uploader :logo, ImageUploader
 
   begin :relationships
-    belongs_to :user, dependent: :destroy
-    has_many :products
+    belongs_to :user
+    has_many :products, dependent: :destroy
+    has_many :categories, dependent: :destroy
   end
 
   begin :callbacks
