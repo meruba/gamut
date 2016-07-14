@@ -20,6 +20,7 @@
     vmMenu.publicItem = publicItem;
     vmMenu.saveCategory = saveCategory;
     vmMenu.newCategory = newCategory;
+    vmMenu.selectCategory = selectCategory;
 
     init();
 
@@ -27,8 +28,20 @@
       var itemCache = angular.copy(menuData.item);
       vmMenu.categories = menuData.categories;
       vmMenu.item = itemCache;
-      vmMenu.item.category = itemCache.category;
       vmMenu.editItem = itemCache.editItem ? itemCache.editItem : false;
+      configCategory(vmMenu.item);
+    }
+
+    function configCategory(item) {
+      if (item.hasOwnProperty('category')) {
+        vmMenu.categories.find(function(c){
+          if(c.id === item.category.id){
+            c.selected = true;
+            vmMenu.selectedCategory = c;
+            return;
+          }
+        });
+      }
     }
 
     function ok() {
@@ -54,6 +67,7 @@
         }else{
           refreshMenu(product, key);
           cancel();
+          menuData.callback();
         }
       });
     }
@@ -79,7 +93,7 @@
     function updateItem(item) {
       var menu  = menuData.menu;
       var itemOld  = menuData.item;
-      menu[itemOld.category.name].splice(itemOld.position, 1);
+      updateRemove(itemOld);
       if (menu.hasOwnProperty(item.category.name) ) {
         menu[item.category.name].push(item);
       }else{
@@ -104,9 +118,18 @@
           errorsAlert(resp.errors);
         }else{
           menuData.item.removed = true;
+          updateRemove(item);
           cancel();
         }
       });
+    }
+
+    function updateRemove(item) {
+      menuData.menu[item.category.name].splice(item.position, 1);
+      if (menuData.menu[item.category.name].length === 0) {
+        delete menuData.menu[item.category.name];
+      }
+      menuData.callback();
     }
 
     function errorsAlert(errors) {
@@ -114,6 +137,8 @@
         toastr.error(value[0]);
       });
     }
+
+    /*Category methods*/
 
     function saveCategory() {
       var data = {
@@ -131,6 +156,17 @@
 
     function newCategory() {
       vmMenu.toggleShow = !vmMenu.toggleShow;
+    }
+
+    function selectCategory(category) {
+      if (vmMenu.selectedCategory) {
+        vmMenu.selectedCategory.selected = false;
+      }
+      /*save scope content*/
+      vmMenu.selectedCategory = category;
+      vmMenu.item.category = vmMenu.selectedCategory;
+      /*add class new content selected*/
+      category.selected = true;
     }
 
   }

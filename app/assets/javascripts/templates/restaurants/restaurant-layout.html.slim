@@ -8,7 +8,7 @@
         a.circle.btn.btn-success.btn-sm.pull-right (ng-if="vmHeader.showNewRest"
                                                     ui-sref="restaurant.new()")  +
         a.circle.btn.btn-sm.btn-success ( ng-if="vmHeader.showNewMenu"
-                                          ng-click="vmHeader.toggleShow()")
+                                          ng-click="vmHeader.newItem()")
                                             | +
         .div ng-if="vmHeader.showNewRest"
           .search-btn.glyphicon.glyphicon-search.btn.btn-xs ( ng-class="vmHeader.searchForm ? 'active-search' : 'inactive-search'"

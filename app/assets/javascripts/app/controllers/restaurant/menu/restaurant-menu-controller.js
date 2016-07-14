@@ -6,7 +6,8 @@
     .controller('MenuRestController', MenuRestController);
 
   function MenuRestController(restMenu,
-                              $uibModal) {
+                              $uibModal,
+                              $scope) {
 
     var vmRest = this;
     vmRest.newItem = newItem;
@@ -50,13 +51,22 @@
                 return {
                   categories: data,
                   item: item,
-                  menu: menu
+                  menu: menu,
+                  callback: successItem
                 };
             });
           }
         }
       });
     }
+
+    function successItem() {
+      vmRest.emptyResults = jQuery.isEmptyObject(vmRest.menu);
+    }
+
+    $scope.$on('_NEW_ITEM_', function (ev) {
+      newItem();
+    });
 
   }
 

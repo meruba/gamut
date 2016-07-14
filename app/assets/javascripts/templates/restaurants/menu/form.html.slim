@@ -1,28 +1,10 @@
 .form-menu
-  .modal-header#header
-    h4
-      i class="glyphicon glyphicon-cutlery"
-      | {{ ::'title.menu' | translate }}
   .modal-body#body
     form.tab-form-demo name="outerForm"
       uib-tabset active="activeForm"
         uib-tab heading=("Categoria") index="0"
           ng-form name="nestedForm"
-            .form-group ng-if="!vmMenu.toggleShow"
-              label for="category" {{ ::'product.attributes.category' | translate }}
-              select.form-control (ng-model="vmMenu.item.category"
-                            ng-options="category.name for category in vmMenu.categories track by category.id")
-            .form-group ng-if="vmMenu.toggleShow"
-              label for="newCategory" Nueva Categoria
-              .input-group
-                input.form-control (name="newCategory"
-                                    ng-model="vmMenu.category.new"
-                                    type="text")
-                .input-group-addon ng-click="vmMenu.saveCategory()"
-                  .glyphicon.glyphicon-ok
-            .btn.btn-xs ( ng-click="vmMenu.newCategory()"
-                          class="{{ vmMenu.toggleShow ? 'btn-default' : 'btn-primary' }}")
-              | {{vmMenu.toggleShow ? 'Cancelar' : 'Nuevo'}}
+            div ng-include="'restaurants/menu/categories.html'"
         uib-tab heading=("Datos") index="1"
           .row
             .form-group.col-md-8
@@ -43,7 +25,12 @@
                                   ng-model="vmMenu.item.description"
                                   type="text")
   .modal-footer#footer
-    .col-md-3.col-xs-3.cancel-btn ng-click="vmMenu.cancel()" cancel
-    .col-md-3.col-xs-3.save-btn ng-click="vmMenu.save()" save
-    .col-md-3.col-xs-3.save-btn ng-click="vmMenu.publicItem(vmMenu.item)" public
-    .col-md-3.col-xs-3.save-btn ng-click="vmMenu.remove(vmMenu.item)" remove
+    .col-md-6.col-xs-6.text-left.options
+      span.text-danger.btn.btn-xs (  ng-if="vmMenu.item.editItem"
+                                      ng-click="vmMenu.remove(vmMenu.item)" )
+        i.glyphicon.glyphicon-trash
+      span.text-success.btn.btn-xs ( ng-if="vmMenu.item.editItem"
+                                      ng-click="vmMenu.publicItem(vmMenu.item)")
+        i.glyphicon class="{{ vmMenu.item.public ? 'glyphicon-thumbs-down':'glyphicon-thumbs-up' }}"
+    .col-md-6.col-xs-6
+      .btn.btn-success ng-click="vmMenu.save()" Guardar

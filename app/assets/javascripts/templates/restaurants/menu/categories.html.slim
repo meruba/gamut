@@ -1,0 +1,22 @@
+.categories-container
+  .category-selected
+    h4.text-center {{vmMenu.selectedCategory.name}}
+    h4.text-center.text-muted ng-if="!vmMenu.selectedCategory"
+      | Seleccione una categoria
+  .row
+    .category-container.col-md-3.col-xs-6 ng-repeat="category in vmMenu.categories"
+      .category(  ng-click=" vmMenu.selectCategory(category) "
+                  ng-class=" category.selected ? 'selected' : '' ")
+        span {{category.name}}
+  .row
+    .btn.circle.pull-right (  ng-click="vmMenu.newCategory()"
+                          class="{{ vmMenu.toggleShow ? 'btn-default' : 'btn-primary' }}")
+      | {{ vmMenu.toggleShow ? 'x' : '+' }}
+  .form-group ng-if="vmMenu.toggleShow"
+    label for="newCategory" Nueva Categoria
+    .input-group
+      input.form-control (name="newCategory"
+                          ng-model="vmMenu.category.new"
+                          type="text")
+      .input-group-addon ng-click="vmMenu.saveCategory()"
+        .glyphicon.glyphicon-ok

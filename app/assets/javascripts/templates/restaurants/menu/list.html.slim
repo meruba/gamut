@@ -1,5 +1,3 @@
-.btn.btn-success ng-click="vmRest.newItem()" nuevo
-.row ng-if="vmRest.emptyResults"
-  .no-results ng-include="'empty-states/restaurant/menu.html'"
 .row
+  .no-results ng-if="vmRest.emptyResults" ng-include="'empty-states/restaurant/menu.html'"
   div#all-menu ng-include="'restaurants/menu/items.html'"

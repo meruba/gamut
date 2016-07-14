@@ -12,7 +12,7 @@
     vmHeader.searchForm = false;
     vmHeader.totalRest = 0;
     vmHeader.toggleSearch = toggleSearch;
-    vmHeader.toggleShow = toggleShow
+    vmHeader.newItem = newItem
 
     init();
 
@@ -21,8 +21,8 @@
       vmHeader.showNewRest = ($state.current.name === 'restaurant.list');
     }
 
-    function toggleShow() {
-      vmHeader.showForm = !vmHeader.showForm;
+    function newItem() {
+      $rootScope.$broadcast('_NEW_ITEM_');
     }
 
     function toggleSearch() {
