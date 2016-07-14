@@ -18,6 +18,8 @@
     function init() {
       vmRest.menu = restMenu.products;
       vmRest.emptyResults = jQuery.isEmptyObject(vmRest.menu);
+      /*update header controller values*/
+      $scope.vmHeader.showNewMenu = true;
       /*breadcrumbs name*/
       vmRest.rest = {};
       vmRest.rest.name = restMenu.name;
