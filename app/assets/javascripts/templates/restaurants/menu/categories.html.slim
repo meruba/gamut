@@ -1,19 +1,26 @@
-.categories-container
+.categories-container ng-if="vmMenu.categories.length > 0"
   .category-selected
-    h4.text-center {{vmMenu.selectedCategory.name}}
-    h4.text-center.text-muted ng-if="!vmMenu.selectedCategory"
-      | Seleccione una categoria
-  .row
+    h4.text-center.text-muted
+      | {{vmMenu.selectedCategory ? vmMenu.selectedCategory.name : 'Seleccione una categoria'}}
+      span.pull-right.clickleable ng-click="vmMenu.newCategory()" {{ vmMenu.toggleShow ? 'x' : '+' }}
+  .row.categories
     .category-container.col-md-3.col-xs-6 ng-repeat="category in vmMenu.categories"
       .category(  ng-click=" vmMenu.selectCategory(category) "
                   ng-class=" category.selected ? 'selected' : '' ")
         span {{category.name}}
-  .row
-    .btn.circle.pull-right (  ng-click="vmMenu.newCategory()"
-                          class="{{ vmMenu.toggleShow ? 'btn-default' : 'btn-primary' }}")
-      | {{ vmMenu.toggleShow ? 'x' : '+' }}
   .form-group ng-if="vmMenu.toggleShow"
     label for="newCategory" Nueva Categoria
+    .input-group
+      input.form-control (name="newCategory"
+                          ng-model="vmMenu.category.new"
+                          type="text")
+      .input-group-addon ng-click="vmMenu.saveCategory()"
+        .glyphicon.glyphicon-ok
+
+.empty-categories.text-center ng-if="vmMenu.categories.length === 0"
+  .glyphicon.glyphicon-cutlery.glyphicon-2x
+  h5.text-center.text-muted Vamos a crear una categoria
+  .form-group
     .input-group
       input.form-control (name="newCategory"
                           ng-model="vmMenu.category.new"

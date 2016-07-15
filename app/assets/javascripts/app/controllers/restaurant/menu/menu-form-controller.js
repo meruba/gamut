@@ -60,7 +60,7 @@
       var key  = vmMenu.editItem ? 'update' : 'new';
       var service = action[key];
       vmMenu.item.restaurant_id =  $auth.user.restaurant_id
-      vmMenu.item.category_id = vmMenu.item.category.id;
+      vmMenu.item.category_id = vmMenu.item.category ?  vmMenu.item.category.id : vmMenu.selectedCategory.id ;
       service(vmMenu.item).then(function(product){
         if (product.errors) {
           errorsAlert(product.errors);
@@ -145,13 +145,24 @@
         name: vmMenu.category.new,
         restaurant_id: $auth.user.restaurant_id
       }
-      CategoryService.newCategory(data).then(function (resp) {
-        if (resp.errors) {
-          errorsAlert(resp.errors);
+      CategoryService.newCategory(data).then(function (category) {
+        if (category.errors) {
+          errorsAlert(category.errors);
         }else{
-          /*pending success */
+          successCategory(category);
         }
       });
+    }
+
+    function successCategory(category) {
+      console.log(category);
+      category.selected = true;
+      if (vmMenu.selectedCategory) {
+        vmMenu.selectedCategory.selected = false;
+      }
+      vmMenu.selectedCategory = category;
+      vmMenu.categories.push(category);
+      vmMenu.toggleShow = false;
     }
 
     function newCategory() {

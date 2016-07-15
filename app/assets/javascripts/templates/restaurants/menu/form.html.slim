@@ -33,4 +33,6 @@
                                       ng-click="vmMenu.publicItem(vmMenu.item)")
         i.glyphicon class="{{ vmMenu.item.public ? 'glyphicon-thumbs-down':'glyphicon-thumbs-up' }}"
     .col-md-6.col-xs-6
-      .btn.btn-success ng-click="vmMenu.save()" Guardar
+      button.btn.btn-success (ng-disabled="!vmMenu.selectedCategory"
+                              ng-click="vmMenu.save()")
+        | Guardar
