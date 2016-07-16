@@ -39,6 +39,7 @@
         vmMenu.categories.find(function(c){
           if(c.id === item.category.id){
             c.selected = true;
+            vmMenu.nameCategory = c.name;
             vmMenu.selectedCategory = c;
             return;
           }
