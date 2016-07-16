@@ -27,4 +27,5 @@
 //= require jquery
 //= require bootstrap
 //= require ng-file-upload
+//= require ng-focus-if
 //= require_tree .

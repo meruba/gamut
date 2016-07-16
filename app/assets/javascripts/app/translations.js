@@ -110,7 +110,9 @@
       },
       placeholder: {
         'search-user': 'Nombre de usuario o identificación',
-        'search-restaurant': 'Nombre del restaurante o dirección'
+        'search-restaurant': 'Nombre del restaurante o dirección',
+        'new-category': 'Ingrese una categoria',
+        'select-category': 'Seleccione una categoria'
       },
       'empty-states':{
         'general': 'No se encontro resultados',

@@ -19,15 +19,17 @@
     vmMenu.remove = remove;
     vmMenu.publicItem = publicItem;
     vmMenu.saveCategory = saveCategory;
-    vmMenu.newCategory = newCategory;
     vmMenu.selectCategory = selectCategory;
+    vmMenu.newCategory = newCategory;
 
     init();
 
     function init() {
       var itemCache = angular.copy(menuData.item);
-      vmMenu.categories = menuData.categories;
       vmMenu.item = itemCache;
+      vmMenu.categories = menuData.categories;
+      vmMenu.activeCategory = !vmMenu.categories.length > 0;;
+      vmMenu.actionCategory = vmMenu.activeCategory;
       vmMenu.editItem = itemCache.editItem ? itemCache.editItem : false;
       configCategory(vmMenu.item);
     }
@@ -60,7 +62,8 @@
       var key  = vmMenu.editItem ? 'update' : 'new';
       var service = action[key];
       vmMenu.item.restaurant_id =  $auth.user.restaurant_id
-      vmMenu.item.category_id = vmMenu.item.category ?  vmMenu.item.category.id : vmMenu.selectedCategory.id ;
+      vmMenu.item.category_id = vmMenu.item.category ?
+                                vmMenu.item.category.id : vmMenu.selectedCategory.id;
       service(vmMenu.item).then(function(product){
         if (product.errors) {
           errorsAlert(product.errors);
@@ -142,7 +145,7 @@
 
     function saveCategory() {
       var data = {
-        name: vmMenu.category.new,
+        name: vmMenu.nameCategory,
         restaurant_id: $auth.user.restaurant_id
       }
       CategoryService.newCategory(data).then(function (category) {
@@ -155,29 +158,31 @@
     }
 
     function successCategory(category) {
-      console.log(category);
       category.selected = true;
       if (vmMenu.selectedCategory) {
         vmMenu.selectedCategory.selected = false;
       }
       vmMenu.selectedCategory = category;
       vmMenu.categories.push(category);
-      vmMenu.toggleShow = false;
-    }
-
-    function newCategory() {
-      vmMenu.toggleShow = !vmMenu.toggleShow;
+      vmMenu.activeCategory = false;
     }
 
     function selectCategory(category) {
       if (vmMenu.selectedCategory) {
         vmMenu.selectedCategory.selected = false;
       }
-      /*save scope content*/
       vmMenu.selectedCategory = category;
       vmMenu.item.category = vmMenu.selectedCategory;
-      /*add class new content selected*/
       category.selected = true;
+      vmMenu.nameCategory = category.name;
+      vmMenu.activeCategory = false;
+    }
+
+    function newCategory() {
+      vmMenu.activeCategory = !vmMenu.activeCategory;
+      vmMenu.actionCategory = vmMenu.activeCategory; //true = new Category
+      vmMenu.nameCategory = (!vmMenu.activeCategory && vmMenu.selectedCategory) ?
+                              vmMenu.selectedCategory.name : '';
     }
 
   }

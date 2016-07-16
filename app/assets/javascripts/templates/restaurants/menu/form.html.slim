@@ -35,4 +35,4 @@
     .col-md-6.col-xs-6
       button.btn.btn-success (ng-disabled="!vmMenu.selectedCategory"
                               ng-click="vmMenu.save()")
-        | Guardar
+        | {{ 'action.' + (vmMenu.editItem ? 'update' : 'save') | translate }}
