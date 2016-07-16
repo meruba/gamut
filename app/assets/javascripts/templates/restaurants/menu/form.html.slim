@@ -1,43 +1,38 @@
-.col-md-offset-2.col-md-8
-  .col-md-6
-    .form-group
-      label for="category"
-        | {{ ::'product.attributes.category' | translate }}
-      span.pull-right (class="{{vmRest.showCategory ? 'circle-default': 'circle-success'}}"
-                      ng-click="vmRest.newCategory()")
-        | {{vmRest.showCategory ? 'x': '+'}}
-      input.form-control (ng-model="vmRest.restForm.category"
-              ng-if="!vmRest.showCategory"
-              type="text"
-              placeholder="Selecciona una Categoria"
-              uib-typeahead="category as category.name for category in vmRest.categories | filter:{name:$viewValue}| limitTo:4")
-      .input-group ng-if="vmRest.showCategory"
-        input.form-control (name="name"
-                            placeholder="Ingresa nueva categoria"
-                            ng-model="vmRest.category.name"
-                            type="text")
-        .input-group-addon.btn-info
-          i.glyphicon.glyphicon-ok ng-click="vmRest.saveCategory()"
-    .form-group.row
-      .col-md-8
-        label for="name" {{ ::'product.attributes.name' | translate }}
-        input.form-control (name="name"
-                            ng-model="vmRest.restForm.name"
-                            type="text")
-      .col-md-4
-        label for="price" {{ ::'product.attributes.price' | translate }}
-        .input-group
-          input.form-control (name="price"
-                              ng-model="vmRest.restForm.price"
-                              placeholder="0.0"
-                              type="text")
-          .input-group-addon $
-  .col-md-6
-    .form-group
-      label for="description" {{ ::'product.attributes.description' | translate }}
-      textarea.form-control (name="description"
-                            ng-model="vmRest.restForm.description"
-                            rows="3"
-                            type="text")
-    .btn.btn-info.btn-xs.pull-right ng-click="vmRest.saveForm()"
-                                    | {{ ::'action.save' | translate }}
+.form-menu
+  .modal-body#body
+    form.tab-form-demo name="outerForm"
+      uib-tabset active="activeForm"
+        uib-tab heading=("Categoria") index="0"
+          ng-form name="nestedForm"
+            div ng-include="'restaurants/menu/categories.html'"
+        uib-tab heading=("Datos") index="1"
+          .row
+            .form-group.col-md-8
+              label for="name" {{ ::'product.attributes.name' | translate }}
+              input.form-control (name="name"
+                                  ng-model="vmMenu.item.name"
+                                  type="text")
+            .form-group.col-md-4
+              label for="price" {{ ::'product.attributes.price' | translate }}
+              .input-group
+                input.form-control (name="price"
+                                    ng-model="vmMenu.item.price"
+                                    type="number")
+                .input-group-addon $
+          .form-group
+            label for="description" {{ ::'product.attributes.description' | translate }}
+            textarea.form-control (name="description"
+                                  ng-model="vmMenu.item.description"
+                                  type="text")
+  .modal-footer#footer
+    .col-md-6.col-xs-6.text-left.options
+      span.text-danger.btn.btn-xs (  ng-if="vmMenu.item.editItem"
+                                      ng-click="vmMenu.remove(vmMenu.item)" )
+        i.glyphicon.glyphicon-trash
+      span.text-success.btn.btn-xs ( ng-if="vmMenu.item.editItem"
+                                      ng-click="vmMenu.publicItem(vmMenu.item)")
+        i.glyphicon class="{{ vmMenu.item.public ? 'glyphicon-thumbs-down':'glyphicon-thumbs-up' }}"
+    .col-md-6.col-xs-6
+      button.btn.btn-success (ng-disabled="!vmMenu.selectedCategory"
+                              ng-click="vmMenu.save()")
+        | {{ 'action.' + (vmMenu.editItem ? 'update' : 'save') | translate }}

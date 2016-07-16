@@ -13,6 +13,7 @@
     'templates',
     'ng-token-auth',
     'ngFileUpload',
+    'focus-if',
     'ngAnimate',
     'toastr'
   ])
@@ -136,7 +137,12 @@
               .catch(function(response) {
                 $state.go('login');
               })
-          }]
+          }],
+          actions: function() {
+            return {
+              newItem: function(){}
+            };
+          }
         },
         ncyBreadcrumb: {
           skip: true
@@ -212,15 +218,11 @@
             return RestaurantService.menu(id).then(function(data) {
               return data;
             });
-          },
-          categories: function (RestaurantService) {
-            return RestaurantService.categories().then(function(data) {
-              return data.categories;
-            });
           }
         },
         ncyBreadcrumb: {
-          label: 'Menú'
+          label: 'Menú',
+          parent: 'restaurant.show'
         }
       });
     $urlRouterProvider.otherwise('/login');

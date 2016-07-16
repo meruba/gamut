@@ -27,7 +27,7 @@ module Api
       private
 
       def category_params
-        params.require(:category).permit(:id, :name)
+        params.require(:category).permit(:id, :name, :restaurant_id)
       end
 
     end

@@ -1,0 +1,15 @@
+.categories-container
+  .category-selected
+    input.new-category (ng-enter="vmMenu.saveCategory()"
+                        ng-model="vmMenu.nameCategory"
+                        ng-disabled="!vmMenu.activeCategory"
+                        focus-if="vmMenu.activeCategory"
+                        placeholder="{{ 'placeholder.' + (vmMenu.actionCategory ? 'new-category' : 'select-category') | translate }}")
+    span.clickleable.action-btn ( ng-if="vmMenu.categories.length > 0"
+                                  ng-click="vmMenu.newCategory()")
+      | {{vmMenu.activeCategory ? 'x' : '+'}}
+  .row.categories
+    .category-container.col-md-3.col-xs-6 ng-repeat="category in vmMenu.categories"
+      .category ( ng-click=" vmMenu.selectCategory(category) "
+                  ng-class=" category.selected ? 'selected' : '' ")
+        span {{category.name}}
