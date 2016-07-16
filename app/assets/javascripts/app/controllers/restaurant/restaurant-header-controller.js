@@ -6,7 +6,8 @@
     .controller('HeaderRestController', HeaderRestController);
 
   function HeaderRestController($state,
-                                $rootScope) {
+                                $rootScope,
+                                actions) {
 
     var vmHeader = this;
     vmHeader.searchForm = false;
@@ -22,7 +23,8 @@
     }
 
     function newItem() {
-      $rootScope.$broadcast('_NEW_ITEM_');
+      /*comunicate header and menu*/
+      actions.newItem();
     }
 
     function toggleSearch() {

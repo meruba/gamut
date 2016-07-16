@@ -137,7 +137,12 @@
               .catch(function(response) {
                 $state.go('login');
               })
-          }]
+          }],
+          actions: function() {
+            return {
+              newItem: function(){}
+            };
+          }
         },
         ncyBreadcrumb: {
           skip: true

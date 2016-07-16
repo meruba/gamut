@@ -7,11 +7,13 @@
 
   function MenuRestController(restMenu,
                               $uibModal,
-                              $scope) {
-
+                              $scope,
+                              actions) {
     var vmRest = this;
     vmRest.newItem = newItem;
     vmRest.editItem = editItem;
+    actions.newItem = newItem;
+
 
     init();
 
@@ -65,10 +67,6 @@
     function successItem() {
       vmRest.emptyResults = jQuery.isEmptyObject(vmRest.menu);
     }
-
-    $scope.$on('_NEW_ITEM_', function (ev) {
-      newItem();
-    });
 
   }
 
