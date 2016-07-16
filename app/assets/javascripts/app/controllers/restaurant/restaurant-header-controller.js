@@ -6,13 +6,14 @@
     .controller('HeaderRestController', HeaderRestController);
 
   function HeaderRestController($state,
-                                $rootScope) {
+                                $rootScope,
+                                actions) {
 
     var vmHeader = this;
     vmHeader.searchForm = false;
     vmHeader.totalRest = 0;
     vmHeader.toggleSearch = toggleSearch;
-    vmHeader.toggleShow = toggleShow
+    vmHeader.newItem = newItem
 
     init();
 
@@ -21,8 +22,9 @@
       vmHeader.showNewRest = ($state.current.name === 'restaurant.list');
     }
 
-    function toggleShow() {
-      vmHeader.showForm = !vmHeader.showForm;
+    function newItem() {
+      /*comunicate header and menu*/
+      actions.newItem();
     }
 
     function toggleSearch() {

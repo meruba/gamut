@@ -17,7 +17,7 @@
 class Product < ActiveRecord::Base
 
   begin :relationships
-    belongs_to :restaurant, dependent: :destroy
+    belongs_to :restaurant
     belongs_to :category
   end
 

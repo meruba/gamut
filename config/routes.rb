@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :restaurants do
         get "menu"
         post "upload_image"
+        get "categories"
       end
 
       resources :categories

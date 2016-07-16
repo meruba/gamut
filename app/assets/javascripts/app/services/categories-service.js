@@ -32,7 +32,8 @@
         method: 'POST',
         url: '/api/v1/categories',
         data:{
-          name: params.name
+          name: params.name,
+          restaurant_id: params.restaurant_id
         }
       }).then(function success(res) {
         toastr.success('Almacenado Exitosamente!', 'Categoria');

@@ -110,11 +110,15 @@
       },
       placeholder: {
         'search-user': 'Nombre de usuario o identificación',
-        'search-restaurant': 'Nombre del restaurante o dirección'
+        'search-restaurant': 'Nombre del restaurante o dirección',
+        'new-category': 'Ingrese una categoria',
+        'select-category': 'Seleccione una categoria'
       },
       'empty-states':{
         'general': 'No se encontro resultados',
-        'tip-user': 'Intenta escribiendo nuevamente...'
+        'tip-user': 'Intenta escribiendo nuevamente...',
+        'menu': 'Bienvenido(a)',
+        'tip-menu': 'Puedes registrar tu menu desde el boton de la derecha'
       }
     });
 

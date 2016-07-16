@@ -6,13 +6,12 @@
         ncy-breadcrumb=''
       .btns-action.flex-center
         a.circle.btn.btn-success.btn-sm.pull-right (ng-if="vmHeader.showNewRest"
-                                            ui-sref="restaurant.new()")  +
-        a.circle.btn.btn-sm (class="{{vmHeader.showForm ? 'btn-default': 'btn-success'}}"
-                            ng-if="vmHeader.showNewMenu"
-                            ng-click="vmHeader.toggleShow()")
-                            | {{vmHeader.showForm ? 'x': '+'}}
+                                                    ui-sref="restaurant.new()")  +
+        a.circle.btn.btn-sm.btn-success ( ng-if="vmHeader.showNewMenu"
+                                          ng-click="vmHeader.newItem()")
+                                            | +
         .div ng-if="vmHeader.showNewRest"
-          .search-btn.glyphicon.glyphicon-search.btn.btn-xs (ng-class="vmHeader.searchForm ? 'active-search' : 'inactive-search'"
+          .search-btn.glyphicon.glyphicon-search.btn.btn-xs ( ng-class="vmHeader.searchForm ? 'active-search' : 'inactive-search'"
                                                               ng-click="vmHeader.toggleSearch()")
   .row.body-panel
     .div ui-view=""
