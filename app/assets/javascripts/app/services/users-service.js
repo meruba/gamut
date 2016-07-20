@@ -10,7 +10,8 @@
       users: users,
       user: user,
       searchUsers: searchUsers,
-      restaurant: restaurant
+      restaurant: restaurant,
+      activeUser: activeUser
     };
 
     return service;
@@ -55,6 +56,17 @@
       return $http({
         method: 'GET',
         url: '/api/v1/users/' + id + '/restaurant'
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
+
+    function activeUser(id) {
+      return $http({
+        method: 'POST',
+        url: '/api/v1/users/' + id + '/active'
       }).then(function success(res) {
         return res.data;
       }, function error(err) {

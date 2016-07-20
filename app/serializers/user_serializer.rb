@@ -11,7 +11,8 @@ class UserSerializer < ActiveModel::Serializer
              :uid,
              :provider,
              :restaurant_id,
-             :image
+             :image,
+             :is_active
 
   def image
     object.image.url

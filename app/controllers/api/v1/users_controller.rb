@@ -31,6 +31,12 @@ module Api
         respond_with(:api, :v1, @user)
       end
 
+      def active
+        @user = User.find(params[:user_id])
+        @user.toggle! :is_active
+        respond_with(:api, :v1, @user)
+      end
+
       private
 
       def user_params
@@ -38,7 +44,8 @@ module Api
                                       :email,
                                       :username,
                                       :image,
-                                      :role
+                                      :role,
+                                      :is_active
                                     )
       end
 

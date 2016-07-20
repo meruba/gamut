@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
       resources :users do
         post "upload_image"
+        post "active"
       end
 
       get "search/user"

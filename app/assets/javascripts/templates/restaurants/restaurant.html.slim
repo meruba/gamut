@@ -34,3 +34,10 @@
           label {{ ::'restaurant.attributes.open_close_time' | translate }}
           h5.text-muted
             | {{vmRest.rest.open_time}} - {{vmRest.rest.close_time}}
+      .row ng-if="user.role === 'admin'"
+        .col-md-6
+          i.glyphicon class="{{ vmRest.rest.user_active ? 'glyphicon-thumbs-up' : 'glyphicon-thumbs-down' }}"
+          label {{ ::'restaurant.attributes.account' | translate }}
+          br
+          a.btn.btn-link ng-click="vmRest.toggleAccount()"
+            | {{vmRest.rest.user_active ? 'Desabilitar' : 'Habilitar'}}

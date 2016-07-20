@@ -58,14 +58,15 @@
         attributes: {
           owner: 'Representante',
           name: 'Nombre del local',
-          email: 'Correo',
+          email: 'Correo del restaurante',
           logo: 'Logo',
           address: 'Dirección',
           telephone: 'Teléfono',
           delivery_time: 'Tiempo de envio',
           open_time: 'Hora de apertura',
           close_time: 'Hora de cierre',
-          open_close_time: 'Horario de atención'
+          open_close_time: 'Horario de atención',
+          account: 'Cuenta'
         },
         progress: 'Información %'
       },
