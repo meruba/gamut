@@ -10,7 +10,7 @@
       restrict: 'EA',
       templateUrl: 'directives/search-input/search-input.html',
       scope: {
-        options: '='
+        options: '=',
       },
       controller: searchController,
       controllerAs: 'vmSearch',
@@ -35,6 +35,7 @@
       vmSearch.query = vmSearch.options.query || '';
       vmSearch.debounce = vmSearch.options.debounce || 400;
       vmSearch.service = vmSearch.options.service;
+      vmSearch.results = vmSearch.options.results;
       placeholder(vmSearch.options.placeholder);
     }
 
@@ -48,7 +49,7 @@
 
     function search(query) {
       vmSearch.service(query).then(function(resp){
-        $scope.$emit('_SEARCH_RESULTS_', resp);
+        vmSearch.results(resp);
       });
     }
 

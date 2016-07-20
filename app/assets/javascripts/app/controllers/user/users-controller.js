@@ -16,7 +16,8 @@
       vmUsers.UserList = usersData.users;
       vmUsers.optionsSearch = {
         service: UserService.searchUsers,
-        placeholder: 'search-user'
+        placeholder: 'search-user',
+        results: searchResults
       };
       //update counter header
       $scope.vmHeader.totalUsers = vmUsers.UserList.length;
@@ -24,10 +25,10 @@
       $scope.vmHeader.showCounter = true;
     }
 
-    $scope.$on('_SEARCH_RESULTS_',function (ev, data) {
+    function searchResults(data) {
       vmUsers.UserList = data.search;
       $scope.vmHeader.totalRest = data.meta.count;
-    });
+    }
 
   }
 
