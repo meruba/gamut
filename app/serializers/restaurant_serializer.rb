@@ -11,9 +11,19 @@ class RestaurantSerializer < ActiveModel::Serializer
               :open_time,
               :close_time,
               :user_id,
-              :products
+              :user_active,
+              :products,
 
   def logo
     object.logo.url
   end
+
+  def owner
+    object.user.name
+  end
+
+  def user_active
+    object.user.is_active
+  end
+
 end
