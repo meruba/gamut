@@ -30,7 +30,7 @@
 #  address                :string
 #  telephone              :string
 #  role                   :string           default("customer"), not null
-#  has_account            :boolean          default("true")
+#  is_active              :boolean          default("true")
 #
 
 class User < ActiveRecord::Base
@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
 
   begin :relationships
     has_one :restaurant, dependent: :destroy
+  end
+
+  def active_for_authentication?
+    super and self.is_active?
   end
 
 end

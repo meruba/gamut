@@ -6,8 +6,11 @@
     .controller('RestaurantController', RestaurantController);
 
   function RestaurantController(restData,
-                                $scope) {
+                                UserService,
+                                $scope,
+                                toastr) {
     var vmRest = this;
+    vmRest.toggleAccount = toggleAccount;
 
     init();
 
@@ -23,6 +26,21 @@
       $scope.vmHeader.showNewMenu = false;
       $scope.vmHeader.onlyRests = false;
       $scope.vmHeader.searchForm = false;
+    }
+
+    function toggleAccount() {
+      UserService.activeUser(vmRest.rest.user_id).then(function(user){
+        if (user.errors) {
+          angular.forEach(resp.errors, function(value, key) {
+            toastr.error(value[0]);
+          });
+        }else{
+          var typeAlert = user.is_active ? 'info' : 'warning';
+          var message = user.is_active ? 'Ha sido activado' : 'Ha sido deshabilitado';
+          toastr[typeAlert](message,'Usuario');
+          vmRest.rest.user_active = user.is_active;
+        }
+      });
     }
 
   }

@@ -40,7 +40,7 @@ class Restaurant < ActiveRecord::Base
   private
 
   def create_account
-    user = User.new(name: self.owner,
+    user = User.new(name: self.name,
                     email: self.email,
                     password: '12345678',
                     role: 'restaurant')
