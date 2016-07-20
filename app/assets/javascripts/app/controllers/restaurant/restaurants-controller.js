@@ -16,7 +16,8 @@
       vmRest.restList = restData.restaurants;
       vmRest.optionsSearch = {
         service: RestaurantService.searchRestaurant,
-        placeholder: 'search-restaurant'
+        placeholder: 'search-restaurant',
+        results: searchResults
       };
       //update header controller values
       $scope.vmHeader.showNewRest = true;
@@ -24,10 +25,10 @@
       $scope.vmHeader.onlyRests = true;
     }
 
-    $scope.$on('_SEARCH_RESULTS_',function (ev, data) {
+    function searchResults(data) {
       vmRest.restList = data.search;
       $scope.vmHeader.totalRest = data.meta.count;
-    });
+    }
 
   }
 
