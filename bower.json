@@ -20,7 +20,8 @@
       "angular-breadcrumb": "0.4.1",
       "ng-file-upload": "11.0.2",
       "animate.css": "3.5.1",
-      "ng-focus-if": "1.0.7"
+      "ng-focus-if": "1.0.7",
+      "moment": "2.14.1"
     }
   }
 }

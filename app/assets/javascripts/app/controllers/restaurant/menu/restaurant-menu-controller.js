@@ -68,6 +68,39 @@
       vmRest.emptyResults = jQuery.isEmptyObject(vmRest.menu);
     }
 
+
+
+    vmRest.mytime = new Date();
+
+    vmRest.hstep = 1;
+    vmRest.mstep = 15;
+
+    vmRest.options = {
+      hstep: [1, 2, 3],
+      mstep: [1, 5, 10, 15, 25, 30]
+    };
+
+    vmRest.ismeridian = true;
+
+    vmRest.toggleMode = function() {
+      vmRest.ismeridian = ! vmRest.ismeridian;
+    };
+
+    vmRest.update = function() {
+      var d = new Date();
+      d.setHours( 14 );
+      d.setMinutes( 0 );
+      vmRest.mytime = d;
+    };
+
+    // vmRest.changed = function () {
+    //   $log.log('Time changed to: ' + vmRest.mytime);
+    // };
+
+    vmRest.clear = function() {
+      vmRest.mytime = null;
+    };
+
   }
 
 })();

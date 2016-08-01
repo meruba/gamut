@@ -1,0 +1,10 @@
+.time-container
+  .input-time.select-time 00
+  .input-time.select-mins 00
+  .input-time.select-interval ng-click="tp.toggleTime()" {{tp.selectPeriod}}
+
+span ng-repeat="hour in tp.hours track by $index"
+  span {{hour}}
+
+span ng-repeat="min in tp.mins track by $index"
+  span {{min}}
