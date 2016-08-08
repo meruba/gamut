@@ -87,7 +87,6 @@
     }
 
     function userSelected(user) {
-      console.log(user);
       oc.userForm = user;
     }
   }
