@@ -31,7 +31,7 @@
     init();
 
     function init(){
-      vmSearch.show = false;
+      vmSearch.show = vmSearch.options.show ? vmSearch.options.show : false;
       vmSearch.query = vmSearch.options.query || '';
       vmSearch.debounce = vmSearch.options.debounce || 400;
       vmSearch.service = vmSearch.options.service;

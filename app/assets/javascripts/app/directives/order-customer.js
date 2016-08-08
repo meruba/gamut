@@ -38,6 +38,10 @@
     function init() {
       oc.restaurants = oc.data || {};
       oc.itemsSelected = [];
+      oc.userForm = {};
+      oc.optionsSearch = {
+        selected: userSelected
+      }
     }
 
     function selectRest(rest, index) {
@@ -80,6 +84,11 @@
 
     function sendFields(data) {
       $rootScope.$broadcast('_ORDER_FIELDS', data);
+    }
+
+    function userSelected(user) {
+      console.log(user);
+      oc.userForm = user;
     }
   }
 

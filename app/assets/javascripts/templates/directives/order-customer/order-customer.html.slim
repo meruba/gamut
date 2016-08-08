@@ -1,48 +1,49 @@
 .form-container
   .info-user
     .title-step-1
-      h3 1. Informacion del Cliente
+      h3
+        | 1. Informacion del Cliente
+        span.clickleable.pull-right
+          search-backdrop options="oc.optionsSearch"
     .form-user
-      form (ng-init="userForm = {}"
-            ng-submit="oc.registerUser(userForm)"
-            role="form")
+      .form
         .flex-50
           .form-group.col-md-6
             label for="name" {{ ::'user.attributes.name' | translate }}
             input#name.form-control (name="name"
-                                    ng-model="userForm.name"
+                                    ng-model="oc.userForm.name"
                                     required="required"
                                     type="text")
           .form-group.col-md-6
             label for="identification" {{ ::'user.attributes.identification' | translate }}
             input#identification.form-control (name="identification"
-                                              ng-model="userForm.identification"
+                                              ng-model="oc.userForm.identification"
                                               required="required"
                                               type="text")
         .flex-100
           .form-group.col-md-12
             label for="address" {{ ::'user.attributes.address' | translate }}
             input#address.form-control (name="address"
-                                        ng-model="userForm.address"
+                                        ng-model="oc.userForm.address"
                                         required="required"
                                         type="text")
         .flex-50
           .form-group.col-md-6
             label for="telephone" {{ ::'user.attributes.telephone' | translate }}
             input#telephone.form-control (name="telephone"
-                                          ng-model="userForm.telephone"
+                                          ng-model="oc.userForm.telephone"
                                           type="text")
           .form-group.col-md-6
             label for="email" {{ ::'login.email' | translate }}
             input#email.form-control (name="email"
-                                      ng-model="userForm.email"
+                                      ng-model="oc.userForm.email"
                                       required="required"
                                       type="email")
                                       .flex-100
         .form-group.col-md-12
           label for="address" Direccion de envio
           input#address.form-control (name="address"
-                                      ng-model="userForm.address"
+                                      ng-model="oc.order.address"
                                       required="required"
                                       type="text")
   .info-restaurant
