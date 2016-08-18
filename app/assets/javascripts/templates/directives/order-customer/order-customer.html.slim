@@ -1,71 +1,98 @@
-.form-container
-  .info-user
-    .title-step-1
-      h3
-        | 1. Informacion del Cliente
-        span.clickleable.pull-right
-          search-backdrop options="oc.optionsSearch"
-    .form-user
-      .form
-        .flex-50
-          .form-group.col-md-6
-            label for="name" {{ ::'user.attributes.name' | translate }}
-            input#name.form-control (name="name"
-                                    ng-model="oc.userForm.name"
-                                    required="required"
-                                    type="text")
-          .form-group.col-md-6
-            label for="identification" {{ ::'user.attributes.identification' | translate }}
-            input#identification.form-control (name="identification"
-                                              ng-model="oc.userForm.identification"
-                                              required="required"
-                                              type="text")
-        .flex-100
-          .form-group.col-md-12
-            label for="address" {{ ::'user.attributes.address' | translate }}
-            input#address.form-control (name="address"
-                                        ng-model="oc.userForm.address"
+.order-container
+  #form.col-md-8
+    .form-container
+      .info-user
+        .title-step-1
+          h3
+            | 1. Informacion del Cliente
+            span.clickleable.pull-right
+              search-backdrop options="oc.optionsSearch"
+        .form-user
+          .form
+            .flex-50
+              .form-group.col-md-6
+                label for="name" {{ ::'user.attributes.name' | translate }}
+                input#name.form-control (name="name"
+                                        ng-model="oc.userForm.name"
                                         required="required"
                                         type="text")
-        .flex-50
-          .form-group.col-md-6
-            label for="telephone" {{ ::'user.attributes.telephone' | translate }}
-            input#telephone.form-control (name="telephone"
-                                          ng-model="oc.userForm.telephone"
+              .form-group.col-md-6
+                label for="identification" {{ ::'user.attributes.identification' | translate }}
+                input#identification.form-control (name="identification"
+                                                  ng-model="oc.userForm.identification"
+                                                  required="required"
+                                                  type="text")
+            .flex-100
+              .form-group.col-md-12
+                label for="address" {{ ::'user.attributes.address' | translate }}
+                input#address.form-control (name="address"
+                                            ng-model="oc.userForm.address"
+                                            required="required"
+                                            type="text")
+            .flex-50
+              .form-group.col-md-6
+                label for="telephone" {{ ::'user.attributes.telephone' | translate }}
+                input#telephone.form-control (name="telephone"
+                                              ng-model="oc.userForm.telephone"
+                                              type="text")
+              .form-group.col-md-6
+                label for="email" {{ ::'login.email' | translate }}
+                input#email.form-control (name="email"
+                                          ng-model="oc.userForm.email"
+                                          required="required"
+                                          type="email")
+                                          .flex-100
+            .form-group.col-md-12
+              label for="address" Direccion de envio
+              input#address.form-control (name="address"
+                                          ng-model="oc.order.address"
+                                          required="required"
                                           type="text")
-          .form-group.col-md-6
-            label for="email" {{ ::'login.email' | translate }}
-            input#email.form-control (name="email"
-                                      ng-model="oc.userForm.email"
-                                      required="required"
-                                      type="email")
-                                      .flex-100
-        .form-group.col-md-12
-          label for="address" Direccion de envio
-          input#address.form-control (name="address"
-                                      ng-model="oc.order.address"
-                                      required="required"
-                                      type="text")
-  .info-restaurant
-    .title-step-2
-      h3 2. Seleccione un restaurante
-    .row-gls.restaurants
-      .rest-container.col-md-4 (ng-repeat="rest in oc.restaurants"
-                                ng-if="!oc.showHeader")
-        .item (ng-click="oc.selectRest(rest, $index)"
-              ng-class="rest.selected ? 'rest-selected' : ''")
-          h4 {{rest.name}}
-      .rest-header ng-if="oc.showHeader"
-        .item-header.rest-selected ng-click="oc.showRestaurants()"
-          h4 {{oc.selectedRest.name}}
-    .row-gls.products
-      .col-md-6.list-anm.product (ng-repeat="menu in oc.menu"
-                                  ng-if="!menu.removed || !menu.public"
-                                  ng-click="oc.addProduct(menu)"
-                                  ng-class="menu.selected ? 'menu-selected' : ''")
-        #details
+      .info-restaurant
+        .title-step-2
+          h3 2. Seleccione un restaurante
+        .row-gls.restaurants
+          .rest-container.col-md-4 (ng-repeat="rest in oc.restaurants"
+                                    ng-if="!oc.showHeader")
+            .item (ng-click="oc.selectRest(rest, $index)"
+                  ng-class="rest.selected ? 'rest-selected' : ''")
+              h4 {{rest.name}}
+          .rest-header ng-if="oc.showHeader"
+            .item-header.rest-selected ng-click="oc.showRestaurants()"
+              h4 {{oc.selectedRest.name}}
+        .row-gls.products
+          .col-md-6.list-anm.product (ng-repeat="menu in oc.menu"
+                                      ng-if="!menu.removed || !menu.public"
+                                      ng-click="oc.addProduct(menu)"
+                                      ng-class="menu.selected ? 'menu-selected' : ''")
+            #details
+              h5
+                | {{menu.name}}
+                span.price.pull-right
+                  | ${{menu.price}}
+              .text-muted {{menu.description}}
+
+  #order.col-md-4
+    h4.text-center Tu Pedido
+    .products
+      .row.item-selected.list-anm ng-repeat="item in oc.itemsSelected"
+        .col-md-3.col-xs-3
+          input.form-control (type="number"
+                              ng-init="item.value = 1"
+                              ng-model="item.value"
+                              ng-change="oc.calculate(item)")
+        .col-md-9.col-xs-9
           h5
-            | {{menu.name}}
+            | {{item.name}}
             span.price.pull-right
-              | ${{menu.price}}
-          .text-muted {{menu.description}}
+              | ${{item.totalItem || item.price }}
+    .taxs
+      .delivery-price
+        h4 Precio de envio
+        input.form-control (type="number"
+                            min="0"
+                            ng-model="oc.deliveryPrice"
+                            ng-change="oc.sumValues()")
+      .totalOrder
+        h4 Total: ${{oc.totalOrder}}
+    button.btn.btn-danger.btn-block Checkout

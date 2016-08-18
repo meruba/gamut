@@ -31,6 +31,9 @@
     oc.selectRest = selectRest;
     oc.showRestaurants = showRestaurants;
     oc.addProduct = addProduct;
+    oc.calculate = calculate;
+    oc.sumValues = sumValues;
+
     oc.load = true;
 
     init();
@@ -39,6 +42,8 @@
       oc.restaurants = oc.data || {};
       oc.itemsSelected = [];
       oc.userForm = {};
+      oc.totalOrder = 0;
+      oc.deliveryPrice = 0;
       oc.optionsSearch = {
         selected: userSelected
       }
@@ -68,7 +73,7 @@
         menu.selected = false;
       });
       oc.itemsSelected = [];
-      sendFields(oc.itemsSelected);
+      oc.totalOrder = 0;
     }
 
     function addProduct(menu) {
@@ -79,16 +84,32 @@
         var index = oc.itemsSelected.indexOf(menu);
         oc.itemsSelected.splice(index, 1);
       }
-      sendFields(oc.itemsSelected);
-    }
-
-    function sendFields(data) {
-      $rootScope.$broadcast('_ORDER_FIELDS', data);
+      sumValues();
     }
 
     function userSelected(user) {
       oc.userForm = user;
     }
+
+    //checkout form
+    function calculate(item) {
+      item.value = item.value || 1;
+      item.totalItem = item.value * item.price;
+      /*round 2 decimal*/
+      item.totalItem = Math.round(item.totalItem * 100) / 100;
+      sumValues();
+    }
+
+    function sumValues() {
+      oc.totalOrder = 0;
+      angular.forEach(oc.itemsSelected, function(item) {
+        oc.totalOrder = oc.totalOrder + (item.totalItem || item.price) ;
+      });
+      /*round 2 decimal*/
+      oc.totalOrder = oc.totalOrder + oc.deliveryPrice;
+      oc.totalOrder = Math.round(oc.totalOrder * 100) / 100;
+    }
+
   }
 
 })();
