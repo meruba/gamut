@@ -228,7 +228,7 @@
       .state('order', {
         url: '/order',
         templateUrl: 'orders/order-layout.html',
-        redirectTo: 'order.new',
+        redirectTo: 'order.list',
         resolve: {
           auth: ['$auth', '$state', function($auth, $state) {
             return $auth.validateUser()
@@ -245,6 +245,13 @@
         url: '/list',
         templateUrl: 'orders/orders-list.html',
         controller: 'OrdersController as vmOrders',
+        resolve: {
+          ordersData: function (OrderService) {
+            return OrderService.lastOrders().then(function(data) {
+              return data;
+            });
+          }
+        },
         ncyBreadcrumb: {
           label: 'Pedidos'
         }
