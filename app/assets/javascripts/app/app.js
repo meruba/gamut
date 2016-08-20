@@ -258,7 +258,22 @@
       })
       .state('order.new', {
         url: '/new',
-        templateUrl: 'orders/orders-new.html',
+        templateUrl: 'orders/order-new.html',
+        controller: 'OrderNewController as vmOrder',
+        resolve: {
+          restData: function (RestaurantService) {
+            return RestaurantService.restaurants().then(function(data) {
+              return data;
+            });
+          }
+        },
+        ncyBreadcrumb: {
+          label: 'Nuevo'
+        }
+      })
+      .state('order.custom', {
+        url: '/custom',
+        templateUrl: 'orders/order-custom.html',
         controller: 'OrderNewController as vmOrder',
         resolve: {
           restData: function (RestaurantService) {
