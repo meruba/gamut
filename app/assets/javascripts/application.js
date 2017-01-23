@@ -13,6 +13,7 @@
 //= require angular
 //= require angular-rails-templates
 //= require angular-ui-router
+//= require angular-animate
 //= require angular-resource
 //= require angular-cookie
 //= require angular-bootstrap
@@ -26,4 +27,5 @@
 //= require jquery
 //= require bootstrap
 //= require ng-file-upload
+//= require ng-focus-if
 //= require_tree .

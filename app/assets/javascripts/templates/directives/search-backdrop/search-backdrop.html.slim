@@ -1,0 +1,18 @@
+span ng-if="sb.label" ng-click="sb.openSearch()" {{sb.label}}
+.search-btn.glyphicon.glyphicon-search.btn.btn-xs ng-if="!sb.label" ng-click="sb.openSearch()"
+.container-search ng-if="sb.fullDisplay"
+  .background-search
+  .container-center
+    .close-dialog
+      .action ng-click="sb.close()"
+        .fa.fa-times.icon
+        | Cerrar
+    search-input options="sb.optionsSearch"
+    .results
+      .row.result(ng-repeat="result in sb.results"
+                  ng-click="sb.selectedResult(result)")
+        .letter-name
+          span {{result.name.charAt(0)}}
+        .info-customer
+          h4 {{result.name}}
+          h5.text-muted {{result.identification}}

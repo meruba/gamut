@@ -1,0 +1,8 @@
+.order-form-container
+  #form.col-md-8
+    .form-container
+      .step1 ng-include="'directives/order-customer/partials/user-form.html'"
+      .step2 ng-include="'directives/order-customer/partials/restaurant-select.html'"
+
+  #order.col-md-4
+    .step3 ng-include="'directives/order-customer/partials/checkout.html'"

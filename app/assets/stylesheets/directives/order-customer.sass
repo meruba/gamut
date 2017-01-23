@@ -1,0 +1,63 @@
+.order-form-container
+  .form-container
+    .info-user
+      .title-step-1
+      .form-user
+    .info-restaurant
+      .title-step-2
+      .restaurants
+        .rest-container
+          padding: 15px 5px 5px 10px
+          .item
+            display: flex
+            align-items: center
+            justify-content: center
+            background-color: #d62831
+            color: white
+            border-radius: 5px
+            height: 60px
+            cursor: pointer
+            // &:hover
+            //   background-color: #e57373
+          .rest-selected
+            background-color: #6d6c69
+        .rest-header
+          .item-header
+            background-color: #6d6c69
+            display: flex
+            align-items: center
+            justify-content: center
+            color: white
+            border-radius: 5px
+            height: 60px
+            cursor: pointer
+      .products
+        .product
+          min-height: 80px
+          border: 1px solid #e7e7e7
+          margin: -1px 0 0 -1px
+          &:hover
+            cursor: pointer
+            background-color: #F7F8FA
+        .menu-selected
+          background-color: #e8e8e8
+          border: 1px solid white
+          z-index: 1
+
+  #order
+    .products
+      .item-selected
+        margin-bottom: 10px
+        h5
+          font-weight: 300
+          span
+            font-weight: bold
+    .taxs
+      border-top: 1px dashed #e7e7e7
+      padding-top: 10px
+      .delivery-price
+        display: flex
+        h4
+          flex-basis: 80%
+        input
+          flex-basis: 20%

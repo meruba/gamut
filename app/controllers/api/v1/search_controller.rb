@@ -7,6 +7,17 @@ module Api
         @users = UserSearch.new(q: params[:query]).results
         respond_with(:api, :v1, @users, meta: {count: @users.count})
       end
+
+      def restaurant
+        @restaurant = RestaurantSearch.new(q: params[:query]).results
+        respond_with(:api, :v1, @restaurant, meta: {count: @restaurant.count})
+      end
+
+      def customer
+        @users = CustomerSearch.new(q: params[:query]).results.limit(5)
+        respond_with(:api, :v1, @users)
+      end
+      
     end
   end
 end

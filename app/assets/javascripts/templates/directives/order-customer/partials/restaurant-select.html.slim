@@ -1,0 +1,23 @@
+.info-restaurant
+  .title-step-2
+    h3 2. Seleccione un restaurante
+  .row-gls.restaurants
+    .rest-container.col-md-4 (ng-repeat="rest in oc.restaurants"
+                              ng-if="!oc.showHeader")
+      .item (ng-click="oc.selectRest(rest, $index)"
+            ng-class="rest.selected ? 'rest-selected' : ''")
+        h4 {{rest.name}}
+    .rest-header ng-if="oc.showHeader"
+      .item-header.rest-selected ng-click="oc.showRestaurants()"
+        h4 {{oc.selectedRest.name}}
+  .row-gls.products
+    .col-md-6.list-anm.product (ng-repeat="menu in oc.menu"
+                                ng-if="!menu.removed || !menu.public"
+                                ng-click="oc.addProduct(menu)"
+                                ng-class="menu.selected ? 'menu-selected' : ''")
+      #details
+        h5
+          | {{menu.name}}
+          span.price.pull-right
+            | ${{menu.price}}
+        .text-muted {{menu.description}}

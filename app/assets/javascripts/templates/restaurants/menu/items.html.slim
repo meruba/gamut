@@ -1,0 +1,14 @@
+.menu-rest.col-md-6 ( ng-repeat="(key, value) in vmRest.menu"
+                      ng-if="value.length > 0")
+  #content
+    h4 {{key}}
+    ul.list-menu
+      li.list-anm ( ng-repeat="item in value"
+                    ng-if="!item.removed"
+                    ng-class="{unpublic: !item.public, selected: item.selected}"
+                    ng-click="vmRest.editItem(item, key, $index)")
+        #title
+          | {{item.name}}
+          span.price.pull-right
+            | $ {{item.price}}
+        .text-muted {{item.description}}

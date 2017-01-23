@@ -1,0 +1,137 @@
+#all-menu
+  display: flex
+  flex-wrap: wrap
+  padding: 10px
+  padding-top: 20px
+  .menu-rest
+    h4
+      background-color: #FF4430
+      color: white
+      padding: 10px
+      margin: 0px
+    .list-menu
+      padding: 0px
+      li
+        list-style: none
+        min-height: 50px
+        padding: 10px
+        border-bottom: 1px solid #e7e7e7
+        .price
+          font-weight: bold
+        &:hover
+          background-color: #F8F8F8
+          cursor: pointer
+      li.selected
+        background-color: #F8F8F8
+      li.unpublic
+        #title
+          text-decoration: line-through
+      .btns-options
+        text-align: right
+        display: block
+        .btn
+          border-radius: 50%
+          background-color: #e7e7e7
+        .btn#edit
+          &:hover
+            background-color: #F6BB42
+            color: white
+        .btn#remove
+          &:hover
+            background-color: #DA4453
+            color: white
+        .btn#active
+          &:hover
+            background-color: #8CC152
+            color: white
+
+@media all and (min-width: 20em)
+  .menu-rest
+    width: 100%
+
+@media all and (min-width: 60em)
+  .menu-rest
+    width: 50%
+
+.nav-tabs
+  border-bottom: 2px solid #DDD
+  > li
+    &.active
+      > a
+        border-width: 0
+        &:focus, &:hover
+          border-width: 0
+      > a
+        border: none
+        color: #4285F4 !important
+        background: transparent
+      > a::after
+        transform: scale(1)
+    > a
+      border: none
+      color: #666
+    > a
+      &:hover
+        border: none
+        color: #4285F4 !important
+        background: transparent
+      &::after
+        content: ""
+        background: #4285F4
+        height: 2px
+        position: absolute
+        width: 100%
+        left: 0px
+        bottom: -1px
+        transition: all 250ms ease 0s
+        transform: scale(0)
+    &:hover > a::after
+      transform: scale(1)
+
+.tab-nav > li > a::after
+  background: #21527d none repeat scroll 0% 0%
+  color: #fff
+
+.tab-content
+  padding: 15px
+
+.categories-container
+  .category-selected
+    position: relative
+    .new-category
+      border: 0
+      border-bottom: 1.2px solid #acacac
+      border-radius: 0
+      width: 100%
+      padding-left: 15px
+      font-size: 20px
+      text-align: center
+      transition: border-color ease-in-out .15s
+      &:focus
+        border-color: #66afe9
+        outline: 0
+        box-shadow: none
+    .action-btn
+      right: 0.1em
+      top: -10px
+      position: absolute
+      padding: 5px
+      font-size: 25px
+  .categories
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    margin-top: 10px
+  .category-container
+    padding: 10px 5px 5px 10px
+    .category
+      background-color: #6d6c69
+      display: flex
+      align-items: center
+      justify-content: center
+      color: white
+      border-radius: 5px
+      height: 30px
+      cursor: pointer
+    .selected
+      background-color: #d62831

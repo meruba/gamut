@@ -1,0 +1,8 @@
+.search-form.search-anm ng-if="vmSearch.show"
+  input.search-input  (type="text"
+                      ng-model="vmSearch.query"
+                      ng-change="vmSearch.search(vmSearch.query)"
+                      ng-model-options="{debounce: vmSearch.debounce}"
+                      placeholder="{{ ::vmSearch.placeholder | translate }}"
+                      focus-if)
+  span.reset-input.glyphicon.glyphicon-remove ng-click="vmSearch.reset()"

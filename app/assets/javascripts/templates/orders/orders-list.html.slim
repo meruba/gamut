@@ -1,0 +1,9 @@
+h3.text-center Ultimos Pedidos
+.orders-container
+  .col-md-4.col-sm-6.order ng-repeat=("order in vmOrders.orders")
+    .link-order
+      h4.title
+        | Pedido # {{order.id}}
+        span.pull-right.fa.fa-circle.text-info
+      .user-info
+        | {{order.user_name}}

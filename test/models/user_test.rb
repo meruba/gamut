@@ -30,6 +30,8 @@
 #  address                :string
 #  telephone              :string
 #  role                   :string           default("customer"), not null
+#  is_active              :boolean          default("true")
+#  has_account            :boolean          default("true")
 #
 
 require 'test_helper'

@@ -11,10 +11,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514213101) do
+ActiveRecord::Schema.define(version: 20160717223922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "restaurant_id"
+  end
+
+  add_index "categories", ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
+
+  create_table "item_orders", force: :cascade do |t|
+    t.integer  "quantity"
+    t.float    "unit_value"
+    t.float    "discount"
+    t.float    "total"
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "item_orders", ["order_id"], name: "index_item_orders_on_order_id", using: :btree
+  add_index "item_orders", ["product_id"], name: "index_item_orders_on_product_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.float    "total",          null: false
+    t.float    "price_delivery", null: false
+    t.string   "address",        null: false
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "restaurant_id"
+  end
+
+  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",                          null: false
+    t.float    "price",                         null: false
+    t.string   "description"
+    t.integer  "category_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "public",        default: true
+    t.boolean  "removed",       default: false
+  end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+  add_index "products", ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name",          null: false
+    t.string   "logo"
+    t.string   "telephone",     null: false
+    t.string   "address",       null: false
+    t.string   "email",         null: false
+    t.string   "delivery_time"
+    t.datetime "open_time"
+    t.datetime "close_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.string   "owner"
+  end
+
+  add_index "restaurants", ["user_id"], name: "index_restaurants_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email",    null: false
@@ -44,6 +112,8 @@ ActiveRecord::Schema.define(version: 20160514213101) do
     t.string   "address"
     t.string   "telephone"
     t.string   "role",                   default: "customer", null: false
+    t.boolean  "has_account",            default: true
+    t.boolean  "is_active",              default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

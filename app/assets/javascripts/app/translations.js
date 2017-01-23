@@ -29,6 +29,9 @@
       menu: {
         menu: 'Menú',
         users: 'Usuarios',
+        restaurants: 'Restaurantes',
+        restaurant: 'Mi Restaurante',
+        menu_rest: 'Mi Menu',
         logout: 'Salir'
       },
       user: {
@@ -49,6 +52,32 @@
         },
         progress: 'Información %'
       },
+      restaurant: {
+        restaurant: 'Restaurante',
+        restaurants: 'Restaurantes',
+        attributes: {
+          owner: 'Representante',
+          name: 'Nombre del local',
+          email: 'Correo del restaurante',
+          logo: 'Logo',
+          address: 'Dirección',
+          telephone: 'Teléfono',
+          delivery_time: 'Tiempo de envio',
+          open_time: 'Hora de apertura',
+          close_time: 'Hora de cierre',
+          open_close_time: 'Horario de atención',
+          account: 'Cuenta'
+        },
+        progress: 'Información %'
+      },
+      product: {
+        attributes:{
+          name: 'Nombre',
+          category: 'Categoria',
+          price: 'Precio',
+          description: 'Description'
+        }
+      },
       dashboard: {
         welcome: 'Bienvenido'
       },
@@ -65,20 +94,32 @@
         'signup': 'Registrarse'
       },
       title: {
-        'user-list': 'Usuarios'
+        'user-list': 'Usuarios',
+        'restaurant-list': 'Restaurantes',
+        'restaurant-menu': 'Mi Menú',
+        'menu': 'Agregar menu'
       },
       action: {
-        save: 'Guardar',
-        update: 'Actualizar',
-        uploadImage: 'Actualizar imagen',
-        updateInfoUser: 'Actualizar información'
+        'save': 'Guardar',
+        'update': 'Actualizar',
+        'new': 'Nuevo',
+        'edit': 'Editar',
+        'cancel': 'Cancelar',
+        'add': 'Agregar',
+        'uploadImage': 'Actualizar imagen',
+        'updateInfoUser': 'Actualizar información'
       },
       placeholder: {
-        'search-user': 'Nombre de usuario o identificación'
+        'search-user': 'Nombre de usuario o identificación',
+        'search-restaurant': 'Nombre del restaurante o dirección',
+        'new-category': 'Ingrese una categoria',
+        'select-category': 'Seleccione una categoria'
       },
       'empty-states':{
         'general': 'No se encontro resultados',
-        'tip-user': 'Intenta escribiendo nuevamente...'
+        'tip-user': 'Intenta escribiendo nuevamente...',
+        'menu': 'Bienvenido(a)',
+        'tip-menu': 'Puedes registrar tu menu desde el boton de la derecha'
       }
     });
 

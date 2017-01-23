@@ -1,0 +1,35 @@
+.row.step-1
+  .options
+    #option (ng-click="vmStep.step1.selectOption(1)")
+      .container-icon (class="{{ vmStep.step1.option === 1 ? 'selected' : ''}}")
+        span
+          i.fa (class="{{ vmStep.step1.option === 1 ? 'fa-check-circle-o' : 'fa-circle-o'}}")
+          | Buscar Usuario
+    #option (ng-click="vmStep.step1.selectOption(2)")
+      .container-icon (class="{{ vmStep.step1.option === 2 ? 'selected' : ''}}")
+        span
+          i.fa (class="{{ vmStep.step1.option === 2 ? 'fa-check-circle-o' : 'fa-circle-o'}}")
+          | Nuevo Usuario
+  .container-selected.row ng-if="!vmStep.step1.hideForm"
+    .col-md-6.col-md-offset-3
+      #search (ng-if="vmStep.step1.option === 1"
+              ng-include="'directives/order-form-steps/steps/1/partials/search-user-order.html'")
+      #new-user (ng-if="vmStep.step1.option === 2"
+                ng-include="'directives/order-form-steps/steps/1/partials/new-user-order.html'")
+  .user-selected ng-if="vmStep.step1.selectedUser"
+    .user
+      .letter-name
+        span {{vmStep.step1.selectedUser.name.charAt(0)}}
+      .info-user
+        h5
+          strong {{ ::'user.attributes.name' | translate }}:
+          |  {{vmStep.step1.selectedUser.name}}
+        h5
+          strong {{ ::'user.attributes.address' | translate }}:
+          |  {{vmStep.step1.selectedUser.address}}
+        h5
+          strong {{ ::'user.attributes.identification' | translate }}:
+          |  {{vmStep.step1.selectedUser.identification}}
+        h5
+          strong {{ ::'user.attributes.telephone' | translate }}:
+          |  {{vmStep.step1.selectedUser.telephone}}
