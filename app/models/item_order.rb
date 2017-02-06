@@ -16,7 +16,7 @@
 class ItemOrder < ActiveRecord::Base
 
   begin :relationships
-    belongs_to :factura
+    belongs_to :order
     belongs_to :product
   end
 

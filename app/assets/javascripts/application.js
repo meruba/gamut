@@ -28,4 +28,5 @@
 //= require bootstrap
 //= require ng-file-upload
 //= require ng-focus-if
+//= require angular-messages
 //= require_tree .
