@@ -50,6 +50,7 @@ group :development, :test do
   gem 'byebug'
   gem 'annotate'
   gem 'pry-rails'
+  gem 'rails-erd'
 end
 
 group :development do
