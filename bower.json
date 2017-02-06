@@ -21,7 +21,8 @@
       "ng-file-upload": "11.0.2",
       "animate.css": "3.5.1",
       "ng-focus-if": "1.0.7",
-      "font-awesome": "4.6.3"
+      "font-awesome": "4.6.3",
+      "angular-messages": "1.5.3"
     }
   }
 }

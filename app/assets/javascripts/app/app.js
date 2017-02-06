@@ -15,7 +15,8 @@
     'ngFileUpload',
     'focus-if',
     'ngAnimate',
-    'toastr'
+    'toastr',
+    'ngMessages'
   ])
 
   .config(function ($stateProvider,
