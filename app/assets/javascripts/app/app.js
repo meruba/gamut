@@ -34,11 +34,11 @@
         url: '/logut',
         controller: 'AuthController'
       })
-      .state('register', {
-        url: '/register',
-        templateUrl: 'users/register.html',
-        controller: 'RegistrationController'
-      })
+      // .state('register', {
+      //   url: '/register',
+      //   templateUrl: 'users/register.html',
+      //   controller: 'RegistrationController'
+      // })
       .state('home', {
         url: '/',
         templateUrl: 'home.html',
@@ -286,6 +286,33 @@
         ncyBreadcrumb: {
           label: 'Nuevo'
         }
+      })
+      .state('app', {
+        url: '/app',
+        abstract: true,
+        template: '<ui-view/>'
+      })
+      .state('app.asistent', {
+        url: '/asistent',
+        abstract: true,
+        template: '<ui-view/>',
+        resolve: {
+          auth: ['$auth', '$state', function($auth, $state) {
+            return $auth.validateUser()
+              .catch(function(response) {
+                $state.go('login');
+              })
+          }]
+        }
+      })
+      .state('app.asistent.users', {
+        url: '/user',
+        template: '<ui-view/>'
+      })
+      .state('app.asistent.users.list', {
+        url: '/list',
+        templateUrl: 'asistent/users/list.html',
+        controller: 'UserList as vm'
       });
     $urlRouterProvider.otherwise('/login');
   });
