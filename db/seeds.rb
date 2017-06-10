@@ -21,3 +21,11 @@ unless User.exists?(role: "restaurant")
   User.create!(name: "Tom Riddle", email: email, password: password, role: "customer")
   puts "New user restaurant credentials: email: #{email} password: #{password}"
 end
+
+unless User.exists?(role: "asistent")
+  # create customer if there's no customer
+  email = "asistent@example.com"
+  password = "12345678"
+  User.create!(name: "Asistent test", email: email, password: password, role: "asistent")
+  puts "New user asistent credentials: email: #{email} password: #{password}"
+end

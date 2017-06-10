@@ -1,0 +1,27 @@
+#gls-navbar.collapse.navbar-collapse
+  ul.nav.navbar-nav
+    li ui-sref-active="active"
+      a ui-sref="home"  Home
+    li ui-sref-active="active"
+      a ui-sref="user"
+        | {{ ::'menu.users' | translate }}
+    li ui-sref-active="active"
+      a (ui-sref="order")
+        | Pedido
+  ul.nav.navbar-nav.navbar-right
+    li.dropdown
+      a.dropdown-toggle (aria-expanded="false"
+                        aria-haspopup="true"
+                        data-toggle="dropdown"
+                        href=""
+                        role="button")
+        identicon size="20" username="user.email"
+        span.caret
+      ul.dropdown-menu
+        li
+          a ui-sref=("user.edit({userId: user.id})")
+            | {{user.name}}
+        li.divider role="separator"
+        li
+          a href="" ng-click="vmNav.logout()" ng-if="user.signedIn"
+            | {{ ::'menu.logout' | translate }}

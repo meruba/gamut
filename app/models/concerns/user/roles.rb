@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     extend ActiveSupport::Concern
 
     # roles that will be used by the users
-    ROLES = %w(admin restaurant customer)
+    ROLES = %w(admin restaurant customer asistent)
 
     included do
       validates :role, presence: true,

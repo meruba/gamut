@@ -13,6 +13,11 @@
     var vmNav = this;
     vmNav.logout = logout;
 
+    vmNav.navbars = {
+      asistent: 'shared/navbar/asistent.html',
+      admin: 'shared/navbar/default.html'
+    }
+
     $rootScope.$on('$stateChangeSuccess',
       function(event, toState, toParams, fromState, fromParams) {
         $state.current = toState;

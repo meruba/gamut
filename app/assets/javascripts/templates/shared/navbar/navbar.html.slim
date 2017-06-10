@@ -1,0 +1,13 @@
+nav.navbar.navbar-default (ng-controller=("NavbarController as vmNav")
+                          ng-show="!vmNav.showNav")
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed (aria-expanded="false"
+                                      data-target="#gls-navbar"
+                                      data-toggle="collapse"
+                                      type="button")
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href=""  Comidomi
+    div ng-include="vmNav.navbars[user.role]"
