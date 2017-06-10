@@ -312,7 +312,14 @@
       .state('app.asistent.users.list', {
         url: '/list',
         templateUrl: 'asistent/users/list.html',
-        controller: 'UserList as vm'
+        controller: 'UserList as vm',
+        resolve: {
+          users: function (UserService) {
+            return UserService.customers().then(function(data) {
+              return data.users;
+            });
+          }
+        },
       });
     $urlRouterProvider.otherwise('/login');
   });

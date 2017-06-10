@@ -6,7 +6,7 @@
     .controller('UserList', UsersController);
 
   function UsersController($scope,
-                          UserService) {
+                          users) {
     var vm = this;
 
     init();

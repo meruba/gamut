@@ -12,7 +12,8 @@
       searchUsers: searchUsers,
       restaurant: restaurant,
       activeUser: activeUser,
-      newUser: newUser
+      newUser: newUser,
+      customers: customers
     };
 
     return service;
@@ -87,6 +88,17 @@
       return $http({
         method: 'POST',
         url: '/api/v1/users/' + id + '/active'
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
+
+    function customers() {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/users/customers'
       }).then(function success(res) {
         return res.data;
       }, function error(err) {

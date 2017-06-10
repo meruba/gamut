@@ -37,6 +37,10 @@ module Api
         respond_with(:api, :v1, @user)
       end
 
+      def customers
+        respond_with(User.where(role: 'customer').order("id DESC"))
+      end
+
       private
 
       def user_params
