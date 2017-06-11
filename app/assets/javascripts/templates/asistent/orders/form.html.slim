@@ -1,0 +1,36 @@
+.title Informacion Personal
+.form-basic
+  form (ng-init="userForm = {}"
+        ng-submit="vmStep.step1.registerUser(userForm)"
+        role="form")
+    .row-column
+      .form-group.name
+        label for="name" {{ ::'user.attributes.name' | translate }}
+        input#name.form-control (name="name"
+                                ng-model="userForm.name"
+                                required="required"
+                                type="text")
+      .form-group.identification
+        label for="identification" {{ ::'user.attributes.identification' | translate }}
+        input#identification.form-control (name="identification"
+                                          ng-model="userForm.identification"
+                                          required="required"
+                                          type="text")
+    .form-group
+      label for="address" {{ ::'user.attributes.address' | translate }}
+      input#address.form-control (name="address"
+                                  ng-model="userForm.address"
+                                  required="required"
+                                  type="text")
+    .form-group
+      label for="telephone" {{ ::'user.attributes.telephone' | translate }}
+      input#telephone.form-control (name="telephone"
+                                    ng-model="userForm.telephone"
+                                    type="text")
+    .form-group
+      label for="email" {{ ::'login.email' | translate }}
+      input#email.form-control (name="email"
+                                ng-model="userForm.email"
+                                required="required"
+                                type="email")
+    button.btn.btn-block.btn-primary.btn-sm type="submit" {{ ::'action.save' | translate }}

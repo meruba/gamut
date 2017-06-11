@@ -1,1 +1,18 @@
-h1 HELLO WORD!
+.wrapper-form.col-md-8.col-md-offset-2
+  .card-md
+    .step
+      .form
+        .wrapper ng-include="'asistent/orders/form.html'"
+      .area-information
+        .steps
+          #numbers
+            .step-circle 1
+            .step-circle 2
+            .step-circle 3
+        .tips
+          .icon
+            .id-card ng-include="'svgs/id-card.html'"
+          .tip
+            .title Informacion Personal
+            .description
+              .text-muted Llena la informacion a la derecha, siempre podras editar esta informacion
