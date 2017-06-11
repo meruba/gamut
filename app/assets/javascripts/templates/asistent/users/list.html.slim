@@ -1,1 +1,13 @@
-h1 hello word!
+.users-list
+  .users(ng-repeat="user in vm.users")
+    .link-user.card-md ui-sref=("user.show({ userId: user.id })")
+      .main-head
+        image-upload options="{image: user.image, identicon: user.email}"
+        .name
+          span {{user.name}}
+        .options
+          span.glyphicon.glyphicon-option-vertical
+      .description
+        #address.text-muted.elipsis
+          i.glyphicon.glyphicon-map-marker
+          | {{user.address}}

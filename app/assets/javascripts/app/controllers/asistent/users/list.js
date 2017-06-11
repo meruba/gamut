@@ -8,12 +8,7 @@
   function UsersController($scope,
                           users) {
     var vm = this;
-
-    init();
-
-    function init() {
-    }
-
+    vm.users = users || [];
   }
 
 })();

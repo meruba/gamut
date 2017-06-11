@@ -320,6 +320,22 @@
             });
           }
         },
+      })
+      .state('app.asistent.orders', {
+        url: '/orders',
+        template: '<ui-view/>'
+      })
+      .state('app.asistent.orders.new', {
+        url: '/new',
+        templateUrl: 'asistent/orders/new.html',
+        controller: 'NewOrders as vm',
+        resolve: {
+          users: function (UserService) {
+            return UserService.customers().then(function(data) {
+              return data.users;
+            });
+          }
+        }
       });
     $urlRouterProvider.otherwise('/login');
   });
