@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
       resource :users do
         get "customers"
+        post "new_customer"
       end
 
       resources :users do

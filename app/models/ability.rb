@@ -17,7 +17,7 @@ class Ability
       can [:show, :update, :upload_image], User
       cannot [:create, :destroy], User
     when "asistent"
-      can [:show, :create, :customers, :update, :upload_image], User
+      can [:show, :new_customer, :customers, :update, :upload_image], User
       cannot [:destroy, :index], User
     end
   end

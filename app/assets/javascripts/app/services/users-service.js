@@ -13,6 +13,7 @@
       restaurant: restaurant,
       activeUser: activeUser,
       newUser: newUser,
+      newCustomer: newCustomer,
       customers: customers
     };
 
@@ -29,6 +30,24 @@
           address: user.address,
           telephone: user.telephone,
           has_account: false
+        }
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
+
+    function newCustomer(user) {
+      return $http({
+        method: 'POST',
+        url: '/api/v1/users/new_customer',
+        data: {
+          name: user.name,
+          identification: user.identification,
+          email: user.email,
+          address: user.address,
+          telephone: user.telephone
         }
       }).then(function success(res) {
         return res.data;

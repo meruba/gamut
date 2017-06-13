@@ -1,8 +1,12 @@
 .wrapper-form.col-md-8.col-md-offset-2
   .card-md
     .step
-      .form
-        .wrapper ng-include="'asistent/orders/form.html'"
+      .form(ng-repeat="step in vm.steps" ng-show="step.active")
+        .wrapper
+          div(ng-include="step.templateUrl" )
+          .btns-group
+            button.btn-cdm.btn-cdm-disabled(ng-click="vm.prevStep(step, $index)") anterior
+            button.btn-cdm.btn-cdm-primary(ng-click="vm.nextStep(step, $index)") siguiente
       .area-information
         .steps
           #numbers

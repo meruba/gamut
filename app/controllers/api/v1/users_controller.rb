@@ -19,6 +19,11 @@ module Api
         respond_with(:api, :v1, @user)
       end
 
+      def new_customer
+        @user = User.create(user_params.merge(role: "customer", has_account: false))
+        respond_with(:api, :v1, @user)
+      end
+
       def update
         @user.update(user_params)
         respond_with(:api, :v1, @user)
