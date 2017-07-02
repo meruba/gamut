@@ -1,0 +1,34 @@
+.form-menu
+  .modal-body#body
+    form.tab-form-demo name="outerForm"
+      uib-tabset active="activeForm"
+        uib-tab heading=("Datos") index="1"
+          .row
+            .form-group.col-md-8
+              label for="name" {{ ::'product.attributes.name' | translate }}
+              input.form-control (name="name"
+                                  ng-model="vm.item.name"
+                                  type="text")
+            .form-group.col-md-4
+              label for="price" {{ ::'product.attributes.price' | translate }}
+              .input-group
+                input.form-control (name="price"
+                                    ng-model="vm.item.price"
+                                    type="number")
+                .input-group-addon $
+          .form-group
+            label for="description" {{ ::'product.attributes.description' | translate }}
+            textarea.form-control (name="description"
+                                  ng-model="vm.item.description"
+                                  type="text")
+  .modal-footer#footer
+    .col-md-6.col-xs-6.text-left.options
+      span.text-danger.btn.btn-xs (  ng-if="vm.item.editItem"
+                                      ng-click="vm.remove(vm.item)" )
+        i.glyphicon.glyphicon-trash
+      span.text-success.btn.btn-xs ( ng-if="vm.item.editItem"
+                                      ng-click="vm.publicItem(vm.item)")
+        i.glyphicon class="{{ vm.item.public ? 'glyphicon-thumbs-down':'glyphicon-thumbs-up' }}"
+    .col-md-6.col-xs-6
+      button.btn.btn-success (ng-click="vm.save()")
+        | {{ 'action.' + (vm.editItem ? 'update' : 'save') | translate }}

@@ -3,16 +3,16 @@
 
   angular
     .module('app.directives')
-    .directive('userCardResult', userCardResult);
+    .directive('productCardResult', productCardResult);
 
-  function userCardResult() {
+  function productCardResult() {
     var directive = {
       restrict: 'EA',
-      templateUrl: 'directives/user-card-result/user-card-result.html',
+      templateUrl: 'directives/product-card-result/product-card-result.html',
       scope: {
         options: '='
       },
-      controller: userCardController,
+      controller: productCardController,
       controllerAs: 'vm',
       bindToController: true
     };
@@ -20,13 +20,13 @@
     return directive;
   }
 
-  function userCardController(){
+  function productCardController(){
     var vm = this;
 
     init();
 
     function init(){
-      vm.user = vm.options.user || {};
+      vm.product = vm.options.product || {};
     }
   }
 

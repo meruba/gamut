@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       get "search/user"
       get "search/restaurant"
       get "search/customer"
+      get "search/product"
 
     end
   end

@@ -3,15 +3,14 @@
 
   angular
     .module('app.controllers')
-    .controller('NewProducController', NewProducController);
+    .controller('NewProductController', NewProductController);
 
-  function NewProducController(toastr,
-                              menuData,
-                              ProductService,
-                              CategoryService,
-                              $uibModalInstance,
-                              $auth,
-                              $scope) {
+  function NewProductController(toastr,
+                                ProductService,
+                                productData,
+                                $uibModalInstance,
+                                $auth,
+                                $scope) {
     var vm = this;
     vm.ok = ok;
     vm.cancel = cancel;
@@ -25,13 +24,14 @@
     init();
 
     function init() {
-      var itemCache = angular.copy(menuData.item);
-      vm.item = itemCache;
-      vm.categories = menuData.categories;
-      vm.activeCategory = !vm.categories.length > 0;;
-      vm.actionCategory = vm.activeCategory;
-      vm.editItem = itemCache.editItem ? itemCache.editItem : false;
-      configCategory(vm.item);
+      vm.item = null;
+      // var itemCache = angular.copy(productData.item);
+      // vm.item = itemCache;
+      // vm.categories = productData.categories;
+      // vm.activeCategory = !vm.categories.length > 0;;
+      // vm.actionCategory = vm.activeCategory;
+      // vm.editItem = itemCache.editItem ? itemCache.editItem : false;
+      // configCategory(vm.item);
     }
 
     function configCategory(item) {
@@ -62,16 +62,17 @@
       };
       var key  = vm.editItem ? 'update' : 'new';
       var service = action[key];
-      vm.item.restaurant_id =  $auth.user.restaurant_id
-      vm.item.category_id = vm.item.category ?
-                                vm.item.category.id : vm.selectedCategory.id;
+      // vm.item.restaurant_id =  $auth.user.restaurant_id
+      // vm.item.category_id = vm.item.category ?
+      //                           vm.item.category.id : vm.selectedCategory.id;
+      console.log('my item:', vm.item);
       service(vm.item).then(function(product){
         if (product.errors) {
           errorsAlert(product.errors);
         }else{
-          refreshMenu(product, key);
+          // refreshMenu(product, key);
           cancel();
-          menuData.callback();
+          productData.callback(product);
         }
       });
     }
@@ -85,7 +86,7 @@
     }
 
     function addMenu(item) {
-      var menu  = menuData.menu;
+      var menu  = productData.menu;
       /*build object to show*/
       if (menu.hasOwnProperty(item.category_name) ) {
         menu[item.category_name].unshift(item.product);
@@ -95,8 +96,8 @@
     }
 
     function updateItem(item) {
-      var menu  = menuData.menu;
-      var itemOld  = menuData.item;
+      var menu  = productData.menu;
+      var itemOld  = productData.item;
       updateRemove(itemOld);
       if (menu.hasOwnProperty(item.category.name) ) {
         menu[item.category.name].push(item);
@@ -110,7 +111,7 @@
         if (resp.errors) {
           errorsAlert(resp.errors);
         }else{
-          menuData.item.public = resp.product.public;
+          productData.item.public = resp.product.public;
           cancel();
         }
       });
@@ -121,7 +122,7 @@
         if (resp.errors) {
           errorsAlert(resp.errors);
         }else{
-          menuData.item.removed = true;
+          productData.item.removed = true;
           updateRemove(item);
           cancel();
         }
@@ -129,11 +130,11 @@
     }
 
     function updateRemove(item) {
-      menuData.menu[item.category.name].splice(item.position, 1);
-      if (menuData.menu[item.category.name].length === 0) {
-        delete menuData.menu[item.category.name];
+      productData.menu[item.category.name].splice(item.position, 1);
+      if (productData.menu[item.category.name].length === 0) {
+        delete productData.menu[item.category.name];
       }
-      menuData.callback();
+      productData.callback();
     }
 
     function errorsAlert(errors) {

@@ -112,6 +112,7 @@
       placeholder: {
         'search-user': 'Nombre de usuario o identificación',
         'search-restaurant': 'Nombre del restaurante o dirección',
+        'search-product': 'Nombre del producto',
         'new-category': 'Ingrese una categoria',
         'select-category': 'Seleccione una categoria'
       },

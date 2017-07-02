@@ -7,6 +7,6 @@ class ProductSerializer < ActiveModel::Serializer
   end
 
   def category_name
-    object.category.name
+    object.category ? object.category.name : ''
   end
 end

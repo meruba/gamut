@@ -8,7 +8,8 @@ module Api
       respond_to :json
 
       def index
-        respond_with(Product.all)
+        @products = Product.all
+        respond_with(:api, :v1, @products)
       end
 
       def show

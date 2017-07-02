@@ -12,7 +12,9 @@
       newProduct: newProduct,
       updateProduct: updateProduct,
       removeProduct: removeProduct,
-      publicProduct: publicProduct
+      publicProduct: publicProduct,
+      searchProducts: searchProducts,
+      listProducts: listProducts
     };
 
     return service;
@@ -87,6 +89,31 @@
         return res.data;
       }, function error(err) {
         return err.data;
+      });
+    }
+
+    function searchProducts(query) {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/search/product',
+        params: {
+          query: query
+        }
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
+
+    function listProducts() {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/products'
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
       });
     }
 

@@ -1,24 +1,11 @@
-.title Productos
+.title Seleccionar Productos
 .form-products
-  form (role="form")
-    .row-column
-      .form-group.name
-        label for="cantidad" Cantidad
-        input#name.form-control (name="name"
-                                ng-model="vm.userForm.name"
-                                required="required"
-                                type="text")
-      .form-group.description
-        label for="description" Descripcion
-        input#identification.form-control (name="identification"
-                                          ng-model="vm.userForm.identification"
-                                          required="required"
-                                          type="text")
-      .form-group.total
-        label for="total" Total
-        input#identification.form-control (name="identification"
-                                          ng-model="vm.userForm.identification"
-                                          required="required"
-                                          type="text")
-      .btn-save
-        button +
+  .wrapper-search-product
+    .wrapper-results
+      .search-products
+        search-input options="vm.productsOptionsSearch"
+      .products-results
+        .product-wrapper(ng-repeat="result in vm.products" ng-click="vm.selectProduct(result.product)")
+          product-card-result(options="{product: result.product}")
+  .btn-save
+    button(ng-click="vm.newProduct()") +

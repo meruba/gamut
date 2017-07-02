@@ -17,12 +17,11 @@
 class Product < ActiveRecord::Base
 
   begin :relationships
-    belongs_to :restaurant
-    belongs_to :category
+    belongs_to :restaurant #disabled temporally from frontend
+    belongs_to :category #disabled temporally from frontend
   end
 
   begin :validations
-    validates :name, :price, :category_id, :restaurant_id,  presence: true,
-                                                            allow_blank: false
+    validates :name, :price, presence: true, allow_blank: false
   end
 end

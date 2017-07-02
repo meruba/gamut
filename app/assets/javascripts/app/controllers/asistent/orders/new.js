@@ -5,24 +5,36 @@
     .module('app.controllers')
     .controller('NewOrders', NewOrdersController);
 
-  function NewOrdersController(UserService) {
+  function NewOrdersController(UserService,
+                              ProductService,
+                              products,
+                              $uibModal) {
     var vm = this;
 
     vm.user = {};
     vm.users = [];
+    vm.products = products || [];
     vm.userForm = {};
     vm.nextStep = nextStep;
     vm.prevStep = prevStep;
     vm.showForm = false;
     vm.selectUser = selectUser;
     vm.userSelected = null;
+    vm.newProduct = newProduct;
 
     vm.optionsSearch = {
       service: UserService.searchUsers,
       placeholder: 'search-user',
-      results: searchResults,
+      results: usersResult,
       show: true
     };
+
+    vm.productsOptionsSearch = {
+      service: ProductService.searchProducts,
+      placeholder: 'search-product',
+      results: productsResult,
+      show: true
+    }
 
     vm.steps = [
       {
@@ -40,8 +52,13 @@
       }
     ];
 
-    function searchResults(data) {
+    function usersResult(data) {
       vm.users = data.search;
+    }
+
+    function productsResult(data) {
+      vm.products = data.search;
+      console.log('products: ', vm.products);
     }
 
     function newCustomer(data) {
@@ -77,10 +94,33 @@
 
     function selectUser(user) {
       vm.userSelected = user;
-      console.log(user);
       vm.users = [];
       vm.showForm = true;
       vm.userForm = user;
+    }
+
+    function newProduct() {
+      configModal();
+    }
+
+    function successSaveProduct(data) {
+      console.log('product: ', data);
+    }
+
+    function configModal(item, menu) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'products/new.html',
+        controller: 'NewProductController as vm',
+        resolve: {
+          productData: {
+            categories: [],
+            item: item || {},
+            menu: menu || [],
+            callback: successSaveProduct
+          }
+        }
+      });
     }
   }
 

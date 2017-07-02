@@ -9,13 +9,18 @@ module Api
       end
 
       def restaurant
-        @restaurant = RestaurantSearch.new(q: params[:query]).results
-        respond_with(:api, :v1, @restaurant, meta: {count: @restaurant.count})
+        @restaurants = RestaurantSearch.new(q: params[:query]).results.limit(4)
+        respond_with(:api, :v1, @restaurants, meta: {count: @restaurants.count})
       end
 
       def customer
         @users = CustomerSearch.new(q: params[:query]).results.limit(4)
         respond_with(:api, :v1, @users)
+      end
+
+      def product
+        @products = ProductSearch.new(q: params[:query]).results.limit(4)
+        respond_with(:api, :v1, @products)
       end
 
     end

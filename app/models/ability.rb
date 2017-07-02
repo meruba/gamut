@@ -19,6 +19,7 @@ class Ability
     when "asistent"
       can [:show, :new_customer, :customers, :update, :upload_image], User
       cannot [:destroy, :index], User
+      can [:create, :show, :update, :remove, :index], Product
     end
   end
 end
