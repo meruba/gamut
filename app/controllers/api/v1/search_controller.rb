@@ -4,7 +4,7 @@ module Api
       respond_to :json
 
       def user
-        @users = UserSearch.new(q: params[:query]).results
+        @users = UserSearch.new(q: params[:query]).results.limit(4)
         respond_with(:api, :v1, @users, meta: {count: @users.count})
       end
 
@@ -17,7 +17,7 @@ module Api
         @users = CustomerSearch.new(q: params[:query]).results.limit(5)
         respond_with(:api, :v1, @users)
       end
-      
+
     end
   end
 end

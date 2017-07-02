@@ -48,16 +48,15 @@
     }
 
     function search(query) {
-      vmSearch.service(query).then(function(resp){
-        vmSearch.results(resp);
-      });
+      if (vmSearch.query !== '') {
+        vmSearch.service(query).then(function(resp){
+          vmSearch.results(resp);
+        });
+      }
     }
 
     function reset() {
-      if (vmSearch.query !== '') {
-        vmSearch.query = '';
-        search(vmSearch.query);
-      }
+      vmSearch.query = '';
     }
 
     $scope.$on('_SHOW_SEARCH_',function (ev, show) {

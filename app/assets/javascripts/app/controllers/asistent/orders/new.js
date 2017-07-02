@@ -9,9 +9,20 @@
     var vm = this;
 
     vm.user = {};
+    vm.users = [];
     vm.userForm = {};
     vm.nextStep = nextStep;
     vm.prevStep = prevStep;
+    vm.showForm = false;
+    vm.selectUser = selectUser;
+    vm.userSelected = null;
+
+    vm.optionsSearch = {
+      service: UserService.searchUsers,
+      placeholder: 'search-user',
+      results: searchResults,
+      show: true
+    };
 
     vm.steps = [
       {
@@ -27,7 +38,11 @@
         onClik: saveOrder,
         active: false
       }
-    ]
+    ];
+
+    function searchResults(data) {
+      vm.users = data.search;
+    }
 
     function newCustomer(data) {
       UserService.newCustomer(data).then(function(user){
@@ -58,6 +73,14 @@
         step.active = false;
         changeStep(index, false);
       }
+    }
+
+    function selectUser(user) {
+      vm.userSelected = user;
+      console.log(user);
+      vm.users = [];
+      vm.showForm = true;
+      vm.userForm = user;
     }
   }
 
