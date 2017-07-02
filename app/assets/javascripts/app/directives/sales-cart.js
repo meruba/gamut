@@ -22,13 +22,8 @@
 
   function cartController(){
     var vm = this;
-    vm.selectRest = selectRest;
-    vm.showRestaurants = showRestaurants;
-    vm.addProduct = addProduct;
     vm.calculate = calculate;
     vm.sumValues = sumValues;
-
-    vm.load = true;
 
     init();
 
@@ -36,12 +31,8 @@
       var options = vm.options || {};
       vm.restaurants = vm.data || {};
       vm.items = vm.options.items || [];
-      vm.userForm = {};
       vm.totalOrder = 0;
       vm.deliveryPrice = 0;
-      vm.optionsSearch = {
-        selected: userSelected
-      }
 
       if (options.onRegisterApi) {
         var api = createPublicApi();
@@ -63,48 +54,6 @@
         vm.items.splice(index, 1);
       }
       sumValues();
-    }
-
-    function selectRest(rest, index) {
-      if (vm.selectedRest) {
-        vm.selectedRest.selected = false;
-      }
-      vm.selectedRest = rest;
-      /*add class new content selected*/
-      rest.selected = true;
-      toggleMenu(rest.products);
-    }
-
-    function toggleMenu(products) {
-      vm.showMenu = true;
-      vm.menu = products;
-      vm.showHeader = true;
-    }
-
-    function showRestaurants() {
-      vm.showHeader = !vm.showHeader;
-      vm.menu = [];
-      /*reset check*/
-      angular.forEach(vm.items, function(menu) {
-        menu.selected = false;
-      });
-      vm.items = [];
-      vm.totalOrder = 0;
-    }
-
-    function addProduct(menu) {
-      menu.selected = menu.selected === undefined ? true : !menu.selected;
-      if (menu.selected) {
-        vm.items.push(menu);
-      }else{
-        var index = vm.items.indexOf(menu);
-        vm.items.splice(index, 1);
-      }
-      sumValues();
-    }
-
-    function userSelected(user) {
-      vm.userForm = user;
     }
 
     //checkout form
