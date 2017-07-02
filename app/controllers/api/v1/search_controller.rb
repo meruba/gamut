@@ -14,7 +14,7 @@ module Api
       end
 
       def customer
-        @users = CustomerSearch.new(q: params[:query]).results.limit(5)
+        @users = CustomerSearch.new(q: params[:query]).results.limit(4)
         respond_with(:api, :v1, @users)
       end
 

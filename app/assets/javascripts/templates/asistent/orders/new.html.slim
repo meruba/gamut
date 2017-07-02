@@ -1,22 +1,31 @@
-.wrapper-form.col-md-8.col-md-offset-2
-  .card-md
-    .step
-      .form(ng-repeat="step in vm.steps" ng-show="step.active")
-        .wrapper
-          div(ng-include="step.templateUrl" )
-          .btns-group(ng-if="vm.showForm")
-            button.btn-cdm.btn-cdm-disabled(ng-click="vm.prevStep(step, $index)") anterior
-            button.btn-cdm.btn-cdm-primary(ng-click="vm.nextStep(step, $index)") siguiente
-      .area-information
-        .steps
-          #numbers
-            .step-circle 1
-            .step-circle 2
-            .step-circle 3
-        .tips
-          .icon
-            .id-card ng-include="'svgs/id-card.html'"
-          .tip
-            .title Informacion Personal
-            .description
-              .text-muted Llena la informacion a la derecha, siempre podras editar esta informacion
+.wrapper-section
+  .wrapper-search.card-md.col-md-3
+    .title Buscar Cliente
+    .wrapper-results
+      .search-user
+        search-input options="vm.optionsSearch"
+      .user-results
+        .user-wrapper(ng-repeat="user in vm.users" ng-click="vm.selectUser(user)")
+          user-card-result(options="{user: user}")
+  .wrapper-form.col-md-8
+    .card-md
+      .step
+        .form(ng-repeat="step in vm.steps" ng-show="step.active")
+          .wrapper
+            div(ng-include="step.templateUrl" )
+            .btns-group
+              button.btn-cdm.btn-cdm-disabled(ng-click="vm.prevStep(step, $index)") anterior
+              button.btn-cdm.btn-cdm-primary(ng-click="vm.nextStep(step, $index)") siguiente
+        .area-information
+          .steps
+            #numbers
+              .step-circle 1
+              .step-circle 2
+              .step-circle 3
+          .tips
+            .icon
+              .id-card ng-include="'svgs/id-card.html'"
+            .tip
+              .title Informacion Personal
+              .description
+                .text-muted Llena la informacion a la derecha, siempre podras editar esta informacion

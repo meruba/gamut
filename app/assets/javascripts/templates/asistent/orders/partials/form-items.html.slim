@@ -1,1 +1,24 @@
-h1 Paso 2
+.title Productos
+.form-products
+  form (role="form")
+    .row-column
+      .form-group.name
+        label for="cantidad" Cantidad
+        input#name.form-control (name="name"
+                                ng-model="vm.userForm.name"
+                                required="required"
+                                type="text")
+      .form-group.description
+        label for="description" Descripcion
+        input#identification.form-control (name="identification"
+                                          ng-model="vm.userForm.identification"
+                                          required="required"
+                                          type="text")
+      .form-group.total
+        label for="total" Total
+        input#identification.form-control (name="identification"
+                                          ng-model="vm.userForm.identification"
+                                          required="required"
+                                          type="text")
+      .btn-save
+        button +

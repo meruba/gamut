@@ -1,11 +1,5 @@
-.title Informacion Personales
-.search-user
-  search-input options="vm.optionsSearch"
-.user-results
-  .user-wrapper(ng-repeat="user in vm.users" ng-click="vm.selectUser(user)")
-    user-card-result(options="{user: user}")
-
-.form-basic(ng-if="vm.showForm")
+.title Informacion Personal
+.form-basic
   form (role="form")
     .row-column
       .form-group.name
