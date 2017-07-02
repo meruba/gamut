@@ -7,7 +7,7 @@
       .user-results
         .user-wrapper(ng-repeat="user in vm.users" ng-click="vm.selectUser(user)")
           user-card-result(options="{user: user}")
-  .wrapper-form.col-md-8
+  .wrapper-form.col-md-9
     .card-md
       .step
         .form(ng-repeat="step in vm.steps" ng-show="step.active")
@@ -17,15 +17,4 @@
               button.btn-cdm.btn-cdm-disabled(ng-click="vm.prevStep(step, $index)") anterior
               button.btn-cdm.btn-cdm-primary(ng-click="vm.nextStep(step, $index)") siguiente
         .area-information
-          .steps
-            #numbers
-              .step-circle 1
-              .step-circle 2
-              .step-circle 3
-          .tips
-            .icon
-              .id-card ng-include="'svgs/id-card.html'"
-            .tip
-              .title Informacion Personal
-              .description
-                .text-muted Llena la informacion a la derecha, siempre podras editar esta informacion
+          sales-cart(options="vm.optionsCart")

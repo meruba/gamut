@@ -5,7 +5,9 @@
       .search-products
         search-input options="vm.productsOptionsSearch"
       .products-results
-        .product-wrapper(ng-repeat="result in vm.products" ng-click="vm.selectProduct(result.product)")
+        .product-wrapper(ng-repeat="result in vm.products"
+                        ng-click="vm.selectProduct(result.product)"
+                        ng-class="{'selected':result.product.selected}")
           product-card-result(options="{product: result.product}")
   .btn-save
     button(ng-click="vm.newProduct()") +

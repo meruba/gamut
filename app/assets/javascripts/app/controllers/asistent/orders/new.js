@@ -10,6 +10,7 @@
                               products,
                               $uibModal) {
     var vm = this;
+    var apiCart = null;
 
     vm.user = {};
     vm.users = [];
@@ -21,6 +22,17 @@
     vm.selectUser = selectUser;
     vm.userSelected = null;
     vm.newProduct = newProduct;
+    vm.selectProduct = selectProduct;
+    vm.itemsToCart = [];
+
+    vm.optionsCart = {
+      items: [],
+      onRegisterApi: onRegisterApiCart
+    }
+
+    function onRegisterApiCart(api){
+      apiCart = api;
+    }
 
     vm.optionsSearch = {
       service: UserService.searchUsers,
@@ -97,6 +109,11 @@
       vm.users = [];
       vm.showForm = true;
       vm.userForm = user;
+    }
+
+    function selectProduct(product) {
+      product.selected = !product.selected;
+      apiCart.updateList(product);
     }
 
     function newProduct() {
