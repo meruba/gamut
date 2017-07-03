@@ -10,6 +10,7 @@
       users: users,
       user: user,
       searchUsers: searchUsers,
+      searchCustomers: searchCustomers,
       restaurant: restaurant,
       activeUser: activeUser,
       newUser: newUser,
@@ -82,6 +83,20 @@
       return $http({
         method: 'GET',
         url: '/api/v1/search/user',
+        params: {
+          query: query
+        }
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
+      });
+    }
+
+    function searchCustomers(query) {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/search/customer',
         params: {
           query: query
         }

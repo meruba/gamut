@@ -1,5 +1,5 @@
 class CustomerSearch < Searchlight::Search
-  search_on User.all
+  search_on User.where(role: 'customer')
   searches :q
 
   def search_q

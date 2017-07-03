@@ -30,7 +30,7 @@
     }
 
     vm.optionsSearch = {
-      service: UserService.searchUsers,
+      service: UserService.searchCustomers,
       placeholder: 'search-user',
       results: usersResult,
       onRegisterApi: onRegisterApiSearchUser,
@@ -75,6 +75,7 @@
     }
 
     function usersResult(data) {
+      console.log(data);
       vm.users = data.search;
     }
 
@@ -125,7 +126,6 @@
           productData: {
             categories: [],
             item: item || {},
-            menu: menu || [],
             callback: successSaveProduct
           }
         }

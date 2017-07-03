@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
 
   begin :relationships
     belongs_to :user
-    belongs_to :restaurant
+    # belongs_to :restaurant
     has_many :item_orders
   end
 
