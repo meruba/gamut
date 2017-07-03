@@ -12,6 +12,65 @@
     .search-user
       margin-bottom: 10px
 
+    .wrapper-results
+
+    .user-results
+      .tips
+        height: 100%
+        margin-top: 20%
+
+        .icon
+          display: flex
+          flex-direction: column
+          justify-content: center
+          align-items: center
+
+          .id-card
+            fill: #1bb099
+            min-width: 80px
+
+        .tip
+          text-align: center
+
+          .title
+            font-size: 14px
+            font-weight: 300
+            padding: 10px 0 0 0
+
+          .description
+            font-size: 12px
+            font-weight: 300
+
+            .text-help
+              padding: 10px 0
+
+            .btn-cdm
+              border-radius: 25px
+              padding: 5px 10px
+              width: 100px
+              margin-left: 10px
+              border: none
+            .btn-cdm-primary
+              background: #1bb099
+              color: #ffffff
+            .btn-cdm-disabled
+              background: #e7e7e7
+
+    .user-selected
+      margin-top: 30%
+      display: flex
+      justify-content: center
+
+      .image-avatar
+        display: flex
+        justify-content: center
+
+        img
+          border-radius: 50%
+
+        .name
+          margin-top: 10px
+
   .wrapper-form
     .card-md
       .step
@@ -22,6 +81,8 @@
           .wrapper
             padding: 30px
             border-right: 1px solid #e7e7e7
+            height: 100%
+
             .form-basic
               margin-top: 15px
               label
@@ -38,8 +99,8 @@
                 display: flex
                 flex-wrap: wrap
                 margin-top: 20px
-                height: 240px
-                max-height: 250px
+                height: 320px
+                max-height: 340px
                 overflow-y: scroll
 
                 .product-wrapper
@@ -48,22 +109,8 @@
 
                   &.selected
                     .product-info
-                      background-color: #ea4f2e
+                      background-color: #1bb099
                       color: white
-
-          .btns-group
-            text-align: right
-            .btn-cdm
-              border-radius: 25px
-              padding: 5px 10px
-              width: 100px
-              margin-left: 10px
-              border: none
-            .btn-cdm-primary
-              background: #1bb099
-              color: #ffffff
-            .btn-cdm-disabled
-              background: #e7e7e7
         .area-information
           display: flex
           flex-basis: 35%

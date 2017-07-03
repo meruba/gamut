@@ -25,6 +25,11 @@
   function searchController($scope){
 
     var vmSearch = this;
+    var emitters = {
+      clearInput: null,
+      typing: null
+    };
+
     vmSearch.search = search;
     vmSearch.reset = reset;
 
@@ -37,6 +42,32 @@
       vmSearch.service = vmSearch.options.service;
       vmSearch.results = vmSearch.options.results;
       placeholder(vmSearch.options.placeholder);
+
+      if (vmSearch.options.onRegisterApi) {
+        var api = createPublicApi();
+        vmSearch.options.onRegisterApi(api);
+      }
+    }
+
+    //Api
+    function createPublicApi() {
+      return {
+        clearInput: clearInput,
+        typing: typing,
+        updateText: updateText
+      };
+    }
+
+    function clearInput(cb){
+      emitters.clearInput = cb;
+    }
+
+    function typing(cb){
+      emitters.typing = cb;
+    }
+
+    function updateText(text) {
+      vmSearch.query = text;
     }
 
     function placeholder(text) {
@@ -48,7 +79,11 @@
     }
 
     function search(query) {
-      if (vmSearch.query !== '') {
+      if (emitters.typing) {
+        emitters.typing(query);
+      }
+
+      if (vmSearch.query !== '' && vmSearch.query.length >= 3) {
         vmSearch.service(query).then(function(resp){
           vmSearch.results(resp);
         });
@@ -56,6 +91,10 @@
     }
 
     function reset() {
+      if (emitters.clearInput) {
+        emitters.clearInput();
+      }
+
       vmSearch.query = '';
     }
 

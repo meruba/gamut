@@ -1,23 +1,24 @@
-.title Detalle
-.products
-  .row.item-selected.list-anm ng-repeat="item in vm.items"
-    .col-md-4.col-xs-3
+.cart-form-container
+  .title Detalle
+  .products
+    .row.item-selected.list-anm ng-repeat="item in vm.items"
+      .col-md-4.col-xs-3
+        input.form-control (type="number"
+                            ng-init="item.value = 1"
+                            ng-model="item.value"
+                            ng-change="vm.calculate(item)")
+      .col-md-8.col-xs-9
+        h5
+          | {{item.name}}
+          span.price.pull-right
+            | ${{item.totalItem || item.price }}
+  .taxs
+    .delivery-price
+      h4 Precio de envio
       input.form-control (type="number"
-                          ng-init="item.value = 1"
-                          ng-model="item.value"
-                          ng-change="vm.calculate(item)")
-    .col-md-8.col-xs-9
-      h5
-        | {{item.name}}
-        span.price.pull-right
-          | ${{item.totalItem || item.price }}
-.taxs
-  .delivery-price
-    h4 Precio de envio
-    input.form-control (type="number"
-                        min="0"
-                        ng-model="vm.deliveryPrice"
-                        ng-change="vm.sumValues()")
-  .totalOrder
-    h4 Total: ${{vm.totalOrder}}
-button.btn.btn-danger.btn-block Checkout
+                          min="0"
+                          ng-model="vm.deliveryPrice"
+                          ng-change="vm.sumValues()")
+    .totalOrder
+      h4 Total: ${{vm.totalOrder}}
+  button.btn.btn-danger.btn-block Checkout
