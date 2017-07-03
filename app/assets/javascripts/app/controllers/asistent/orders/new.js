@@ -20,6 +20,7 @@
     vm.selectUser = selectUser;
     vm.userOrder = null;
     vm.newProduct = newProduct;
+    vm.newUser = newUser;
     vm.selectProduct = selectProduct;
     vm.itemsToCart = [];
 
@@ -46,6 +47,10 @@
 
     function onRegisterApiCart(api){
       apiCart = api;
+
+      apiCart.checkout(function (items) {
+        console.log('my items', items);
+      });
     }
 
     function onRegisterApiSearchUser(api){
@@ -100,14 +105,18 @@
     }
 
     function newProduct() {
-      configModal();
+      configModalProduct();
+    }
+
+    function newUser() {
+      configModalUser();
     }
 
     function successSaveProduct(data) {
       console.log('product: ', data);
     }
 
-    function configModal(item, menu) {
+    function configModalProduct(item, menu) {
       var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: 'products/new.html',
@@ -118,6 +127,26 @@
             item: item || {},
             menu: menu || [],
             callback: successSaveProduct
+          }
+        }
+      });
+    }
+
+    function successSaveUser(user) {
+      console.log('user: ', user);
+      vm.showUser = true;
+      vm.userOrder = user;
+    }
+
+    function configModalUser(user) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'users/new-modal.html',
+        controller: 'UserNewModalController as vm',
+        resolve: {
+          userData: {
+            user: user || {},
+            callback: successSaveUser
           }
         }
       });

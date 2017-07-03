@@ -22,8 +22,13 @@
 
   function cartController(){
     var vm = this;
+    var emitters = {
+      checkout: null
+    };
+
     vm.calculate = calculate;
     vm.sumValues = sumValues;
+    vm.checkout = checkout;
 
     init();
 
@@ -40,15 +45,24 @@
       }
     }
 
+    //Api
     function createPublicApi() {
       return {
-        updateList: addRemoveList
+        updateList: addRemoveList,
+        checkout: checkoutList
       };
+    }
+
+    function checkoutList(cb){
+      emitters.checkout = cb;
     }
 
     function addRemoveList(product) {
       if (product.selected) {
         vm.items.push(product);
+        product.value = product.value || 1;
+        product.totalItem = product.value * product.price;
+        product.totalItem = Math.round(product.totalItem * 100) / 100;
       }else{
         var index = vm.items.indexOf(product);
         vm.items.splice(index, 1);
@@ -73,6 +87,12 @@
       /*round 2 decimal*/
       vm.totalOrder = vm.totalOrder + vm.deliveryPrice;
       vm.totalOrder = Math.round(vm.totalOrder * 100) / 100;
+    }
+
+    function checkout() {
+      if (emitters.checkout) {
+        emitters.checkout(vm.items);
+      }
     }
   }
 

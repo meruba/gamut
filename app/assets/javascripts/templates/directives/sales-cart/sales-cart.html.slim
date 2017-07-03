@@ -21,4 +21,4 @@
                           ng-change="vm.sumValues()")
     .totalOrder
       h4 Total: ${{vm.totalOrder}}
-  button.btn.btn-danger.btn-block Checkout
+  button.btn.btn-danger.btn-block(ng-click="vm.checkout()") Checkout

@@ -1,6 +1,17 @@
 .wrapper-section
   display: flex
 
+  .btn-cdm
+    border-radius: 25px
+    padding: 5px 10px
+    margin-left: 10px
+    border: none
+  .btn-cdm-primary
+    background: #1bb099
+    color: #ffffff
+  .btn-cdm-disabled
+    background: #e7e7e7
+
   .title
     font-size: 20px
     font-weight: 300
@@ -10,9 +21,10 @@
     padding: 30px 20px
 
     .search-user
-      margin-bottom: 10px
+      margin-top: 10px
 
     .wrapper-results
+      margin-bottom: 10px
 
     .user-results
       .tips
@@ -44,18 +56,6 @@
             .text-help
               padding: 10px 0
 
-            .btn-cdm
-              border-radius: 25px
-              padding: 5px 10px
-              width: 100px
-              margin-left: 10px
-              border: none
-            .btn-cdm-primary
-              background: #1bb099
-              color: #ffffff
-            .btn-cdm-disabled
-              background: #e7e7e7
-
     .user-selected
       margin-top: 30%
       display: flex
@@ -83,18 +83,15 @@
             border-right: 1px solid #e7e7e7
             height: 100%
 
-            .form-basic
-              margin-top: 15px
-              label
-                opacity: 0.7
-              .row-column
-                display: flex
-                .name
-                  flex-basis: 50%
-                .identification
-                  margin-left: 10px
-                  flex-basis: 50%
+            .header-title
+              display: flex
+              flex-basis: 100%
+              justify-content: space-between
+              align-items: baseline
+
             .form-products
+              margin-top: 10px
+
               .products-results
                 display: flex
                 flex-wrap: wrap
