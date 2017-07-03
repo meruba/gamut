@@ -6,10 +6,11 @@ class OrderSerializer < ActiveModel::Serializer
               :address,
               :user_id,
               :restaurant_id,
-              :user_name
+              :user_name,
+              :item_orders
 
   def user_name
-    object.user.name
+    object.user ? object.user.name : ''
   end
 
 end

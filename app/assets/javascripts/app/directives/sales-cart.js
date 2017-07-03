@@ -91,7 +91,14 @@
 
     function checkout() {
       if (emitters.checkout) {
-        emitters.checkout(vm.items);
+        var obj = {
+          items: vm.items,
+          meta: {
+            total: vm.totalOrder,
+            deliveryPrice: vm.deliveryPrice
+          }
+        }
+        emitters.checkout(obj);
       }
     }
   }

@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
 
   begin :relationships
     has_one :restaurant, dependent: :destroy
+    has_many :orders, dependent: :destroy
   end
 
   def active_for_authentication?

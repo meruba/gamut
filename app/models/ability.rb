@@ -20,6 +20,7 @@ class Ability
       can [:show, :new_customer, :customers, :update, :upload_image], User
       cannot [:destroy, :index], User
       can [:create, :show, :update, :remove, :index], Product
+      can [:create, :show, :update, :remove, :index], Order
     end
   end
 end

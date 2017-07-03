@@ -20,4 +20,7 @@ class Order < ActiveRecord::Base
     has_many :item_orders
   end
 
+  #nested
+  accepts_nested_attributes_for :item_orders
+
 end

@@ -7,6 +7,7 @@
 
   function NewOrdersController(UserService,
                               ProductService,
+                              OrderService,
                               products,
                               $uibModal) {
     var vm = this;
@@ -48,9 +49,34 @@
     function onRegisterApiCart(api){
       apiCart = api;
 
-      apiCart.checkout(function (items) {
-        console.log('my items', items);
+      apiCart.checkout(function (data) {
+        var params = {
+          total: data.meta.deliveryPrice,
+          priceDelivery: data.meta.deliveryPrice,
+          address: 'Loja',
+          userId: vm.userOrder.id,
+          items: itemsOrderFormat(data.items)
+        }
+
+        OrderService.newOrder(params).then(function(data){
+          console.log(data);
+        });
       });
+    }
+
+    function itemsOrderFormat(items) {
+      var result = [];
+      angular.forEach(items, function(item){
+        var obj = {
+          quantity: item.value,
+          discount: 0,
+          product_id:  item.id,
+          unit_value: item.price,
+          total: item.totalItem
+        };
+        result.push(obj);
+      });
+      return result;
     }
 
     function onRegisterApiSearchUser(api){
