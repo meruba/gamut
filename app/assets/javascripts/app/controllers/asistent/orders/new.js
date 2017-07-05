@@ -50,17 +50,7 @@
       apiCart = api;
 
       apiCart.checkout(function (data) {
-        var params = {
-          total: data.meta.deliveryPrice,
-          priceDelivery: data.meta.deliveryPrice,
-          address: 'Loja',
-          userId: vm.userOrder.id,
-          items: itemsOrderFormat(data.items)
-        }
-
-        OrderService.newOrder(params).then(function(data){
-          console.log(data);
-        });
+        confirmOrder(data);
       });
     }
 
@@ -164,6 +154,19 @@
       vm.userOrder = user;
     }
 
+    function okModal(data) {
+      var params = {
+        total: data.meta.deliveryPrice,
+        priceDelivery: data.meta.deliveryPrice,
+        address: 'Loja',
+        userId: vm.userOrder.id,
+        items: itemsOrderFormat(data.items)
+      };
+      OrderService.newOrder(params).then(function(data){
+        console.log(data);
+      });
+    }
+
     function configModalUser(user) {
       var modalInstance = $uibModal.open({
         animation: true,
@@ -173,6 +176,21 @@
           userData: {
             user: user || {},
             callback: successSaveUser
+          }
+        }
+      });
+    }
+
+    function confirmOrder(data) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'shared/dialogs/confirmation.html',
+        controller: 'DialogConfirmController as vm',
+        resolve: {
+          dialogOptions: {
+            ok: okModal,
+            cancel: function(){},
+            data: data
           }
         }
       });

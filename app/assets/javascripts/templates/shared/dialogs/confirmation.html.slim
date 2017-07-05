@@ -1,0 +1,15 @@
+.dialog-basic
+  .modal-body.order-confirmation
+    .wrapper-confirmation
+      .tips
+        .icon
+          .id-card ng-include="'svgs/save-order.html'"
+        .tip
+          .title Enviar Pedido?
+          .description
+            .text-help.text-muted Asegurate que la informacion este correctamente ingresada
+      .footer
+        .btn.btn-cmd-close (ng-click="vm.cancel()")
+          | No
+        .btn.btn-cmd-ok (ng-click="vm.ok()")
+          | Si
