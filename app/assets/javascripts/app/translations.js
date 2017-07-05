@@ -110,9 +110,9 @@
         'updateInfoUser': 'Actualizar información'
       },
       placeholder: {
-        'search-user': 'Nombre de usuario o identificación',
+        'search-user': 'Ingresa: Nombre o C.I',
         'search-restaurant': 'Nombre del restaurante o dirección',
-        'search-product': 'Nombre del producto',
+        'search-product': 'Ingresa: nombre del producto',
         'new-category': 'Ingrese una categoria',
         'select-category': 'Seleccione una categoria'
       },

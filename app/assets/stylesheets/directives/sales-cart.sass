@@ -1,7 +1,7 @@
 .cart-form-container
-  .products
-    min-height: 300px
+  padding: 30px 20px
 
+  .products
     .item-selected
       margin-bottom: 10px
       h5
@@ -9,6 +9,7 @@
         text-transform: uppercase
         span
           font-weight: bold
+
   .taxs
     border-top: 1px dashed #e7e7e7
     padding-top: 10px
@@ -18,3 +19,32 @@
         flex-basis: 80%
       input
         flex-basis: 20%
+
+  .tips
+    height: 100%
+    margin-top: 20%
+
+    .icon
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+
+      .placeholder
+        min-width: 80px
+        filter: grayscale(1)
+
+    .tip
+      text-align: center
+
+      .title
+        font-size: 14px
+        font-weight: bold
+        padding: 10px 0 0 0
+
+      .description
+        font-size: 12px
+        font-weight: 300
+
+        .text-help
+          padding: 10px 0

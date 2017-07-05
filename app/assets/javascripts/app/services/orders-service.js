@@ -40,7 +40,7 @@
       }).then(function success(res) {
         return res.data;
       }, function error(err) {
-        console.error('ERR', err);
+        return err.data;
       });
     }
 

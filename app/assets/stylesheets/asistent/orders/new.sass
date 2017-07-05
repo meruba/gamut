@@ -18,129 +18,88 @@
     padding-bottom: 10px
 
   .wrapper-search
-    padding: 30px 20px
+    .wrapper
+      padding: 30px 20px
 
-    .search-user
-      margin-top: 10px
+      .search-user
+        margin-top: 10px
 
-    .wrapper-results
-      margin-bottom: 10px
+      .wrapper-results
+        margin-bottom: 10px
 
-    .user-results
-      .tips
-        height: 100%
-        margin-top: 20%
+      .user-results
+        .tips
+          height: 100%
+          margin-top: 20%
 
-        .icon
-          display: flex
-          flex-direction: column
-          justify-content: center
-          align-items: center
+          .icon
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
 
-          .id-card
-            fill: #1bb099
-            min-width: 80px
+            .id-card
+              fill: #1bb099
+              min-width: 80px
 
-        .tip
-          text-align: center
+          .tip
+            text-align: center
 
-          .title
-            font-size: 14px
-            font-weight: 300
-            padding: 10px 0 0 0
+            .title
+              font-size: 14px
+              font-weight: 300
+              padding: 10px 0 0 0
 
-          .description
-            font-size: 12px
-            font-weight: 300
+            .description
+              font-size: 12px
+              font-weight: 300
 
-            .text-help
-              padding: 10px 0
+              .text-help
+                padding: 10px 0
 
-    .user-selected
-      margin-top: 30%
-      display: flex
-      justify-content: center
-
-      .image-avatar
+      .user-selected
+        margin-top: 30%
         display: flex
         justify-content: center
 
-        img
-          border-radius: 50%
+        .image-avatar
+          display: flex
+          justify-content: center
 
-        .name
-          margin-top: 10px
+          img
+            border-radius: 50%
+
+          .name
+            margin-top: 10px
 
   .wrapper-form
     .card-md
-      .step
-        display: flex
-        justify-content: space-between
-        .form
-          flex-basis: 65%
-          .wrapper
-            padding: 30px
-            border-right: 1px solid #e7e7e7
-            height: 100%
+      .wrapper
+        padding: 30px
+        border-right: 1px solid #e7e7e7
+        height: 100%
 
-            .header-title
-              display: flex
-              flex-basis: 100%
-              justify-content: space-between
-              align-items: baseline
-
-            .form-products
-              margin-top: 10px
-
-              .products-results
-                display: flex
-                flex-wrap: wrap
-                margin-top: 20px
-                height: 320px
-                max-height: 340px
-                overflow-y: scroll
-
-                .product-wrapper
-                  flex-basis: 50%
-                  padding: 0 5px 10px 0
-
-                  &.selected
-                    .product-info
-                      background-color: #1bb099
-                      color: white
-        .area-information
+        .header-title
           display: flex
-          flex-basis: 35%
-          flex-direction: column
+          flex-basis: 100%
           justify-content: space-between
-          padding: 30px 20px
-          // background: aliceblue
-          .steps
-            #numbers
-              display: flex
-              justify-content: space-around
-              .step-circle
-                border-radius: 50%
-                border: 1px solid #1bb099
-                color: #1bb099
-                width: 30px
-                height: 30px
-                display: flex
-                align-items: center
-                justify-content: center
-          .tips
-            height: 100%
-            .icon
-              padding: 50px
-              .id-card
-                fill: #1bb099
-                max-width: 80px
-            .tip
-              text-align: center
-              .title
-                font-size: 14px
-                font-weight: 300
-              .description
-                font-size: 12px
-                font-weight: 300
-                padding-top: 15px
+          align-items: baseline
+
+        .form-products
+          margin-top: 10px
+
+          .products-results
+            display: flex
+            flex-wrap: wrap
+            margin-top: 20px
+            max-height: 340px
+            overflow-y: scroll
+
+            .product-wrapper
+              flex-basis: 50%
+              padding: 0 5px 10px 0
+
+              &.selected
+                .product-info
+                  background-color: #1bb099
+                  color: white

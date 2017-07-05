@@ -1,24 +1,33 @@
 .cart-form-container
   .title Detalle
-  .products
-    .row.item-selected.list-anm ng-repeat="item in vm.items"
-      .col-md-4.col-xs-3
+  .items-wrapper(ng-if="vm.items.length > 0")
+    .products
+      .row.item-selected.list-anm ng-repeat="item in vm.items"
+        .col-md-4.col-xs-3
+          input.form-control (type="number"
+                              ng-init="item.value = 1"
+                              ng-model="item.value"
+                              ng-change="vm.calculate(item)")
+        .col-md-8.col-xs-9
+          h5
+            | {{item.name}}
+            span.price.pull-right
+              | ${{item.totalItem || item.price }}
+    .taxs
+      .delivery-price
+        h4 Precio de envio
         input.form-control (type="number"
-                            ng-init="item.value = 1"
-                            ng-model="item.value"
-                            ng-change="vm.calculate(item)")
-      .col-md-8.col-xs-9
-        h5
-          | {{item.name}}
-          span.price.pull-right
-            | ${{item.totalItem || item.price }}
-  .taxs
-    .delivery-price
-      h4 Precio de envio
-      input.form-control (type="number"
-                          min="0"
-                          ng-model="vm.deliveryPrice"
-                          ng-change="vm.sumValues()")
-    .totalOrder
-      h4 Total: ${{vm.totalOrder}}
-  button.btn.btn-danger.btn-block(ng-click="vm.checkout()") Checkout
+                            min="0"
+                            ng-model="vm.deliveryPrice"
+                            ng-change="vm.sumValues()")
+      .totalOrder
+        h4 Total: ${{vm.totalOrder}}
+    button.btn.btn-danger.btn-block(ng-click="vm.checkout()") Checkout
+  .placeholder-tip(ng-if="vm.items.length === 0")
+    .tips
+      .icon
+        .placeholder ng-include="'svgs/products-icon.html'"
+      .tip
+        .title No hay productos
+        .description
+          .text-help.text-muted Aqui se iran listando y calculando tu pedido
