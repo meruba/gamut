@@ -4,21 +4,31 @@
   .products
     .item-selected
       margin-bottom: 10px
-      h5
-        font-weight: 300
-        text-transform: uppercase
-        span
-          font-weight: bold
+      display: flex
+      justify-content: space-between
+
+      .wrapper-input
+        flex-basis: 27%
+
+      .wrapper-description
+        flex-basis: 73%
+        padding-left: 15px
+
+        .description
+          font-weight: 300
+          text-transform: uppercase
+          span
+            font-weight: bold
+            padding-left: 10px
 
   .taxs
     border-top: 1px dashed #e7e7e7
     padding-top: 10px
     .delivery-price
       display: flex
-      h4
-        flex-basis: 80%
+      justify-content: space-between
       input
-        flex-basis: 20%
+        flex-basis: 33%
 
   .tips
     height: 100%
