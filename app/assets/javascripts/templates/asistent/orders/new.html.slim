@@ -1,39 +1,11 @@
 .wrapper-section
   .wrapper-search.col-md-3
     .card-md
-      .wrapper
-        .title Seleccionar Cliente
-        .wrapper-results
-          .search-user
-            search-input options="vm.optionsSearch"
-          .user-results
-            .user-wrapper(ng-repeat="user in vm.users" ng-click="vm.selectUser(user)")
-              user-card-result(options="{user: user}")
-            div(ng-if="vm.users.length === 0 && !vm.showUser")
-              .tips
-                .icon
-                  .id-card ng-include="'svgs/id-card.html'"
-                .tip
-                  .title Busca o agrega un cliente
-                  .description
-                    .text-help.text-muted Si no encuentras un cliente puedes agregarlo desde este boton
-                    button.btn-cdm.btn-cdm-primary(ng-click="vm.newUser()") Nuevo Usuario
-
-      .user-selected(ng-if="vm.showUser && vm.userOrder")
-        .user
-          .main-head
-            image-upload options="{image: vm.userOrder.image, identicon: vm.userOrder.email}"
-            .name
-              span {{vm.userOrder.name}}
-          .description
-            #address.text-muted.elipsis
-              i.glyphicon.glyphicon-map-marker
-              | {{vm.userOrder.identification}}
+      div(ng-include="'asistent/orders/partials/user-select.html'" )
   .wrapper-form.col-md-6
     .card-md
       .wrapper
         div(ng-include="'asistent/orders/partials/form-items.html'" )
-
   .wrapper-form.col-md-3
     .card-md
       sales-cart(options="vm.optionsCart")

@@ -1,0 +1,30 @@
+.wrapper
+  .title Seleccionar Cliente
+  .wrapper-results
+    .search-user
+      search-input options="vm.optionsSearch"
+    .user-results
+      .user-wrapper(ng-repeat="user in vm.users" ng-click="vm.selectUser(user)")
+        user-card-result(options="{user: user}")
+      div(ng-if="vm.users.length === 0 && !vm.showUser")
+        .tips
+          .icon
+            .id-card ng-include="'svgs/id-card.html'"
+          .tip
+            .title Busca o agrega un cliente
+            .description
+              .text-help.text-muted Si no encuentras un cliente puedes agregarlo desde este boton
+              button.btn-cdm.btn-cdm-primary(ng-click="vm.newUser()") Nuevo Usuario
+
+.user-choosen(ng-if="vm.showUser && vm.userOrder")
+  .wrapper-user
+    .icon.text-center
+      img src="/images/user.svg"
+    .name
+      span {{vm.userOrder.name}}
+    .description
+      .identification.text-muted.elipsis
+        | {{vm.userOrder.identification}}
+    .buttons
+      button.btn-cdm.btn-cdm-disabled(ng-click="vm.newUser()") Editar
+      button.btn-cdm.btn-cdm-primary(ng-click="vm.newUser()") Nuevo
