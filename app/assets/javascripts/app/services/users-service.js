@@ -15,6 +15,7 @@
       activeUser: activeUser,
       newUser: newUser,
       newCustomer: newCustomer,
+      editCustomer: editCustomer,
       customers: customers
     };
 
@@ -49,6 +50,25 @@
           email: user.email,
           address: user.address,
           telephone: user.telephone
+        }
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        return err.data;
+      });
+    }
+
+    function editCustomer(user) {
+      return $http({
+        method: 'PUT',
+        url: '/api/v1/users/update_customer',
+        data: {
+          name: user.name,
+          identification: user.identification,
+          email: user.email,
+          address: user.address,
+          telephone: user.telephone,
+          id: user.id
         }
       }).then(function success(res) {
         return res.data;

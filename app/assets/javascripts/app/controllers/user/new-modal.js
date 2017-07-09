@@ -18,7 +18,7 @@
     init();
 
     function init() {
-      vm.userForm = null;
+      vm.userForm = angular.copy(userData.user) || null;
     }
 
     function ok() {
@@ -30,12 +30,14 @@
     };
 
     function save() {
-      UserService.newCustomer(vm.userForm).then(function(user){
+      var api = userData.user ? UserService.editCustomer : UserService.newCustomer;
+      api(vm.userForm).then(function(user){
         if (user.errors) {
           errorsAlert(user.errors);
         }else{
           cancel();
-          userData.callback(user);
+          var resp = user || vm.userForm
+          userData.callback(resp);
         }
       });
     }

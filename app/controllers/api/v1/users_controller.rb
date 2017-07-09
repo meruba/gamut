@@ -24,6 +24,12 @@ module Api
         respond_with(:api, :v1, @user)
       end
 
+      def update_customer
+        @user = User.find(params[:id])
+        @user.update(user_params)
+        respond_with(:api, :v1, @user)
+      end
+
       def update
         @user.update(user_params)
         respond_with(:api, :v1, @user)

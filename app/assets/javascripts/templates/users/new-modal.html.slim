@@ -36,5 +36,7 @@
                                         type="email")
   .modal-footer#footer
     .row.col-md-12
+      button.btn.btn-default (ng-click="vm.cancel()")
+        | {{ 'action.cancel' | translate }}
       button.btn.btn-success (ng-click="vm.save()")
-        | {{ 'action.' + (vm.editItem ? 'update' : 'save') | translate }}
+        | {{ 'action.save' | translate }}

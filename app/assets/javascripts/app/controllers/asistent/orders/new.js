@@ -22,6 +22,7 @@
     vm.userOrder = null;
     vm.newProduct = newProduct;
     vm.newUser = newUser;
+    vm.editUser = editUser;
     vm.selectProduct = selectProduct;
     vm.itemsToCart = [];
 
@@ -74,14 +75,14 @@
 
       apiSearchUser.clearInput(function () {
         vm.users = [];
-        vm.showUser = true
+        vm.showUser = vm.userOrder ? true : false
       });
 
       apiSearchUser.typing(function (text) {
         vm.showUser = false
         if (text.length === 0) {
           vm.users = [];
-          vm.showUser = true
+          vm.showUser = vm.userOrder ? true : false
         }
       });
     }
@@ -129,6 +130,10 @@
       configModalUser();
     }
 
+    function editUser(user) {
+      configModalUser(user);
+    }
+
     function successSaveProduct(data) {
       console.log('product: ', data);
     }
@@ -149,7 +154,6 @@
     }
 
     function successSaveUser(user) {
-      console.log('user: ', user);
       vm.showUser = true;
       vm.userOrder = user;
     }
