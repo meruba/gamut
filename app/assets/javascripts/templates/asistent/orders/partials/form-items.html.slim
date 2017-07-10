@@ -8,5 +8,5 @@
       .search-products
         search-input options="vm.productsOptionsSearch"
       .products-results
-        .product-wrapper(ng-repeat="result in vm.products" ng-class="{'selected':result.product.selected}")
+        .product-wrapper(ng-repeat="result in vm.products | filter:vm.searchText" ng-class="{'selected':result.product.selected}")
           product-card-result(options="{product: result.product}" ng-click="vm.selectProduct(result.product)")

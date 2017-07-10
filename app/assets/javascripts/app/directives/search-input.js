@@ -39,7 +39,7 @@
       vmSearch.show = vmSearch.options.show ? vmSearch.options.show : false;
       vmSearch.query = vmSearch.options.query || '';
       vmSearch.debounce = vmSearch.options.debounce || 400;
-      vmSearch.service = vmSearch.options.service;
+      vmSearch.service = vmSearch.options.service || null;
       vmSearch.results = vmSearch.options.results;
       placeholder(vmSearch.options.placeholder);
 
@@ -84,10 +84,13 @@
       }
 
       if (vmSearch.query !== '' && vmSearch.query.length >= 3) {
-        vmSearch.service(query).then(function(resp){
-          vmSearch.results(resp);
-        });
+        if (vmSearch.service) {
+          vmSearch.service(query).then(function(resp){
+            vmSearch.results(resp);
+          });
+        }
       }
+
     }
 
     function reset() {

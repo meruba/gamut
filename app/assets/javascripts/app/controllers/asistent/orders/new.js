@@ -25,6 +25,7 @@
     vm.editUser = editUser;
     vm.selectProduct = selectProduct;
     vm.itemsToCart = [];
+    vm.searchText = null;
 
     vm.optionsCart = {
       items: [],
@@ -40,11 +41,11 @@
     };
 
     vm.productsOptionsSearch = {
-      service: ProductService.searchProducts,
       placeholder: 'search-product',
       results: productsResult,
       onRegisterApi: onRegisterApiProductUser,
-      show: true
+      show: true,
+      query: vm.searchText
     }
 
     function onRegisterApiCart(api){
@@ -89,6 +90,14 @@
 
     function onRegisterApiProductUser(api){
       apiSearcProduct = api;
+
+      apiSearcProduct.clearInput(function () {
+        vm.searchText = '';
+      });
+
+      apiSearcProduct.typing(function (text) {
+        vm.searchText = text;
+      });
     }
 
     function usersResult(data) {
