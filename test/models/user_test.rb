@@ -27,11 +27,12 @@
 #  updated_at             :datetime
 #  username               :string
 #  identification         :string
-#  address                :string
 #  telephone              :string
 #  role                   :string           default("customer"), not null
-#  is_active              :boolean          default("true")
 #  has_account            :boolean          default("true")
+#  is_active              :boolean          default("true")
+#  movil                  :string
+#  code                   :string
 #
 
 require 'test_helper'
