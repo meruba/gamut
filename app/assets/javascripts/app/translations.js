@@ -43,7 +43,15 @@
           username: 'Username',
           address: 'Dirección',
           identification: 'Cédula',
-          telephone: 'Teléfono'
+          telephone: 'Teléfono',
+          address: {
+            name_place: 'Nombre del lugar ',
+            neighborhood: 'Barrio',
+            main_street: 'Calle Principal',
+            secondary_street: 'Calle Secundaria',
+            reference_place: 'Referencia',
+            number_place: 'Numero #'
+          }
         },
         role: {
           restaurant: 'restaurante',

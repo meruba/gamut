@@ -18,12 +18,6 @@
                                                   required="required"
                                                   type="text")
             .form-group
-              label for="address" {{ ::'user.attributes.address' | translate }}
-              input#address.form-control (name="address"
-                                          ng-model="vm.userForm.address"
-                                          required="required"
-                                          type="text")
-            .form-group
               label for="telephone" {{ ::'user.attributes.telephone' | translate }}
               input#telephone.form-control (name="telephone"
                                             ng-model="vm.userForm.telephone"
@@ -34,6 +28,41 @@
                                         ng-model="vm.userForm.email"
                                         required="required"
                                         type="email")
+        uib-tab heading=("Direcciones") index="2"
+          .row-column(ng-repeat="address in ::vm.userForm.addresses")
+            .form-group.name
+              label for="place" {{ ::'user.attributes.address.name_place'  | translate }}
+              input#name_place.form-control (name="name_place"
+                                            ng-model="address.name_place"
+                                            required="required"
+                                            type="text")
+            .form-group.identification
+              label for="neighborhood" {{ ::'user.attributes.address.neighborhood' | translate }}
+              input#neighborhood.form-control (name="neighborhood"
+                                                ng-model="address.neighborhood"
+                                                required="required"
+                                                type="text")
+            .form-group
+              label for="main_street" {{ ::'user.attributes.address.main_street' | translate }}
+              input#main_street.form-control (name="main_street"
+                                              ng-model="address.main_street"
+                                              type="text")
+            .form-group
+              label for="secondary_street" {{ ::'user.attributes.address.secondary_street' | translate }}
+              input#secondary_street.form-control (name="secondary_street"
+                                                  ng-model="address.secondary_street"
+                                                  type="text")
+            .form-group
+              label for="number_place" {{ ::'user.attributes.address.number_place' | translate }}
+              input#number_place.form-control (name="number_place"
+                                              ng-model="address.number_place"
+                                              type="text")
+
+            .form-group
+              label for="reference_place" {{ ::'user.attributes.address.reference_place' | translate }}
+              input#reference_place.form-control (name="reference_place"
+                                                  ng-model="address.reference_place"
+                                                  type="text")
   .modal-footer#footer
     .row.col-md-12
       button.btn.btn-default (ng-click="vm.cancel()")

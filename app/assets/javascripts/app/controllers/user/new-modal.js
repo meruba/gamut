@@ -15,10 +15,21 @@
     vm.cancel = cancel;
     vm.save = save;
 
+    var address = {
+      name_place: null,
+      neighborhood: null,
+      main_street: null,
+      secondary_street: null,
+      number_place: null,
+      reference_place: null
+    };
+
     init();
 
     function init() {
-      vm.userForm = angular.copy(userData.user) || null;
+      vm.userForm = angular.copy(userData.user) || {};
+      var addresses = vm.userForm.addresses || [address];
+      vm.userForm.addresses = addresses;
     }
 
     function ok() {

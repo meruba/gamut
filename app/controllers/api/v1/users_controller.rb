@@ -81,7 +81,9 @@ module Api
                                         :number_place,
                                         :reference_place,
                                         :name_place,
-                                        :user_id
+                                        :user_id,
+                                        :id,
+                                        :_destroy
                                       ]
                                     )
       end

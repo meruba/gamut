@@ -50,17 +50,7 @@
             identification: user.identification,
             email: user.email,
             telephone: user.telephone,
-            addresses_attributes: [
-              {
-                neighborhood: 'neighborhood',
-                main_street: '1',
-                secondary_street: '2',
-                number_place: '3',
-                reference_place: '4',
-                name_place: '5',
-                user_id: 2
-              }
-            ]
+            addresses_attributes: user.addresses
           }
         }
       }).then(function success(res) {
@@ -75,11 +65,14 @@
         method: 'PUT',
         url: '/api/v1/users/update_customer',
         data: {
-          name: user.name,
-          identification: user.identification,
-          email: user.email,
-          address: user.address,
-          telephone: user.telephone,
+          user: {
+            name: user.name,
+            identification: user.identification,
+            email: user.email,
+            address: user.address,
+            telephone: user.telephone,
+            addresses_attributes: user.addresses
+          },
           id: user.id
         }
       }).then(function success(res) {
