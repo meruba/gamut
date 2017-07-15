@@ -6,6 +6,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :secondary_street
       t.string :number_place
       t.string :reference_place
+      t.string :name_place
       t.references :user, index: true
       t.timestamps null: false
     end

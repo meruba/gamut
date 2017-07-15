@@ -4,7 +4,7 @@ module Api
 
       before_action :authenticate_user!
       before_action :find_order, only: [:update, :remove, :public]
-
+      authorize_resource
 
       # save json nested attributes
       # http://stackoverflow.com/questions/19574595/rails-4-not-updating-nested-attributes-via-json#comment34449874_19574595
@@ -12,10 +12,8 @@ module Api
         key.to_s.concat('_attributes').to_sym
       end
 
-      wrap_parameters include: Order.attribute_names + nested_attributes_names,
-      format: :json
+      wrap_parameters include: Order.attribute_names + nested_attributes_names
 
-      # authorize_resource
       respond_to :json
 
       def index

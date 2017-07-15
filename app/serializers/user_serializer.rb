@@ -5,14 +5,15 @@ class UserSerializer < ActiveModel::Serializer
              :name,
              :username,
              :identification,
-             :address,
              :telephone,
+             :movil,
              :role,
              :uid,
              :provider,
              :restaurant_id,
              :image,
-             :is_active
+             :is_active,
+             :addresses
 
   def image
     object.image.url

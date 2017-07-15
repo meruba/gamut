@@ -56,7 +56,11 @@ class User < ActiveRecord::Base
   begin :relationships
     has_one :restaurant, dependent: :destroy
     has_many :orders, dependent: :destroy
+    has_many :addresses, dependent: :destroy
   end
+
+  #nested
+  accepts_nested_attributes_for :addresses
 
   def active_for_authentication?
     super and self.is_active?

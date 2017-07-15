@@ -30,7 +30,8 @@
     };
 
     function save() {
-      var api = userData.user ? UserService.editCustomer : UserService.newCustomer;
+      var user = userData.user || {},
+          api = user.id ? UserService.editCustomer : UserService.newCustomer;
       api(vm.userForm).then(function(user){
         if (user.errors) {
           errorsAlert(user.errors);

@@ -8,10 +8,16 @@
 #  secondary_street :string
 #  number_place     :string
 #  reference_place  :string
+#  name_place       :string
 #  user_id          :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
 
 class Address < ActiveRecord::Base
+
+  begin :relationships
+    belongs_to :user
+  end
+
 end

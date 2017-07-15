@@ -4,6 +4,14 @@ module Api
       before_action :authenticate_user!
       authorize_resource
 
+      # save json nested attributes
+      # http://stackoverflow.com/questions/19574595/rails-4-not-updating-nested-attributes-via-json#comment34449874_19574595
+      nested_attributes_names = Address.nested_attributes_options.keys.map do |key|
+        key.to_s.concat('_attributes').to_sym
+      end
+
+      wrap_parameters include: Address.attribute_names + nested_attributes_names
+
       respond_to :json
 
       def index
@@ -62,12 +70,21 @@ module Api
                                       :role,
                                       :is_active,
                                       :identification,
-                                      :address,
+                                      :movil,
                                       :telephone,
-                                      :has_account
+                                      :has_account,
+                                      :code,
+                                      :addresses_attributes => [
+                                        :neighborhood,
+                                        :main_street,
+                                        :secondary_street,
+                                        :number_place,
+                                        :reference_place,
+                                        :name_place,
+                                        :user_id
+                                      ]
                                     )
       end
-
     end
   end
 end

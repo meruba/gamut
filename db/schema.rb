@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170713195718) do
     t.string   "secondary_street"
     t.string   "number_place"
     t.string   "reference_place"
+    t.string   "name_place"
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

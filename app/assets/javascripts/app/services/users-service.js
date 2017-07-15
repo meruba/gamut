@@ -45,11 +45,23 @@
         method: 'POST',
         url: '/api/v1/users/new_customer',
         data: {
-          name: user.name,
-          identification: user.identification,
-          email: user.email,
-          address: user.address,
-          telephone: user.telephone
+          user: {
+            name: user.name,
+            identification: user.identification,
+            email: user.email,
+            telephone: user.telephone,
+            addresses_attributes: [
+              {
+                neighborhood: 'neighborhood',
+                main_street: '1',
+                secondary_street: '2',
+                number_place: '3',
+                reference_place: '4',
+                name_place: '5',
+                user_id: 2
+              }
+            ]
+          }
         }
       }).then(function success(res) {
         return res.data;
