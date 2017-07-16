@@ -9,6 +9,12 @@
                           restaurants) {
     var vm = this;
     vm.restaurants = restaurants || [];
+    vm.selectedRestaurant = vm.restaurants[0];
+    vm.selectRestaurant = selectRestaurant
+
+    function selectRestaurant(restaurant) {
+      vm.selectedRestaurant = restaurant
+    }
   }
 
 })();
