@@ -1,0 +1,28 @@
+.wrapper-restaurants
+  display: flex
+
+  .wrapper-restaurants-contacts
+    .card-md
+      min-height: 350px
+      padding: 30px 20px
+      overflow-y: scroll
+
+      .restaurants
+        .restaurant
+          display: flex
+          align-items: baseline
+          padding: 5px 10px
+          cursor: pointer
+
+          &:hover
+            background-color: #1bb099
+            color: white
+
+          .logo
+            flex-basis: 30%
+          .description
+            flex-basis: 70%
+
+  .wrapper-show
+    .card-md
+      padding: 30px 20px

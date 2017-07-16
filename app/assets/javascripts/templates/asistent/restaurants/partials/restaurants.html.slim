@@ -1,0 +1,8 @@
+.restaurants
+  .title Establecimientos
+  .restaurant(ng-repeat="restaurant in vm.restaurants")
+    .logo
+      .img-circle
+        image-upload options="{image: restaurant.logo, identicon: restaurant.email}"
+    .description
+      .name {{restaurant.name}}

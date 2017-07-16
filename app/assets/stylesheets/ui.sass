@@ -4,8 +4,49 @@
   border-radius: 5px
   &:hover
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2)
+
 .elipsis
   width: 100%
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
+
+.btn-cdm
+  border-radius: 25px
+  padding: 5px 10px
+  margin-left: 10px
+  border: none
+
+.btn-cdm-primary
+  background: #1bb099
+  color: #ffffff
+.btn-cdm-disabled
+  background: #e7e7e7
+
+.title
+  font-size: 20px
+  font-weight: 300
+  padding-bottom: 10px
+
+.img-circle
+  flex-basis: 30%
+  display: flex
+  justify-content: space-between
+  image-upload
+    display: flex
+    justify-content: center
+    background: #f0f0f0
+    align-items: center
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    position: relative
+    overflow: hidden
+    .image-avatar
+      img
+        object-fit: cover
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0

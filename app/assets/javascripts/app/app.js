@@ -336,6 +336,22 @@
             });
           }
         }
+      })
+      .state('app.asistent.restaurants', {
+        url: '/restaurants',
+        template: '<ui-view/>'
+      })
+      .state('app.asistent.restaurants.list', {
+        url: '/new',
+        templateUrl: 'asistent/restaurants/index.html',
+        controller: 'RestaurantsCtrl as vm',
+        resolve: {
+          restaurants: function (RestaurantService) {
+            return RestaurantService.restaurants().then(function(data) {
+              return data.restaurants;
+            });
+          }
+        }
       });
     $urlRouterProvider.otherwise('/login');
   });
