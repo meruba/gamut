@@ -6,8 +6,11 @@
     .restaurant
       .name {{vm.selectedRestaurant.name}}
       .address {{vm.selectedRestaurant.address}}
+      .telephone {{vm.selectedRestaurant.telephone}}
   .tabs-option
     .tab-menu.tab
       | Productos
-    .tab-orders.tab
-      | Ordenes
+    //.tab-orders.tab
+      //| Ordenes
+  .products-section
+    div(ng-include="'asistent/restaurants/partials/products.html'")

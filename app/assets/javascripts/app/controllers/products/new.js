@@ -19,7 +19,7 @@
     init();
 
     function init() {
-      vm.item = null;
+      vm.item = angular.copy(productData.item) || null;
     }
 
     function ok() {
@@ -32,10 +32,15 @@
 
     function save() {
       var action = {
-        new: ProductService.newProduct,
-        update: ProductService.updateProduct
+          new: ProductService.newProduct,
+          update: ProductService.updateProduct
+        },
+        key  = vm.item.restaurant_id ? 'update' : 'new';
+
+      if (key === 'new') {
+        vm.item.restaurant_id = productData.restaurantId;
       };
-      var key  = vm.editItem ? 'update' : 'new';
+
       var service = action[key];
       // vm.item.restaurant_id =  $auth.user.restaurant_id
       // vm.item.category_id = vm.item.category ?
@@ -45,7 +50,7 @@
           errorsAlert(product.errors);
         }else{
           cancel();
-          productData.callback(product);
+          productData.callback(product, key);
         }
       });
     }

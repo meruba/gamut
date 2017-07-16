@@ -1,0 +1,16 @@
+.wrapper
+  .search-products(ng-if="vm.selectedRestaurant.products.length !== 0")
+    search-input options="vm.productsOptionsSearch"
+    .btn-save
+      button.btn-cdm.btn-cdm-primary(ng-click="vm.newProduct()") +
+  .products
+    .product(ng-repeat="product in vm.selectedRestaurant.products | filter:vm.searchText")
+      product-card-result(options="{product: product}" ng-click="vm.editProduct(product, $index)")
+    .empty-state(ng-if="vm.selectedRestaurant.products.length === 0")
+      .icon
+        .placeholder ng-include="'svgs/products-icon.html'"
+      .help-text
+        .title No hay productos aun
+        .description
+          .text-help.text-muted Todos los productos se agregaran en esta seccion
+      button.btn-cdm.btn-cdm-primary(ng-click="vm.newProduct()") Nuevo Producto

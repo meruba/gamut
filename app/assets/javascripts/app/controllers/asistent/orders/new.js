@@ -30,7 +30,7 @@
     vm.optionsCart = {
       items: [],
       onRegisterApi: onRegisterApiCart
-    }
+    };
 
     vm.optionsSearch = {
       service: UserService.searchCustomers,
@@ -46,7 +46,7 @@
       onRegisterApi: onRegisterApiProductUser,
       show: true,
       query: vm.searchText
-    }
+    };
 
     function onRegisterApiCart(api){
       apiCart = api;
