@@ -19,11 +19,11 @@ class RestaurantSerializer < ActiveModel::Serializer
   end
 
   def owner
-    object.user.name
+    object.user ? object.user.name : ''
   end
 
   def user_active
-    object.user.is_active
+    object.user ? object.user.is_active : false
   end
 
 end

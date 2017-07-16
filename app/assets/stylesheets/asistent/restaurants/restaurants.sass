@@ -5,7 +5,7 @@
 
   .wrapper-restaurants-contacts
     .card
-      padding: 30px 0
+      padding-top: 30px
 
       .restaurants-wrapper
         .title
@@ -14,25 +14,34 @@
         .restaurants
           max-height: 250px
           overflow-y: scroll
+          border-top: 2px solid $gray-low
+          border-bottom: 2px solid $gray-low
 
-        .restaurant
-          display: flex
-          align-items: center
-          padding: 5px 20px
-          cursor: pointer
+          .restaurant
+            display: flex
+            align-items: center
+            padding: 5px 20px
+            cursor: pointer
 
-          &:hover
-            background-color: $gray-low
+            &:nth-child(even)
+              background-color: $gray-low
 
-          &.selected
-            background-color: $primary-color
-            color: white
+            &:hover
+              background-color: $primary-color
+              color: white
 
-          .logo
-            flex-basis: 30%
+            &.selected
+              background-color: $primary-color
+              color: white
 
-          .description
-            flex-basis: 70%
+            .logo
+              flex-basis: 30%
+
+            .description
+              flex-basis: 70%
+
+        .btn-wrapper
+          padding: 20px
 
   .wrapper-show
     .card
@@ -78,15 +87,20 @@
             .name
               font-size: 40px
               font-weight: 200
+              text-transform: uppercase
 
             .address
               font-size: 16px
               font-weight: 100
+              text-transform: uppercase
 
             .telephone
               font-size: 14px
               font-weight: 100
               padding-top: 5px
+
+            .edit-restaurant
+              margin-top: 5px
 
         .tabs-option
           display: flex

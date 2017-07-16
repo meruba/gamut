@@ -1,0 +1,22 @@
+.form-menu
+  .modal-body#body
+    form.tab-form-demo name="outerForm"
+      uib-tabset active="activeForm"
+        uib-tab heading=("Datos") index="1"
+          .form-group
+            label for=("name") {{ ::'restaurant.attributes.name' | translate }}
+            input.form-control name="name" ng-model="vm.rest.name" type="text"
+          .form-group
+            label for=("address") {{ ::'restaurant.attributes.address' | translate }}
+            input.form-control name="address" ng-model="vm.rest.address" type="text"
+          .form-group
+            label for=("telephone") {{ ::'restaurant.attributes.telephone' | translate }}
+            input.form-control name="telephone" ng-model="vm.rest.telephone" type="text"
+          .form-group
+            label for=("email") {{ ::'restaurant.attributes.email' | translate }}
+            input.form-control name="email" ng-model="vm.rest.email" type="email"
+
+  .modal-footer#footer
+    .col-md-12
+      button.btn.btn-success (ng-click="vm.save()")
+        | {{ 'action.' + (vm.editItem ? 'update' : 'save') | translate }}

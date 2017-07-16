@@ -15,6 +15,8 @@
     vm.selectRestaurant = selectRestaurant
     vm.newProduct = newProduct;
     vm.editProduct = editProduct;
+    vm.newRestaurant = newRestaurant;
+    vm.editRestaurant = editRestaurant;
     vm.searchText = null;
 
     vm.productsOptionsSearch = {
@@ -34,6 +36,14 @@
       apiSearcProduct.typing(function (text) {
         vm.searchText = text;
       });
+    }
+
+    function newRestaurant() {
+      configModalRestaurant();
+    }
+
+    function editRestaurant(item, index) {
+      configModalRestaurant(item);
     }
 
     function newProduct() {
@@ -61,6 +71,16 @@
       };
     }
 
+    function successSaveRestaurant(data, action) {
+      var restaurant = data;
+      if (action === 'update') {
+        vm.selectedRestaurant = updateValues(vm.selectedRestaurant, restaurant);
+      }else{
+        vm.restaurants.push(restaurant);
+        vm.selectedRestaurant = restaurant;
+      };
+    }
+
     function configModalProduct(item) {
       var modalInstance = $uibModal.open({
         animation: true,
@@ -75,6 +95,27 @@
           }
         }
       });
+    }
+
+    function configModalRestaurant(item) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'asistent/restaurants/new.html',
+        controller: 'RestNewController as vm',
+        resolve: {
+          restaurantData: {
+            item: item || {},
+            callback: successSaveRestaurant
+          }
+        }
+      });
+    }
+
+    function updateValues(source, obj) {
+      angular.forEach(obj, function(value, key){
+        source[key] = value;
+      });
+      return source;
     }
 
   }

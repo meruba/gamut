@@ -19,9 +19,9 @@
 
 class Restaurant < ActiveRecord::Base
   begin :validations
-    validates :owner, :name, :email, :address, :telephone,  presence: true,
-                                                    uniqueness: true,
-                                                    allow_blank: false
+    validates :name, :address, :telephone,  presence: true,
+                                            allow_blank: false
+    validates :name, uniqueness: true
   end
 
   mount_uploader :logo, ImageUploader
@@ -33,7 +33,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   begin :callbacks
-    after_create :create_account
+    # after_create :create_account
   end
 
 

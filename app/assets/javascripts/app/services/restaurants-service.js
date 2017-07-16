@@ -84,7 +84,7 @@
         }
       }).then(function success(res) {
         toastr.info('Actualizado Exitosamente!', 'Restaurante');
-        return res.data;
+        return res.config.data;
       }, function error(err) {
         return err.data;
       });

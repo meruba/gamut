@@ -21,7 +21,7 @@ class Ability
       cannot [:destroy, :index], User
       can [:create, :show, :update, :remove, :index], Product
       can [:create, :show, :update, :remove, :index], Order
-      can [:show, :index, :update, :menu, :categories, :upload_image], Restaurant
+      can [:show, :index, :update, :menu, :create, :upload_image], Restaurant
     end
   end
 end
