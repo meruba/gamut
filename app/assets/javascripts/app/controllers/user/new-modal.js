@@ -27,8 +27,10 @@
     init();
 
     function init() {
-      vm.userForm = angular.copy(userData.user) || {};
-      var addresses = vm.userForm.addresses || [address];
+      var user = angular.copy(userData.user) || {};
+      user.addresses = user.addresses || [];
+      var addresses = user.addresses.length > 0 ? user.addresses : [address];
+      vm.userForm = user;
       vm.userForm.addresses = addresses;
     }
 
