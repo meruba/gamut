@@ -1,3 +1,5 @@
+@import "base/palette"
+
 .wrapper-restaurants
   display: flex
 
@@ -20,8 +22,7 @@
           cursor: pointer
 
           &:hover
-            background-color: #1bb099
-            color: white
+            background-color: $gray-low
 
           .logo
             flex-basis: 30%
@@ -78,3 +79,15 @@
               font-size: 16px
               color: white
               font-weight: 100
+
+        .tabs-option
+          display: flex
+          justify-content: center
+          align-items: center
+          background-color: $gray-low
+
+          .tab
+            padding: 10px
+            border-bottom: 2px solid $secondary-color
+            color: $text-color
+            cursor: pointer

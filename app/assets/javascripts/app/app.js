@@ -342,7 +342,7 @@
         template: '<ui-view/>'
       })
       .state('app.asistent.restaurants.list', {
-        url: '/new',
+        url: '/list',
         templateUrl: 'asistent/restaurants/index.html',
         controller: 'RestaurantsCtrl as vm',
         resolve: {
