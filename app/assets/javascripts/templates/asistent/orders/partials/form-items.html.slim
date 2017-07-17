@@ -1,12 +1,16 @@
-.header-title
-  .title Seleccionar Productos
-  .btn-save
-    button.btn-cdm.btn-cdm-primary(ng-click="vm.newProduct()") +
-.form-products
-  .wrapper-search-product
-    .wrapper-results
-      .search-products
-        search-input options="vm.productsOptionsSearch"
-      .products-results
-        .product-wrapper(ng-repeat="result in vm.products | filter:vm.searchText" ng-class="{'selected':result.product.selected}")
-          product-card-result(options="{product: result.product}" ng-click="vm.selectProduct(result.product)")
+.header-section
+  .header-title
+    .title Seleccionar Productos
+  .form-products
+    .wrapper-search-product
+      .wrapper-results
+        .search-products
+          search-input options="vm.productsOptionsSearch"
+.products-menu(ng-repeat="restaurant in vm.restaurantsSelected")
+  .title {{restaurant.name}}
+  .form-products
+    .wrapper-search-product
+      .wrapper-results
+        .products-results
+          .product-wrapper(ng-repeat="product in restaurant.products | filter:vm.searchText" ng-class="{'selected': product.selected}")
+            product-card-result(options="{product: product}" ng-click="vm.selectProduct(product)")

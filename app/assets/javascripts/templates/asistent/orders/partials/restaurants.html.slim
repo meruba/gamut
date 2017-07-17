@@ -1,0 +1,9 @@
+.wrapper
+  .title Establecimientos
+  .restaurants
+    .restaurant(ng-repeat="restaurant in vm.restaurants | orderBy:'name'" ng-click="vm.selectRestaurant(restaurant)" ng-class="{'selected' : restaurant.selected}")
+      .logo
+        .img-circle
+          image-upload options="{image: restaurant.logo, identicon: restaurant.email}"
+      .description
+        .name {{restaurant.name}}

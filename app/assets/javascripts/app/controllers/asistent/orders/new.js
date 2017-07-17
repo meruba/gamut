@@ -8,7 +8,7 @@
   function NewOrdersController(UserService,
                               ProductService,
                               OrderService,
-                              products,
+                              restaurants,
                               $uibModal) {
     var vm = this;
     var apiCart = null,
@@ -17,15 +17,28 @@
 
     vm.user = {};
     vm.users = [];
-    vm.products = products || [];
+    vm.restaurantsSelected = [];
+    vm.restaurants = restaurants || [];
     vm.selectUser = selectUser;
     vm.userOrder = null;
     vm.newProduct = newProduct;
     vm.newUser = newUser;
     vm.editUser = editUser;
     vm.selectProduct = selectProduct;
+    vm.selectRestaurant = selectRestaurant;
     vm.itemsToCart = [];
     vm.searchText = null;
+    vm.buildProductsOptionsSearch = buildProductsOptionsSearch;
+
+    function buildProductsOptionsSearch(index) {
+      return {
+        placeholder: 'search-product',
+        results: productsResult,
+        onRegisterApi: onRegisterApiProductUser,
+        show: true,
+        query: ''
+      };
+    }
 
     vm.optionsCart = {
       items: [],
@@ -45,7 +58,7 @@
       results: productsResult,
       onRegisterApi: onRegisterApiProductUser,
       show: true,
-      query: vm.searchText
+      query: ''
     };
 
     function onRegisterApiCart(api){
@@ -207,6 +220,16 @@
           }
         }
       });
+    }
+
+    function selectRestaurant(restaurant) {
+      restaurant.selected = !restaurant.selected;
+      if (restaurant.selected) {
+        vm.restaurantsSelected.push(restaurant);
+      }else{
+        var index = vm.restaurantsSelected.indexOf(restaurant);
+        vm.restaurantsSelected.splice(index, 1);
+      }
     }
   }
 

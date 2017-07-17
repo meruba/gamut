@@ -330,9 +330,9 @@
         templateUrl: 'asistent/orders/new.html',
         controller: 'NewOrders as vm',
         resolve: {
-          products: function (ProductService) {
-            return ProductService.listProducts().then(function(data) {
-              return data.products;
+          restaurants: function (RestaurantService) {
+            return RestaurantService.restaurants().then(function(data) {
+              return data.restaurants;
             });
           }
         }
