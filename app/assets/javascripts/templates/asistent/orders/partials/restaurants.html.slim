@@ -1,7 +1,10 @@
 .wrapper
   .title Establecimientos
   .restaurants
-    .restaurant(ng-repeat="restaurant in vm.restaurants | orderBy:'name'" ng-click="vm.selectRestaurant(restaurant)" ng-class="{'selected' : restaurant.selected}")
+    .restaurant(ng-repeat="restaurant in vm.restaurants | orderBy:'name'"
+                ng-click="vm.selectRestaurant(restaurant)"
+                ng-class="{'selected' : restaurant.id === vm.selectedRestaurant.id}"
+                ng-if="restaurant.products.length > 0")
       .logo
         .img-circle
           image-upload options="{image: restaurant.logo, identicon: restaurant.email}"

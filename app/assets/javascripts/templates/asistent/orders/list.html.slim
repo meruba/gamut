@@ -1,0 +1,5 @@
+.wrapper-orders
+  .orders
+    .card-md.order(ng-repeat="order in vm.orders" ng-click="vm.updateOrder(order)")
+      .name {{order.id}}
+      .id {{order.user_name}}

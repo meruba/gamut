@@ -49,8 +49,22 @@
     function createPublicApi() {
       return {
         updateList: addRemoveList,
-        checkout: checkoutList
+        checkout: checkoutList,
+        pullItems: pullItems,
+        updateAllCart: updateAllCart
       };
+    }
+
+    function pullItems(items) {
+      vm.items = items;
+    }
+
+    function updateAllCart(items, price) {
+      vm.deliveryPrice = price || 0;
+      angular.forEach(items, function(item){
+        calculate(item);
+      });
+      vm.items = items;
     }
 
     function checkoutList(cb){

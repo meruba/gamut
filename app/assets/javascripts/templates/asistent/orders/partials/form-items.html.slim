@@ -6,11 +6,11 @@
       .wrapper-results
         .search-products
           search-input options="vm.productsOptionsSearch"
-.products-menu(ng-repeat="restaurant in vm.restaurantsSelected")
-  .title {{restaurant.name}}
+.products-menu
+  .title-medium.text-bold {{restaurant.name}}
   .form-products
     .wrapper-search-product
       .wrapper-results
         .products-results
-          .product-wrapper(ng-repeat="product in restaurant.products | filter:vm.searchText" ng-class="{'selected': product.selected}")
+          .product-wrapper(ng-repeat="product in vm.selectedRestaurant.products | filter:vm.searchText" ng-class="{'selected': product.selected}")
             product-card-result(options="{product: product}" ng-click="vm.selectProduct(product)")

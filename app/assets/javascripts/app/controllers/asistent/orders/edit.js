@@ -3,26 +3,27 @@
 
   angular
     .module('app.controllers')
-    .controller('NewOrders', NewOrdersController);
+    .controller('EditOrdersCtrl', EditOrdersCtrl);
 
-  function NewOrdersController(UserService,
-                              ProductService,
-                              OrderService,
-                              restaurants,
-                              $uibModal,
-                              $state,
-                              $scope) {
+  function EditOrdersCtrl(UserService,
+                          ProductService,
+                          OrderService,
+                          $uibModal,
+                          $state,
+                          restaurants,
+                          user,
+                          order) {
+
     var vm = this;
     var apiCart = null,
         apiSearcProduct = null,
         apiSearchUser = null,
-        order = null;
+        order = order || {},
+        user = user || {};
 
-    vm.user = {};
     vm.users = [];
     vm.restaurants = restaurants || [];
     vm.selectUser = selectUser;
-    vm.userOrder = null;
     vm.newUser = newUser;
     vm.editUser = editUser;
     vm.selectProduct = selectProduct;
@@ -30,6 +31,39 @@
     vm.itemsToCart = [];
     vm.searchText = null;
     vm.selectedRestaurant = null;
+
+    init();
+
+    function init() {
+      vm.selectedRestaurant = findRestaurant(vm.restaurants, order.restaurant_id);
+      vm.selectedRestaurant.products = updateProducts(vm.selectedRestaurant.products, order.item_orders);
+      vm.userOrder = user;
+      vm.showUser = true;
+    }
+
+    function updateProducts(original, founds) {
+      var updateItems = angular.copy(original);
+      angular.forEach(updateItems, function(item){
+        angular.forEach(founds, function(elm){
+          if (item.id === elm.product_id) {
+            item.selected = true;
+            item.value = elm.quantity;
+            vm.itemsToCart.push(item);
+          }
+        });
+      });
+      return updateItems;
+    }
+
+    function findRestaurant(restaurants, id) {
+      var found = null;
+      angular.forEach(restaurants, function(item){
+        if (item.id === id) {
+          found = item;
+        }
+      });
+      return found;
+    }
 
     vm.optionsCart = {
       items: [],
@@ -58,6 +92,10 @@
       apiCart.checkout(function (data) {
         confirmOrder(data);
       });
+
+      if (order) {
+        apiCart.updateAllCart(vm.itemsToCart, order.price_delivery);
+      }
     }
 
     function itemsOrderFormat(items) {

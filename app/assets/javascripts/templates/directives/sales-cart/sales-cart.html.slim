@@ -5,7 +5,6 @@
       .item-selected.list-anm ng-repeat="item in vm.items"
         .wrapper-input
           input.form-control (type="number"
-                              ng-init="item.value = 1"
                               ng-model="item.value"
                               ng-change="vm.calculate(item)")
         .wrapper-description

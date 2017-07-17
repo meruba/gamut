@@ -337,12 +337,48 @@
           }
         }
       })
+      .state('app.asistent.orders.edit', {
+        url: '/edit/{orderId:int}/user/{userId:int}',
+        templateUrl: 'asistent/orders/new.html',
+        controller: 'EditOrdersCtrl as vm',
+        resolve: {
+          restaurants: function (RestaurantService) {
+            return RestaurantService.restaurants().then(function(data) {
+              return data.restaurants;
+            });
+          },
+          order: function (OrderService, $stateParams) {
+            var orderId = $stateParams.orderId;
+            return OrderService.order(orderId).then(function(data) {
+              return data;
+            });
+          },
+          user: function (UserService, $stateParams) {
+            var userId = $stateParams.userId;
+            return UserService.user(userId).then(function(data) {
+              return data;
+            });
+          },
+        }
+      })
+      .state('app.asistent.orders.list', {
+        url: '/list',
+        templateUrl: 'asistent/orders/list.html',
+        controller: 'OrderListCtrl as vm',
+        resolve: {
+          orders: function (OrderService) {
+            return OrderService.lastOrders().then(function(data) {
+              return data.orders;
+            });
+          }
+        }
+      })
       .state('app.asistent.restaurants', {
         url: '/restaurants',
         template: '<ui-view/>'
       })
-      .state('app.asistent.restaurants.list', {
-        url: '/list',
+      .state('app.asistent.restaurants.admin', {
+        url: '/admin',
         templateUrl: 'asistent/restaurants/index.html',
         controller: 'RestaurantsCtrl as vm',
         resolve: {

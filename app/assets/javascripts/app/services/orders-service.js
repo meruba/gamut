@@ -9,7 +9,8 @@
 
     var service = {
       lastOrders: lastOrders,
-      newOrder: newOrder
+      newOrder: newOrder,
+      order: order
     };
 
     return service;
@@ -41,6 +42,17 @@
         return res.data;
       }, function error(err) {
         return err.data;
+      });
+    }
+
+    function order(id) {
+      return $http({
+        method: 'GET',
+        url: '/api/v1/orders/' + id
+      }).then(function success(res) {
+        return res.data;
+      }, function error(err) {
+        console.error('ERR', err);
       });
     }
 
