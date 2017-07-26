@@ -145,7 +145,7 @@
 
     function okModal(data) {
       var params = {
-        total: data.meta.deliveryPrice,
+        total: data.meta.total,
         priceDelivery: data.meta.deliveryPrice,
         address: 'Loja',
         userId: vm.userOrder.id,

@@ -1,5 +1,20 @@
 .wrapper-orders
-  .orders
-    .card-md.order(ng-repeat="order in vm.orders" ng-click="vm.updateOrder(order)")
-      .name {{order.id}}
-      .id {{order.user_name}}
+  .card-md
+    table.table
+      thead
+        tr
+          th Fecha
+          th Cliente
+          th Direccion
+          th Total
+          th Acciones
+        tbody
+          tr(ng-repeat="order in vm.orders")
+            td 12/23/30
+            td {{order.user_name}}
+            td {{order.address}}
+            td $ {{order.price_delivery}}
+            td
+              .actions
+                .show(ng-click="vm.updateOrder(order)") ver
+                .edit(ng-click="vm.updateOrder(order)") editar

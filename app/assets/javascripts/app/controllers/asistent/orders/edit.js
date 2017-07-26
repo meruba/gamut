@@ -183,14 +183,15 @@
 
     function okModal(data) {
       var params = {
-        total: data.meta.deliveryPrice,
+        total: data.meta.total,
         priceDelivery: data.meta.deliveryPrice,
         address: 'Loja',
         userId: vm.userOrder.id,
         restaurantId: vm.selectedRestaurant.id,
-        items: itemsOrderFormat(data.items)
+        items: itemsOrderFormat(data.items),
+        orderId: order.id
       };
-      OrderService.newOrder(params).then(function(data){
+      OrderService.editOrder(params).then(function(data){
         $state.go('app.asistent.orders.list');
       });
     }
