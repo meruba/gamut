@@ -1,60 +1,61 @@
-.search-user
-  margin: 5px
-  padding: 10px
+.user-list-section
+  .search-user
+    margin: 5px
+    padding: 10px
 
-.users-list
-  display: flex
-  flex-wrap: wrap
-  .users
-    flex-basis: 25%
-    min-width: 25%
-    .link-user
-      cursor: pointer
-      padding: 10px
-      margin: 5px
-      .main-head
-        display: flex
-        justify-content: space-between
-        image-upload
+  .users-list
+    display: flex
+    flex-wrap: wrap
+    .users
+      flex-basis: 25%
+      min-width: 25%
+      .link-user
+        cursor: pointer
+        padding: 10px
+        margin: 5px
+        .main-head
           display: flex
-          justify-content: center
-          background: #f0f0f0
-          align-items: center
-          width: 80px
-          height: 80px
-          border-radius: 50%
-          position: relative
-          overflow: hidden
-          .image-avatar
-            img
-              object-fit: cover
-              width: 100%
-              height: 100%
-              position: absolute
-              top: 0
-              left: 0
-        .name
-          text-align: right
-          padding-right: 10px
-          font-size: 14px
-          font-weight: 300
-          max-width: 140px
-        .options
-      .description
-        padding-top: 10px
-        #address
-          font-size: 8px
-          font-family: 'Helvetica Neue'
-          font-weight: normal
-          i
-            padding-right: 5px
-        #rol
+          justify-content: space-between
+          image-upload
+            display: flex
+            justify-content: center
+            background: #f0f0f0
+            align-items: center
+            width: 80px
+            height: 80px
+            border-radius: 50%
+            position: relative
+            overflow: hidden
+            .image-avatar
+              img
+                object-fit: cover
+                width: 100%
+                height: 100%
+                position: absolute
+                top: 0
+                left: 0
+          .name
+            text-align: right
+            padding-right: 10px
+            font-size: 14px
+            font-weight: 300
+            max-width: 140px
+          .options
+        .description
+          padding-top: 10px
+          #address
+            font-size: 8px
+            font-family: 'Helvetica Neue'
+            font-weight: normal
+            i
+              padding-right: 5px
+          #rol
 
-.row-load-more
-  display: flex
-  justify-content: center
-  padding: 10px 0
-  cursor: pointer
+  .row-load-more
+    display: flex
+    justify-content: center
+    padding: 10px 0
+    cursor: pointer
 
-  &:hover
-    background-color: white
+    &:hover
+      background-color: white
