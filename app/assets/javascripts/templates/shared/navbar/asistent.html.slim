@@ -6,14 +6,11 @@
       a ui-sref="app.asistent.users.list"
         | {{ ::'menu.users' | translate }}
     li ui-sref-active="active"
-      a (ui-sref="app.asistent.orders.new")
-        | Pedido
+      a (ui-sref="app.asistent.orders")
+        | Pedidos
     li ui-sref-active="active"
       a (ui-sref="app.asistent.restaurants.admin")
         | Establecimientos
-    li ui-sref-active="active"
-      a (ui-sref="app.asistent.orders.list")
-        | Ordenes
   ul.nav.navbar-nav.navbar-right
     li.dropdown
       a.dropdown-toggle (aria-expanded="false"

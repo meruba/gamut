@@ -1,0 +1,21 @@
+@import "base/palette"
+
+.orders-section
+  .tabs-option
+    display: flex
+    justify-content: center
+    align-items: center
+    // background-color: white
+
+    .tab
+      padding: 10px
+      a
+        color: $text-color
+
+      &.active
+        border-bottom: 3px solid $primary-color
+        a
+          color: $primary-color
+
+  .container-view
+    margin-top: 20px

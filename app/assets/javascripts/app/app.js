@@ -323,7 +323,8 @@
       })
       .state('app.asistent.orders', {
         url: '/orders',
-        template: '<ui-view/>'
+        templateUrl: 'asistent/orders/main.html',
+        redirectTo: 'app.asistent.orders.new'
       })
       .state('app.asistent.orders.new', {
         url: '/new',
