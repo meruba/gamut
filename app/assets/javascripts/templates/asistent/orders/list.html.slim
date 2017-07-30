@@ -1,3 +1,6 @@
+.search-order.card-md
+  search-input options="vm.optionsSearch"
+
 .wrapper-order-list
   .card-md
     table.table
@@ -9,7 +12,7 @@
           th Total
           th Acciones
         tbody
-          tr(ng-repeat="order in vm.orders | limitTo:vm.limitShowRows")
+          tr(ng-repeat="order in vm.orders | limitTo:vm.limitShowRows | filter:vm.searchText")
             td {{order.created_at}}
             td {{order.user_name}}
             td {{order.address}}
@@ -18,5 +21,5 @@
               .actions
                 a.action(ui-sref="app.asistent.orders.edit({orderId: order.id, userId: order.user_id})") editar
                 .action.edit(ng-click="vm.updateOrder(order)") ver
-    .row-load-more(ng-if="vm.showLoadButton && vm.limitShowRows < vm.orders.length" ng-click="vm.loadMoreRows(order)")
+    .row-load-more(ng-if="!vm.searchText && vm.showLoadButton && vm.limitShowRows < vm.orders.length" ng-click="vm.loadMoreRows()")
       | Show More

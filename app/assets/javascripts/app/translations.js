@@ -121,6 +121,7 @@
         'search-user': 'Buscar usuario',
         'search-restaurant': 'Buscar producto',
         'search-product': 'Buscar producto',
+        'search-order': 'Buscar una orden',
         'new-category': 'Ingrese una categoria',
         'select-category': 'Seleccione una categoria'
       },

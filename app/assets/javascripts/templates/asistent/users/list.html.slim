@@ -1,5 +1,8 @@
+.search-user.card-md
+  search-input options="vm.optionsSearch"
+
 .users-list
-  .users(ng-repeat="user in vm.users | limitTo:vm.limitShowRows")
+  .users(ng-repeat="user in vm.users | limitTo:vm.limitShowRows | filter:vm.searchText")
     .link-user.card-md ui-sref=("user.show({ userId: user.id })")
       .main-head
         image-upload options="{image: user.image, identicon: user.email}"
@@ -12,5 +15,5 @@
           i.glyphicon.glyphicon-map-marker
           | {{user.address}}
 
-.row-load-more(ng-if="vm.showLoadButton && vm.limitShowRows < vm.users.length" ng-click="vm.loadMoreRows()")
+.row-load-more(ng-if="!vm.searchText && vm.showLoadButton && vm.limitShowRows < vm.users.length" ng-click="vm.loadMoreRows()")
   | Cargar Mas Datos
