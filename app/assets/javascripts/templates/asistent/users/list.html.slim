@@ -1,5 +1,5 @@
 .users-list
-  .users(ng-repeat="user in vm.users")
+  .users(ng-repeat="user in vm.users | limitTo:vm.limitShowRows")
     .link-user.card-md ui-sref=("user.show({ userId: user.id })")
       .main-head
         image-upload options="{image: user.image, identicon: user.email}"
@@ -11,3 +11,6 @@
         #address.text-muted.elipsis
           i.glyphicon.glyphicon-map-marker
           | {{user.address}}
+
+.row-load-more(ng-if="vm.showLoadButton && vm.limitShowRows < vm.users.length" ng-click="vm.loadMoreRows()")
+  | Cargar Mas Datos

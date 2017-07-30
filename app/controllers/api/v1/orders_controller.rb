@@ -17,7 +17,7 @@ module Api
       respond_to :json
 
       def index
-        respond_with(Order.all)
+        respond_with(Order.all.order("created_at DESC"))
       end
 
       def show

@@ -7,10 +7,15 @@ class OrderSerializer < ActiveModel::Serializer
               :user_id,
               :restaurant_id,
               :user_name,
-              :item_orders
+              :item_orders,
+              :created_at
 
   def user_name
     object.user ? object.user.name : ''
+  end
+
+  def created_at
+    object.created_at.strftime("%Y-%m-%d")
   end
 
 end

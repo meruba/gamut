@@ -1,4 +1,4 @@
-.wrapper-orders
+.wrapper-order-list
   .card-md
     table.table
       thead
@@ -9,12 +9,14 @@
           th Total
           th Acciones
         tbody
-          tr(ng-repeat="order in vm.orders")
-            td 12/23/30
+          tr(ng-repeat="order in vm.orders | limitTo:vm.limitShowRows")
+            td {{order.created_at}}
             td {{order.user_name}}
             td {{order.address}}
             td $ {{order.price_delivery}}
             td
               .actions
-                .show(ng-click="vm.updateOrder(order)") ver
-                .edit(ng-click="vm.updateOrder(order)") editar
+                a.action(ui-sref="app.asistent.orders.edit({orderId: order.id, userId: order.user_id})") editar
+                .action.edit(ng-click="vm.updateOrder(order)") ver
+    .row-load-more(ng-if="vm.showLoadButton && vm.limitShowRows < vm.orders.length" ng-click="vm.loadMoreRows(order)")
+      | Show More
