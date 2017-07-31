@@ -34,7 +34,7 @@
         data:{
           total: params.total,
           price_delivery: params.priceDelivery,
-          address: params.address,
+          address_id: params.addressId,
           user_id: params.userId,
           restaurant_id: params.restaurantId,
           item_orders_attributes: params.items

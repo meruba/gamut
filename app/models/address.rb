@@ -18,6 +18,7 @@ class Address < ActiveRecord::Base
 
   begin :relationships
     belongs_to :user
+    has_one :order
   end
 
 end

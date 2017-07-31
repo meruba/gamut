@@ -147,7 +147,7 @@
       var params = {
         total: data.meta.total,
         priceDelivery: data.meta.deliveryPrice,
-        address: 'Loja',
+        addressId: vm.userOrder.addresses[0].id,
         userId: vm.userOrder.id,
         restaurantId: vm.selectedRestaurant.id,
         items: itemsOrderFormat(data.items)

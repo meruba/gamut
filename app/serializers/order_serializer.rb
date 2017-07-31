@@ -18,4 +18,8 @@ class OrderSerializer < ActiveModel::Serializer
     object.created_at.strftime("%Y-%m-%d")
   end
 
+  def address
+    object.address
+  end
+
 end

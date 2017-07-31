@@ -15,7 +15,7 @@
           tr(ng-repeat="order in vm.orders | limitTo:vm.limitShowRows | filter:vm.searchText")
             td {{order.created_at}}
             td {{order.user_name}}
-            td {{order.address}}
+            td {{order.address.main_street}}
             td $ {{order.price_delivery}}
             td
               .actions

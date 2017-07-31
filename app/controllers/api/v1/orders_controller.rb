@@ -40,9 +40,9 @@ module Api
         params.require(:order).permit(:id,
                                       :total,
                                       :price_delivery,
-                                      :address,
                                       :user_id,
                                       :restaurant_id,
+                                      :address_id,
                                       :item_orders_attributes => [
                                         :quantity,
                                         :discount,
