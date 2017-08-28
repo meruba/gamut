@@ -2,14 +2,16 @@
 #
 # Table name: orders
 #
-#  id             :integer          not null, primary key
-#  total          :float            not null
-#  price_delivery :float            not null
-#  user_id        :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  restaurant_id  :integer
-#  address_id     :integer
+#  id              :integer          not null, primary key
+#  total           :float            not null
+#  price_delivery  :float            not null
+#  user_id         :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  restaurant_id   :integer
+#  address_id      :integer
+#  canceled        :boolean          default("false")
+#  reason_canceled :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
