@@ -6,15 +6,20 @@ class OrderSerializer < ActiveModel::Serializer
               :address,
               :user_id,
               :restaurant_id,
-              :user_name,
+              :user,
               :canceled,
               :reason_canceled,
               :created_at
 
   has_many :item_orders
 
-  def user_name
-    object.user ? object.user.name : ''
+  def user
+    {
+      name: object.user.name,
+      identification: object.user.identification,
+      email: object.user.email,
+      telephone: object.user.telephone
+    }
   end
 
   def created_at

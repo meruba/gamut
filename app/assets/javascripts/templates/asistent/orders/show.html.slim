@@ -1,16 +1,33 @@
-.wrapper-section.col-md-8.col-md-offset-2
-  .card-md
+.order-show.col-md-8.col-md-offset-2
+  .card-md.wrapper
     .section.information
       .user
-        span Nombre: {{vm.order.user_name}}
-        span C.I: {{vm.order.user_name}}
-        span Telefono: {{vm.order.user_name}}
-      .address
-        span Calle Principal: {{vm.order.address.main_street}}
-        span Calle Secundaria: {{vm.order.address.secondary_street}}
-        span Barrio: {{vm.order.address.neighborhood}}
-        span Referencia: {{vm.order.address.reference_place}}
-        span Numero de lugar: {{vm.order.address.number_place}}
+        .order-info
+          .order-number PEDIDO # {{vm.order.id}}
+          .date {{vm.order.created_at}}
+        .user-name {{vm.order.user.name}}
+        .text-s {{vm.order.user.identification}}
+        .text-s {{vm.order.user.telephone}}
+      .details
+        .description-group
+          .description Calle Principal:
+          .text {{vm.order.address.main_street}}
+        .description-group
+          .description Calle Secundaria:
+          .text {{vm.order.address.secondary_street}}
+        .description-group
+          .description Referencia:
+          .text {{vm.order.address.reference_place}}
+        .description-group
+          .description Barrio:
+          .text {{vm.order.address.neighborhood}}
+        .description-group
+          .description Numero del lugar:
+          .text {{vm.order.address.number_place}}
+        .payments
+          strong FORMA DE PAGO
+          .list Efectivo
+
     .section.items
       table.table
         thead
@@ -25,3 +42,5 @@
               td {{item.quantity}}
               td $ {{item.unit_value}}
               td $ {{item.total}}
+    .total
+      span ${{vm.order.total}}
