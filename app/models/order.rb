@@ -20,7 +20,7 @@ class Order < ActiveRecord::Base
     belongs_to :user
     belongs_to :restaurant
     belongs_to :address
-    has_many :item_orders
+    has_many :item_orders, dependent: :destroy
   end
 
   #nested

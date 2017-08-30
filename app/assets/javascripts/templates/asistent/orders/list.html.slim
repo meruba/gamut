@@ -20,6 +20,6 @@
             td
               .actions
                 a.action(ui-sref="app.asistent.orders.edit({orderId: order.id, userId: order.user_id})") editar
-                .action.edit(ng-click="vm.updateOrder(order)") ver
+                a.action(ui-sref="app.asistent.orders.show({orderId: order.id})") mostrar
     .row-load-more(ng-if="!vm.searchText && vm.showLoadButton && vm.limitShowRows < vm.orders.length" ng-click="vm.loadMoreRows()")
       | Show More

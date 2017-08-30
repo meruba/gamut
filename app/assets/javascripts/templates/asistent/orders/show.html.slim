@@ -1,0 +1,27 @@
+.wrapper-section.col-md-8.col-md-offset-2
+  .card-md
+    .section.information
+      .user
+        span Nombre: {{vm.order.user_name}}
+        span C.I: {{vm.order.user_name}}
+        span Telefono: {{vm.order.user_name}}
+      .address
+        span Calle Principal: {{vm.order.address.main_street}}
+        span Calle Secundaria: {{vm.order.address.secondary_street}}
+        span Barrio: {{vm.order.address.neighborhood}}
+        span Referencia: {{vm.order.address.reference_place}}
+        span Numero de lugar: {{vm.order.address.number_place}}
+    .section.items
+      table.table
+        thead
+          tr
+            th Producto
+            th Cantidad
+            th Precio
+            th Total
+          tbody
+            tr(ng-repeat="item in vm.order.item_orders")
+              td {{item.product}}
+              td {{item.quantity}}
+              td $ {{item.unit_value}}
+              td $ {{item.total}}

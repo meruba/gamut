@@ -362,6 +362,19 @@
           },
         }
       })
+      .state('app.asistent.orders.show', {
+        url: '/show/{orderId:int}',
+        templateUrl: 'asistent/orders/show.html',
+        controller: 'ShowOrderCtrl as vm',
+        resolve: {
+          order: function (OrderService, $stateParams) {
+            var orderId = $stateParams.orderId;
+            return OrderService.order(orderId).then(function(data) {
+              return data;
+            });
+          }
+        }
+      })
       .state('app.asistent.orders.list', {
         url: '/list',
         templateUrl: 'asistent/orders/list.html',
